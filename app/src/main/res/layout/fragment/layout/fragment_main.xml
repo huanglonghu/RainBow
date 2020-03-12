@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+        <variable
+            name="main"
+            type="com.example.rainbow.ui.fragment.MainFragment" />
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="selectPosition"
+            type="int" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="300pt"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/c1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt">
+
+
+                    <ImageView
+                        android:layout_width="152pt"
+                        android:layout_height="90pt"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="16pt"
+                        android:src="@mipmap/logo" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt"
+                    android:background="@{selectPosition==0?@drawable/bg_toggle:null}"
+                    android:gravity="center"
+                    android:onClick="@{()->main.toggleVpMain(0)}"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="54pt"
+                        android:layout_height="48pt"
+                        android:src="@drawable/gzrw" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15pt"
+                        android:text="工作任务"
+                        android:textColor="#fff"
+                        android:textSize="33pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt"
+                    android:background="@{selectPosition==1?@drawable/bg_toggle:null}"
+                    android:gravity="center"
+                    android:onClick="@{()->main.toggleVpMain(1)}"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="57pt"
+                        android:layout_height="54pt"
+                        android:src="@drawable/sxbdk" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15pt"
+                        android:text="上下班打卡"
+                        android:textColor="#fff"
+                        android:textSize="33pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt"
+                    android:background="@{selectPosition==2?@drawable/bg_toggle:null}"
+                    android:gravity="center"
+                    android:onClick="@{()->main.toggleVpMain(2)}"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="54pt"
+                        android:layout_height="48pt"
+                        android:src="@drawable/grxx" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15pt"
+                        android:text="个人信息"
+                        android:textColor="#fff"
+                        android:textSize="33pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt"
+                    android:background="@{selectPosition==3?@drawable/bg_toggle:null}"
+                    android:gravity="center"
+                    android:onClick="@{()->main.toggleVpMain(3)}"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="53pt"
+                        android:layout_height="53pt"
+                        android:src="@drawable/tzgg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15pt"
+                        android:text="通知公告"
+                        android:textColor="#fff"
+                        android:textSize="33pt" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="118pt"
+                android:background="@color/t6"
+                android:gravity="center"
+                android:onClick="@{()->main.exit()}">
+
+
+                <ImageView
+                    android:layout_width="50pt"
+                    android:layout_height="44pt"
+                    android:src="@drawable/exit" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15pt"
+                    android:text="安全退出"
+                    android:textColor="@color/s1"
+                    android:textSize="32pt" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="178pt"
+                android:paddingLeft="57pt"
+                android:paddingRight="30pt">
+
+
+                <ImageView
+                    android:id="@+id/config"
+                    android:layout_width="45pt"
+                    android:layout_height="34pt"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/config" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="85pt"
+                    android:layout_toRightOf="@id/config"
+                    android:text="欢迎!进入彩虹线路管理系统"
+                    android:textColor="@color/t9"
+                    android:textSize="34pt" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="256pt"
+                    android:divider="@drawable/ll_divider5"
+                    android:showDividers="beginning|end|middle">
+
+                    <Spinner
+                        android:id="@+id/spLanguage"
+                        android:layout_width="232pt"
+                        android:layout_height="123pt"
+                        android:background="@null"
+                        android:dropDownVerticalOffset="123pt"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <com.example.rainbow.ui.customView.NoScrollViewPager
+                android:id="@+id/vpMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

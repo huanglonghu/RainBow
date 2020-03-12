@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="117pt"
+            android:background="@color/d1"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt">
+
+
+            <LinearLayout
+                android:layout_width="324pt"
+                android:layout_height="90pt"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_a9"
+                android:divider="@drawable/ll_divider1"
+                android:showDividers="middle">
+
+
+                <Spinner
+                    android:id="@+id/spYear"
+                    android:layout_width="162pt"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:background="@null"
+                    android:dropDownVerticalOffset="90pt"
+                    android:textColor="@color/t9"
+                    android:textSize="31pt" />
+
+
+                <Spinner
+                    android:id="@+id/spMonth"
+                    android:layout_width="162pt"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:background="@null"
+                    android:dropDownVerticalOffset="90pt"
+                    android:textColor="@color/t9"
+                    android:textSize="31pt" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/toWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+
+                <LinearLayout
+                    android:layout_width="260pt"
+                    android:layout_height="90pt"
+                    android:background="@drawable/shape_a4"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="52pt"
+                        android:layout_height="52pt"
+                        android:src="@drawable/sb" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10pt"
+                        android:text="上班"
+                        android:textColor="@android:color/white"
+                        android:textSize="30pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/offWork"
+                    android:layout_width="260pt"
+                    android:layout_height="90pt"
+                    android:layout_marginLeft="30pt"
+                    android:background="@drawable/shape_a10"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="52pt"
+                        android:layout_height="52pt"
+                        android:src="@drawable/xb" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10pt"
+                        android:text="下班"
+                        android:textColor="@android:color/white"
+                        android:textSize="30pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:gravity="center_vertical"
+                android:paddingLeft="30pt"
+                android:paddingRight="30pt">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="日期(星期)"
+                    android:textColor="@color/t9"
+                    android:textSize="32pt" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="上班时间"
+                    android:textColor="@color/t9"
+                    android:textSize="32pt" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="下班时间"
+                    android:textColor="@color/t9"
+                    android:textSize="32pt" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="状态"
+                    android:textColor="@color/t9"
+                    android:textSize="32pt" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2pt"
+                android:background="@color/d2" />
+
+
+            <ListView
+                android:id="@+id/lvClockIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="30pt"
+                android:paddingRight="30pt"
+                android:divider="@drawable/ll_divider3" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

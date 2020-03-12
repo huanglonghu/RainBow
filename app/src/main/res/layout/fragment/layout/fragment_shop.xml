@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.ShopDetailResponse.DataBean" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30pt">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="180pt"
+                    android:layout_height="180pt"
+                    android:background="#fcf" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20pt"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.shopName}"
+                        android:textColor="@color/t3"
+                        android:textSize="32pt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="@{@string/djfc+data.splitRatio}"
+                        android:textColor="@color/t10"
+                        android:textSize="28pt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="@{@string/address+data.address}"
+                        android:textColor="@color/t4"
+                        android:textSize="28pt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="@{@string/phone+data.telephone}"
+                        android:textColor="@color/t4"
+                        android:textSize="28pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true">
+
+                <LinearLayout
+                    android:id="@+id/line"
+                    android:layout_width="138pt"
+                    android:layout_height="112pt"
+                    android:background="@drawable/shape_a1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="62pt"
+                        android:layout_height="44pt"
+                        android:src="@drawable/line" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="路线"
+                        android:textColor="@color/t4"
+                        android:textSize="28pt" />
+                    />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/takePhoto"
+                    android:layout_width="138pt"
+                    android:layout_height="112pt"
+                    android:layout_marginLeft="20pt"
+                    android:background="@drawable/shape_a1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="52pt"
+                        android:layout_height="39pt"
+                        android:src="@drawable/takephoto" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="机器拍照"
+                        android:textColor="@color/t4"
+                        android:textSize="28pt" />
+                    />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/toSign"
+                    android:layout_width="138pt"
+                    android:layout_height="112pt"
+                    android:layout_marginLeft="20pt"
+                    android:background="@{data.isSignIn?@drawable/shape_b2:@drawable/shape_a1}"
+                    android:clickable="@{data.isSignIn?false:true}"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="62pt"
+                        android:layout_height="44pt"
+                        android:src="@{data.isSignIn?@drawable/signed:@drawable/sign}" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="@{data.isSignIn?@string/signed:@string/sign}"
+                        android:textColor="@{data.isSignIn?@color/c2:@color/t4}"
+                        android:textSize="28pt" />
+                    />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/shopSettle"
+                    android:layout_width="138pt"
+                    android:layout_height="112pt"
+                    android:layout_marginLeft="20pt"
+                    android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
+                    android:clickable="@{data.isSettled?false:true}"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="62pt"
+                        android:layout_height="44pt"
+                        android:src="@{data.isSettled?@drawable/settled:@drawable/settle}" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="@{data.isSettled?@string/settled:@string/settle}"
+                        android:textColor="@{data.isSettled?@color/c2:@color/t4}"
+                        android:textSize="28pt" />
+                    />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12pt"
+            android:background="@color/d1" />
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            app:stl_defaultTabTextColor="@color/t9"
+            app:stl_defaultTabTextHorizontalPadding="15pt"
+            app:stl_defaultTabTextSize="31pt"
+            app:stl_dividerColor="@android:color/transparent"
+            app:stl_indicatorColor="@color/c2"
+            app:stl_indicatorCornerRadius="3pt"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInterpolation="linear"
+            app:stl_indicatorThickness="5pt"
+            app:stl_indicatorWithoutPadding="true"
+            app:stl_underlineThickness="0dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:background="@color/d1" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt" />
+
+
+    </LinearLayout>
+
+</layout>

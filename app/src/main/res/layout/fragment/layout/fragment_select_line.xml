@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.GetJobDetailResponse.DataBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="83pt"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="负责人 : "
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="杨雪"
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230pt"
+                android:layout_marginRight="230pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="司机 : "
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="杨雪"
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车牌号 : "
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="粤A-8858"
+                    android:textColor="@color/t2"
+                    android:textSize="30pt" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12pt"
+            android:background="@color/d1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ListView
+                android:id="@+id/lv_line"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="@drawable/lv_divider1" />
+
+
+            <TextView
+                android:id="@+id/totalSettle"
+                android:layout_width="match_parent"
+                android:layout_height="90pt"
+                android:layout_marginLeft="30pt"
+                android:layout_marginTop="20pt"
+                android:layout_marginRight="30pt"
+                android:layout_marginBottom="20pt"
+                android:background="@drawable/shape_a4"
+                android:gravity="center"
+                android:text="@string/totalSettle"
+                android:textColor="#fff"
+                android:textSize="32pt"
+                android:visibility="@{data.isSettled?View.VISIBLE:View.GONE}" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

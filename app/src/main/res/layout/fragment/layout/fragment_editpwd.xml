@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/ll_divider1"
+            android:orientation="vertical"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt"
+            android:showDividers="middle|end">
+
+
+            <EditText
+                android:id="@+id/oldPwd"
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/oldPwd"
+                android:textColor="@color/t12"
+                android:inputType="textPassword"
+                android:textSize="31pt" />
+
+            <EditText
+                android:id="@+id/newPwd"
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/newPwd"
+                android:inputType="textPassword"
+                android:textColor="@color/t12"
+                android:textSize="31pt" />
+
+            <EditText
+                android:id="@+id/surePwd"
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/surePwd"
+                android:inputType="textPassword"
+                android:textColor="@color/t12"
+                android:textSize="31pt" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sure"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            android:layout_marginBottom="60pt"
+            android:background="@drawable/shape_a4"
+            android:gravity="center"
+            android:text="@string/sure"
+            android:textColor="#fff"
+            android:textSize="32pt" />
+
+    </RelativeLayout>
+
+
+</layout>

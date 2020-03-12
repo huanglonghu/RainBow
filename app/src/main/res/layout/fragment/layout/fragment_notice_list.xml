@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+
+
+        <ListView
+            android:id="@+id/lvNotice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@drawable/ll_divider1"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt"
+            android:scrollbars="none" />
+
+
+    </LinearLayout>
+</layout>

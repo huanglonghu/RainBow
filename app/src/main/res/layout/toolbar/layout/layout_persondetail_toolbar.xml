@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+        <variable
+            name="personDetail"
+            type="com.example.rainbow.ui.main.PersonDetail" />
+
+    </data>
+
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="90pt"
+        android:background="@color/d1"
+        android:paddingLeft="60pt"
+        android:paddingRight="40pt"
+        tools:showIn="@layout/fragment_main">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="35pt"
+                android:layout_height="36pt"
+                android:src="@drawable/location" />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20pt"
+                android:textColor="@color/t9"
+                android:textSize="31pt" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="54pt"
+            android:layout_height="42pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:onClick="@{()->personDetail.back()}"
+            android:src="@drawable/back2" />
+
+
+    </RelativeLayout>
+</layout>

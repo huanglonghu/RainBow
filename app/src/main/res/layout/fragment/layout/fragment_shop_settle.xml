@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.ShopWinlossResponse.DataBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="30pt">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="216pt"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/b2"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/jsje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="总盈亏"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.totalProfitLoss)}"
+                        android:textColor="@color/b2"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="216pt"
+                    android:layout_marginTop="20pt"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/djfc" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="店家分成"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.splitRatio)}"
+                        android:textColor="@color/t9"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="216pt"
+                    android:layout_marginTop="20pt"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c4"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/ssje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="结算金额"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.businessProfitLoss)}"
+                        android:textColor="@color/c2"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24pt"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80pt"
+                    android:background="@drawable/shape_a2"
+                    android:divider="@drawable/ll_divider2"
+                    android:padding="1pt"
+                    android:showDividers="middle">
+
+
+                    <TextView
+                        android:layout_width="140pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center"
+                        android:text="本次洗分 :"
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+                    <EditText
+                        android:id="@+id/xf"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="start|center_vertical"
+                        android:hint="请输入本次洗分金额"
+                        android:paddingLeft="20pt"
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+
+                </LinearLayout>
+
+
+                <com.example.rainbow.ui.customView.LinePathView
+                    android:id="@+id/signArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="500pt"
+                    android:layout_marginTop="10pt"
+                    android:background="@drawable/shape_a3"
+                    android:padding="1pt" />
+
+
+                <TextView
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10pt"
+                    android:background="@drawable/shape_b1"
+                    android:gravity="center"
+                    android:paddingLeft="30pt"
+                    android:paddingTop="10pt"
+                    android:paddingRight="30pt"
+                    android:paddingBottom="10pt"
+                    android:text="清除"
+                    android:textColor="@android:color/white"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/commit"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_marginLeft="30pt"
+            android:layout_marginTop="20pt"
+            android:layout_marginRight="30pt"
+            android:background="@drawable/shape_a4"
+            android:gravity="center"
+            android:text="签字提交"
+            android:textColor="#fff"
+            android:textSize="32pt" />
+
+    </LinearLayout>
+
+
+</layout>

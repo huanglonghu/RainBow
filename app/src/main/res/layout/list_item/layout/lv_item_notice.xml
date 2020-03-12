@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+        <variable
+            name="bean"
+            type="com.example.rainbow.bean.NoticeListResponse.DataBean.ItemsBean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100pt">
+
+
+        <TextView
+            android:id="@+id/tvNotice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/t9"
+            android:text="@{bean.title}"
+            android:textSize="31pt" />
+
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="87pt"
+            android:text="@{bean.creationTime}"
+            android:textSize="18pt"
+            android:textColor="@color/t12" />
+
+
+        <ImageView
+            android:layout_width="20pt"
+            android:layout_height="35pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10pt"
+            android:src="@drawable/back1" />
+
+
+    </RelativeLayout>
+
+</layout>
+
+

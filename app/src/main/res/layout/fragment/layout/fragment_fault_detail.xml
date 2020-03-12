@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="30pt"
+        android:paddingRight="30pt">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="50pt"
+            android:paddingBottom="20pt">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A01号某某游戏机-问题说明"
+                android:textColor="@color/t9"
+                android:textSize="32pt" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/b2"
+                android:text="未处理"
+                android:textSize="28pt" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:background="@color/d2" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100pt">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="问题描述 : "
+                    android:textColor="@color/t9"
+                    android:textSize="33pt" />
+
+                <View
+                    android:layout_width="130pt"
+                    android:layout_height="5pt"
+                    android:layout_marginTop="12pt"
+                    android:background="@drawable/divider_a1" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_a1"
+                android:paddingLeft="20pt"
+                android:paddingTop="10pt"
+                android:paddingRight="20pt"
+                android:paddingBottom="10pt">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看图片"
+                    android:textColor="@color/c4"
+                    android:textSize="28pt" />
+
+                <ImageView
+                    android:layout_width="44pt"
+                    android:layout_height="40pt"
+                    android:layout_marginLeft="10pt"
+                    android:src="@drawable/cktp" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="282pt"
+            android:background="@drawable/shape_a6"
+            android:gravity="start"
+            android:paddingLeft="25pt"
+            android:paddingTop="20pt"
+            android:paddingRight="25pt"
+            android:text="机器投币时卡"
+            android:textColor="@color/t11"
+            android:textSize="28pt" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100pt">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="处理说明 : "
+                    android:textColor="@color/t9"
+                    android:textSize="33pt" />
+
+                <View
+                    android:layout_width="130pt"
+                    android:layout_height="5pt"
+                    android:layout_marginTop="12pt"
+                    android:background="@drawable/divider_a1" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_a1"
+                android:paddingLeft="20pt"
+                android:paddingTop="10pt"
+                android:paddingRight="20pt"
+                android:paddingBottom="10pt">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看图片"
+                    android:textColor="@color/c4"
+                    android:textSize="28pt" />
+
+                <ImageView
+                    android:layout_width="44pt"
+                    android:layout_height="40pt"
+                    android:layout_marginLeft="10pt"
+                    android:src="@drawable/cktp" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="282pt"
+            android:background="@drawable/shape_a6"
+            android:gravity="start"
+            android:paddingLeft="25pt"
+            android:paddingTop="20pt"
+            android:paddingRight="25pt"
+            android:textColor="@color/t11"
+            android:textSize="28pt" />
+
+
+    </LinearLayout>
+</layout>

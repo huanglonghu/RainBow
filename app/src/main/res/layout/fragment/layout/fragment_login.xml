@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login"
+        android:orientation="horizontal"
+        android:padding="126pt">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/login_a1" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="75pt"
+            android:paddingRight="75pt">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="182pt"
+                android:text="彩虹线路管理系统"
+                android:textColor="@android:color/black"
+                android:textSize="63pt" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5pt"
+                android:layout_marginTop="35pt"
+                android:background="@drawable/ll_divider4" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:layout_marginTop="60pt"
+                android:background="@drawable/shape_a7"
+                android:gravity="center_vertical">
+
+
+                <ImageView
+                    android:layout_width="30pt"
+                    android:layout_height="38pt"
+                    android:layout_marginLeft="30pt"
+                    android:src="@drawable/user" />
+
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20pt"
+                    android:background="@null"
+                    android:hint="请输入用户名"
+                    android:textColorHint="@color/t12"
+                    android:textSize="31pt" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:layout_marginTop="30pt"
+                android:background="@drawable/shape_a7"
+                android:gravity="center_vertical">
+
+
+                <ImageView
+                    android:layout_width="28pt"
+                    android:layout_height="36pt"
+                    android:layout_marginLeft="30pt"
+                    android:src="@drawable/pwd" />
+
+                <EditText
+                    android:id="@+id/pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20pt"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/t12"
+                    android:textSize="31pt" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:layout_marginTop="83pt"
+                android:background="@drawable/shape_a8"
+                android:gravity="center"
+                android:text="登录"
+                android:textColor="@android:color/white"
+                android:textSize="37pt" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

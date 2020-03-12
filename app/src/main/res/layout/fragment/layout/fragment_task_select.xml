@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="30pt">
+
+
+        <LinearLayout
+            android:id="@+id/skgl"
+            android:layout_width="0dp"
+            android:layout_height="500pt"
+            android:layout_weight="1"
+            android:background="@color/c2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="118pt"
+                android:layout_height="124pt"
+                android:src="@drawable/skgl" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30pt"
+                android:text="收款管理"
+                android:textColor="#fff"
+                android:textSize="38pt" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jsgl"
+            android:layout_width="0dp"
+            android:layout_height="500pt"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            android:layout_weight="1"
+            android:background="@color/c3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="142pt"
+                android:layout_height="124pt"
+                android:src="@drawable/jsgl" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30pt"
+                android:text="机室管理"
+                android:textColor="#fff"
+                android:textSize="38pt" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="500pt"
+            android:layout_weight="1"
+            android:background="@color/c4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="98pt"
+                android:layout_height="127pt"
+                android:src="@drawable/wxgl" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30pt"
+                android:text="维修管理"
+                android:textColor="#fff"
+                android:textSize="38pt" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

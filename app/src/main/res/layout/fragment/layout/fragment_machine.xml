@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.MachineDetailResponse.DataBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30pt">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpUpload"
+                android:layout_width="640pt"
+                android:layout_height="490pt"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40pt"
+                android:divider="@drawable/ll_divider3"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@{data.machineName}"
+                        android:textColor="@color/t9"
+                        android:textSize="30pt" />
+
+
+                    <LinearLayout
+                        android:id="@+id/uploadFault"
+                        android:layout_width="198pt"
+                        android:layout_height="72pt"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="10pt"
+                        android:background="@drawable/shape_a1"
+                        android:gravity="center">
+
+
+                        <ImageView
+                            android:layout_width="36pt"
+                            android:layout_height="43pt"
+                            android:src="@drawable/upload_fault" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10pt"
+                            android:text="@string/uploadFault"
+                            android:textColor="@color/t4"
+                            android:textSize="28pt" />
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dqtb"
+                            android:textColor="@color/t11"
+                            android:textSize="32pt" />
+
+                        <EditText
+                            android:id="@+id/etTb"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:enabled="@{!data.isSettled}"
+                            android:inputType="number"
+                            android:textColor="@color/t9"
+                            android:textSize="26pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dqxf"
+                            android:textColor="@color/t11"
+                            android:textSize="32pt" />
+
+                        <EditText
+                            android:id="@+id/etXf"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:enabled="@{!data.isSettled}"
+                            android:inputType="number"
+                            android:textColor="@color/t9"
+                            android:textSize="26pt" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:weightSum="2">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dqcb"
+                            android:textColor="@color/t11"
+                            android:textSize="32pt" />
+
+                        <EditText
+                            android:id="@+id/etCb"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:enabled="@{!data.isSettled}"
+                            android:inputType="number"
+                            android:textColor="@color/t9"
+                            android:textSize="26pt" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{@string/bctb+":"}'
+                            android:textColor="@color/t12"
+                            android:textSize="28pt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@{String.valueOf(data.bet)}"
+                            android:textColor="@color/c2"
+                            android:textSize="22pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{@string/bccb+":"}'
+                            android:textColor="@color/t12"
+                            android:textSize="28pt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@{String.valueOf(data.out)}"
+                            android:textColor="@color/c2"
+                            android:textSize="22pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{@string/bcxf+":"}'
+                            android:textColor="@color/t12"
+                            android:textSize="28pt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@{String.valueOf(data.washScore)}"
+                            android:textColor="@color/c2"
+                            android:textSize="22pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{@string/bcyk+":"}'
+                            android:textColor="@color/c3"
+                            android:textSize="28pt" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="@{String.valueOf(data.profitLoss)}"
+                            android:textColor="@color/c3"
+                            android:textSize="22pt" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/commit"
+                    android:layout_width="match_parent"
+                    android:layout_height="90pt"
+                    android:layout_marginTop="20pt"
+                    android:background="@drawable/shape_a4"
+                    android:gravity="center"
+                    android:text="提交"
+                    android:textColor="#fff"
+                    android:textSize="32pt"
+                    android:visibility="@{data.isSettled?View.GONE:View.VISIBLE}" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12pt"
+            android:background="@color/d1" />
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            app:stl_defaultTabTextColor="@color/t9"
+            app:stl_defaultTabTextHorizontalPadding="15pt"
+            app:stl_defaultTabTextSize="31pt"
+            app:stl_dividerColor="@android:color/transparent"
+            app:stl_indicatorColor="@color/c2"
+            app:stl_indicatorCornerRadius="2dp"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInterpolation="linear"
+            app:stl_indicatorThickness="5pt"
+            app:stl_indicatorWithoutPadding="true"
+            app:stl_underlineThickness="0dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:background="@color/d1" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt" />
+
+
+    </LinearLayout>
+
+</layout>

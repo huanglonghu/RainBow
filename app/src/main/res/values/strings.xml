@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">RainBow</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+
+    <string name="nickName">昵称</string>
+
+    <string name="phoneNumber">手机号</string>
+
+    <string name="storeName">店铺名称</string>
+
+    <string name="editPwd">修改密码</string>
+
+    <string name="gzrw">工作任务</string>
+
+    <string name="grxx">个人信息</string>
+
+    <string name="notice">通知公告</string>
+
+    <string name="skgl">收款管理</string>
+
+
+    <string name="oldPwd">旧密码</string>
+    <string name="newPwd">新密码</string>
+    <string name="surePwd">确认密码</string>
+
+    <string name="sure">确认</string>
+    <string name="djfc">店家分成：</string>
+    <string name="address">地址：</string>
+    <string name="phone">电话：</string>
+    <string name="cd">迟到</string>
+    <string name="zc">正常</string>
+    <string name="faultDetail">问题详情</string>
+    <string name="uploadFault">上传故障</string>
+    <string name="shopSettle">店铺结算</string>
+    <string name="sign">签到</string>
+    <string name="signed">已签到</string>
+    <string name="settle">结算</string>
+    <string name="settled">已结算</string>
+    <string name="syjl">输赢记录</string>
+
+
+    <string name="faultState1">待处理</string>
+    <string name="faultState2">已解决</string>
+    <string name="faultState3">未能解决</string>
+
+    <string name="bcyk">本次盈亏</string>
+    <string name="bcxf">本次洗分</string>
+    <string name="bccb">本次出币</string>
+    <string name="bctb">本次投币</string>
+    <string name="totalSettle">总结算</string>
+
+    <string name="dqtb">当前投币 : </string>
+    <string name="dqxf">当前洗分 : </string>
+    <string name="dqcb">当前出币 : </string>
+
+</resources>

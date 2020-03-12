@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.example.rainbow.ui.customView.ImageTextView
+        android:layout_width="232pt"
+        android:layout_height="123pt"
+        android:gravity="center"
+        android:paddingRight="30pt"
+        android:textColor="@color/t1"
+        android:textSize="31pt"
+        app:direcation="2"
+        app:drawable="@drawable/down"
+        app:drawableHeight="20pt"
+        app:drawableWidth="24pt">
+
+    </com.example.rainbow.ui.customView.ImageTextView>
+</layout>

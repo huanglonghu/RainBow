@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="userBean"
+            type="com.example.rainbow.database.entity.UserBean" />
+
+        <import type="android.view.View" />
+
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/ll_divider1"
+            android:orientation="vertical"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt"
+            android:showDividers="middle">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/nickName"
+                    android:textColor="@color/t9"
+                    android:textSize="33pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{userBean.nickName}"
+                    android:textColor="@color/t1"
+                    android:textSize="32pt" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/phoneNumber"
+                    android:textColor="@color/t9"
+                    android:textSize="33pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{userBean.mobile}"
+                    android:textColor="@color/t1"
+                    android:textSize="32pt" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:visibility="@{userBean.shopName==null?View.GONE:View.VISIBLE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/storeName"
+                    android:textColor="@color/t9"
+                    android:textSize="33pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@{userBean.shopName}"
+                    android:textColor="@color/t1"
+                    android:textSize="32pt" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12pt"
+            android:background="@color/d1" />
+
+        <RelativeLayout
+            android:id="@+id/editPwd"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/editPwd"
+                android:textColor="@color/t9"
+                android:textSize="33pt" />
+
+            <ImageView
+                android:layout_width="42pt"
+                android:layout_height="42pt"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back1" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:layout_marginLeft="30pt"
+            android:layout_marginRight="30pt"
+            android:background="@color/s1" />
+
+    </LinearLayout>
+</layout>

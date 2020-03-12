@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.ShopDetailResponse.DataBean.MachineProfitLossBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100pt">
+
+
+        <ImageView
+            android:id="@+id/a1"
+            android:layout_width="31pt"
+            android:layout_height="37pt"
+            android:layout_centerVertical="true"
+            android:src="@drawable/a1"
+            android:visibility="@{data.isFault?View.VISIBLE:View.GONE}" />
+
+
+        <TextView
+            android:id="@+id/tvMachineName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10pt"
+            android:layout_toRightOf="@id/a1"
+            android:textColor="@color/t4"
+            android:text="@{data.machineName}"
+            android:textSize="28pt" />
+
+        <ImageView
+            android:layout_width="42pt"
+            android:layout_height="42pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back1" />
+
+
+    </RelativeLayout>
+</layout>
