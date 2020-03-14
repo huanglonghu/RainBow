@@ -12,6 +12,7 @@ android {
     dataBinding {
         enabled = true
     }
+
     defaultConfig {
         applicationId "com.example.rainbow"
         minSdkVersion 21
@@ -79,4 +80,5 @@ dependencies {
 
 //    地图操作工具类，添加标记等
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
+    annotationProcessor 'com.android.databinding:compiler:2.3.0'
 }

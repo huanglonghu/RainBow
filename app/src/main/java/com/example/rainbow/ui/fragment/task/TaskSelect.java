@@ -61,7 +61,7 @@ public class TaskSelect extends BaseFragment {
             public void onClick(View view) {
                 WinLostRecord winLostRecord = new WinLostRecord();
                 String title = getString(R.string.syjl);
-                task.step2Task("syjl",winLostRecord," < "+title);
+                task.step2Task("syjl",winLostRecord," > "+title);
 
             }
         });

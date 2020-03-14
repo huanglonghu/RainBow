@@ -27,6 +27,7 @@
 
 
         <LinearLayout
+            android:id="@+id/leftll"
             android:layout_width="300pt"
             android:layout_height="match_parent"
             android:orientation="vertical">

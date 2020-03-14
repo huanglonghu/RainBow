@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -15,9 +14,7 @@ import com.example.rainbow.ui.main.ClockIn;
 import com.example.rainbow.ui.main.Notice;
 import com.example.rainbow.ui.main.PersonDetail;
 import com.example.rainbow.ui.main.Task;
-
 import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -35,6 +32,7 @@ public class MainFragment extends BaseFragment {
             Presenter.getInstance().setMainFm(getChildFragmentManager());
             binding.setMain(this);
             initView();
+            initlisten();
         }
         return binding.getRoot();
     }
@@ -59,13 +57,10 @@ public class MainFragment extends BaseFragment {
         MyViewPagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager(), fragments);
         binding.vpMain.setAdapter(pagerAdapter);
 
-
-        String[] languages= {"简体中文","英语","西班牙语"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_item2,languages);
+        String[] languages = {"简体中文", "英语", "西班牙语"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item2, languages);
         adapter.setDropDownViewResource(R.layout.spinner_item3);
         binding.spLanguage.setAdapter(adapter);
-
-
     }
 
     public void toggleVpMain(int position) {
@@ -76,9 +71,21 @@ public class MainFragment extends BaseFragment {
     @Override
     public void initlisten() {
 
+        binding.config.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int visibility = binding.leftll.getVisibility();
+                if (visibility == View.VISIBLE) {
+                    binding.leftll.setVisibility(View.GONE);
+                } else {
+                    binding.leftll.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
 
-    public void exit(){
+    public void exit() {
         System.exit(0);
     }
 
