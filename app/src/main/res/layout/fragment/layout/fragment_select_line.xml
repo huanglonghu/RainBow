@@ -29,14 +29,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="负责人 : "
+                    android:text="@string/fzr"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="杨雪"
+                    android:text="@{data.userName}"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 
@@ -51,14 +51,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="司机 : "
+                    android:text="@string/drivier"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="杨雪"
+                    android:text="@{data.driver}"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 
@@ -71,14 +71,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="车牌号 : "
+                    android:text="@string/cph"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="粤A-8858"
+                    android:text="@{data.carNumber}"
                     android:textColor="@color/t2"
                     android:textSize="30pt" />
 

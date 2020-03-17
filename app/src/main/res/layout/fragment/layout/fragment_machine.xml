@@ -286,7 +286,7 @@
                     android:layout_marginTop="20pt"
                     android:background="@drawable/shape_a4"
                     android:gravity="center"
-                    android:text="提交"
+                    android:text="@string/commit"
                     android:textColor="#fff"
                     android:textSize="32pt"
                     android:visibility="@{data.isSettled?View.GONE:View.VISIBLE}" />

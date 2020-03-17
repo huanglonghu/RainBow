@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20pt"
-                android:text="地址 : 广州市天河区天河北路689号"
+                android:text="@{@string/address+bean.address}"
                 android:textColor="@color/t4"
                 android:textSize="26pt" />
 
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15pt"
-                android:text="电话 : 020-29815931"
+                android:text="@{@string/phone+bean.telephone}"
                 android:textColor="@color/t4"
                 android:textSize="28pt" />
 
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15pt"
-                android:text="路线"
+                android:text="@string/line"
                 android:textColor="@color/t5"
                 android:textSize="28pt" />
 

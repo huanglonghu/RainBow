@@ -24,7 +24,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/shape_a1"
                 android:gravity="center_vertical"
-                android:hint="请选择机器"
+                android:hint="@string/hint2"
                 android:dropDownVerticalOffset="70pt"
                 android:textColorHint="@color/d2"
                 android:textSize="30pt" />
@@ -37,7 +37,7 @@
                 android:layout_marginLeft="20pt"
                 android:layout_weight="1"
                 android:background="@drawable/shape_a1"
-                android:hint="输入本店总洗分"
+                android:hint="@string/hint3"
                 android:paddingLeft="20pt"
                 android:inputType="number"
                 android:textColorHint="@color/d2"
@@ -53,7 +53,7 @@
                 android:background="@drawable/shape_a4"
                 android:gravity="center"
                 android:paddingLeft="20pt"
-                android:text="提交"
+                android:text="@string/commit"
                 android:textColor="@android:color/white"
                 android:textSize="30pt" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="录入日期"
+                android:text="@string/lrrq"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="机器"
+                android:text="@string/machine"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="亏损金额"
+                android:text="@string/ksje"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -104,7 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="洗分"
+                android:text="@string/xf"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="录入人"
+                android:text="@string/lrr"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 

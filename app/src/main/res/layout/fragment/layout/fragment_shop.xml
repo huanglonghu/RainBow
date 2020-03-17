@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
-                        android:text="@{@string/djfc+data.splitRatio}"
+                        android:text='@{@string/djfc+": "+data.splitRatio}'
                         android:textColor="@color/t10"
                         android:textSize="28pt" />
 
@@ -106,7 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
-                        android:text="路线"
+                        android:text="@string/line"
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
                     />
@@ -134,7 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
-                        android:text="机器拍照"
+                        android:text="@string/jqpz"
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
                     />

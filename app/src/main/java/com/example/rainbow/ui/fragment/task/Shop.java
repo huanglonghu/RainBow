@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -20,9 +21,11 @@ import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.adapter.MyPageAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,7 +75,7 @@ public class Shop extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         shopId = bundle.getInt("businessId");
-        String[] titles = {"店铺机器", "待处理问题"};
+        String[] titles = getResources().getStringArray(R.array.shopItemTitle);
         fragments = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             ShopItem shopItem = new ShopItem();
@@ -89,7 +92,7 @@ public class Shop extends BaseFragment {
         binding.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             Presenter.getInstance().startNaviGoogle(23.1066805,113.3245904);
+                Presenter.getInstance().startNaviGoogle(23.1066805, 113.3245904);
             }
         });
 
@@ -156,13 +159,6 @@ public class Shop extends BaseFragment {
         }).intent(intent).activity((AppCompatActivity) getActivity()).build().startActivityForResult();
 
     }
-
-
-
-
-
-
-
 
 
 }

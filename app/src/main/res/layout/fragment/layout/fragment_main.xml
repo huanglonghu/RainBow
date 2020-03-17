@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
-                        android:text="工作任务"
+                        android:text="@string/gzrw"
                         android:textColor="#fff"
                         android:textSize="33pt" />
 
@@ -98,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
-                        android:text="上下班打卡"
+                        android:text="@string/sxbdk"
                         android:textColor="#fff"
                         android:textSize="33pt" />
 
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
-                        android:text="个人信息"
+                        android:text="@string/grxx"
                         android:textColor="#fff"
                         android:textSize="33pt" />
 
@@ -148,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
-                        android:text="通知公告"
+                        android:text="@string/notice"
                         android:textColor="#fff"
                         android:textSize="33pt" />
 
@@ -175,7 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15pt"
-                    android:text="安全退出"
+                    android:text="@string/aqtc"
                     android:textColor="@color/s1"
                     android:textSize="32pt" />
 
@@ -211,7 +211,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="85pt"
                     android:layout_toRightOf="@id/config"
-                    android:text="欢迎!进入彩虹线路管理系统"
+                    android:text="@string/welcome"
                     android:textColor="@color/t9"
                     android:textSize="34pt" />
 

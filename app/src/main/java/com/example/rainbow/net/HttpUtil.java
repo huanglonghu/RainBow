@@ -381,6 +381,7 @@ public class HttpUtil {
                             }
                         }
                     } else {
+
                         String body = response.errorBody().string();
 
                         /**
@@ -390,13 +391,17 @@ public class HttpUtil {
                          */
                         ErrorBody errorBody = GsonUtil.fromJson(body, ErrorBody.class);
                         List<String> data = errorBody.getData();
-                        if (data != null && data.size() > 0) {
-                            Toast.makeText(context, data.get(0), Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (!"已拒绝为此请求授权。".equals(errorBody.getMessage())) {
-                                Toast.makeText(context, errorBody.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(data!=null&&data.size()>0){
+                            LogUtil.log(body+"================================"+data.get(0).toString());
+                            if (data != null && data.size() > 0) {
+                                Toast.makeText(context, data.get(0), Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (!"已拒绝为此请求授权。".equals(errorBody.getMessage())) {
+                                    Toast.makeText(context, errorBody.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

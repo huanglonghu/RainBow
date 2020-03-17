@@ -49,6 +49,7 @@ public class LineSelect extends BaseFragment {
                     GetJobDetailResponse.DataBean data = gjdr.getData();
                     datas.addAll(data.getShops());
                     adapter.notifyDataSetChanged();
+                    binding.setData(data);
                 }
         );
 

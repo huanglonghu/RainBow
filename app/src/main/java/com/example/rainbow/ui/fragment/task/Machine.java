@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -23,8 +24,10 @@ import com.example.rainbow.ui.adapter.MyPageAdapter;
 import com.example.rainbow.ui.adapter.UploadPageAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,7 +86,7 @@ public class Machine extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         machineId = bundle.getInt("machineId");
-        String[] titles = {"历史记录", "问题记录"};
+        String[] titles = getResources().getStringArray(R.array.machinItemTitle);
         historyRecord = new HistoryRecord();
         faultRecord = new FaultRecord();
         ArrayList<BaseFragment> fragments = new ArrayList<>();
@@ -165,7 +168,7 @@ public class Machine extends BaseFragment {
     }
 
 
-    public void selectPhoto(View view,int type) {
+    public void selectPhoto(View view, int type) {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         new ActivityResultHandler.Builder().hadlerStrategy(new HandlerStrategy() {
             @Override
@@ -176,7 +179,7 @@ public class Machine extends BaseFragment {
                             view.setBackground(d);
                             UploadPictureResponse uploadPictureResponse = GsonUtil.fromJson(str, UploadPictureResponse.class);
                             String path = uploadPictureResponse.getData();
-                            switch (type){
+                            switch (type) {
                                 case 0:
                                     machineSettleBody.setNumberImage(path);
                                     break;

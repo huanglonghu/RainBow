@@ -20,7 +20,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="日期"
+                android:text="@string/rq"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="标题"
+                android:text="@string/title"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="状态"
+                android:text="@string/state"
                 android:textColor="@color/t9"
                 android:textSize="26pt" />
 

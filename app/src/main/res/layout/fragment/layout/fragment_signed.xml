@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="17pt"
-                    android:text="拍照上传"
+                    android:text="@string/pzsc"
                     android:textColor="@color/t8"
                     android:textSize="30pt" />
 
@@ -66,7 +66,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="备注 :"
+                        android:text="@string/remark"
                         android:textColor="@color/t7"
                         android:textSize="32pt" />
 
@@ -103,7 +103,7 @@
             android:layout_marginRight="30pt"
             android:background="@drawable/shape_a4"
             android:gravity="center"
-            android:text="签到"
+            android:text="@string/sign"
             android:textColor="#fff"
             android:textSize="32pt" />
 

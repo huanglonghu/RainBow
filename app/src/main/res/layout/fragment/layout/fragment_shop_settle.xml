@@ -55,7 +55,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="总盈亏"
+                            android:text="@string/zyk"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -98,7 +98,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="店家分成"
+                            android:text="@string/djfc"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -142,7 +142,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="结算金额"
+                            android:text="@string/jsje"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -188,7 +188,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/d1"
                         android:gravity="center"
-                        android:text="本次洗分 :"
+                        android:text='@{@string/bcxf+" :"}'
                         android:textColor="@color/t6"
                         android:textSize="27pt" />
 
@@ -199,7 +199,7 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:gravity="start|center_vertical"
-                        android:hint="请输入本次洗分金额"
+                        android:hint="@string/hint1"
                         android:paddingLeft="20pt"
                         android:textColor="@color/t6"
                         android:textSize="27pt" />
@@ -228,10 +228,8 @@
                     android:paddingTop="10pt"
                     android:paddingRight="30pt"
                     android:paddingBottom="10pt"
-                    android:text="清除"
-                    android:textColor="@android:color/white"
-
-                    />
+                    android:text="@string/clear"
+                    android:textColor="@android:color/white" />
 
 
             </LinearLayout>
@@ -248,7 +246,7 @@
             android:layout_marginRight="30pt"
             android:background="@drawable/shape_a4"
             android:gravity="center"
-            android:text="签字提交"
+            android:text="@string/qztj"
             android:textColor="#fff"
             android:textSize="32pt" />
 

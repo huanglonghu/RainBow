@@ -43,7 +43,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="总盈亏"
+                            android:text="@string/zyk"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -87,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="工作报销"
+                            android:text="@string/gzbx"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -117,7 +117,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="住宿费 :"
+                                android:text="@string/zsf"
                                 android:textSize="29pt" />
 
                             <EditText
@@ -139,7 +139,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="杂物费 :"
+                                android:text="@string/zwf"
                                 android:textSize="29pt" />
 
                             <EditText
@@ -161,7 +161,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="总赔钱 :"
+                                android:text="@string/zpq"
                                 android:textSize="29pt" />
 
                             <EditText
@@ -183,7 +183,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="总扣钱 :"
+                                android:text="@string/zkq"
                                 android:textSize="29pt" />
 
                             <EditText
@@ -223,7 +223,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20pt"
-                            android:text="实收金额"
+                            android:text="@string/ssje"
                             android:textColor="#fff"
                             android:textSize="31pt" />
 
@@ -276,7 +276,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/d1"
                             android:gravity="center"
-                            android:text="纸钞 :"
+                            android:text="@string/bankNote"
                             android:textColor="@color/t6"
                             android:textSize="27pt" />
 
@@ -295,7 +295,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/d1"
                             android:gravity="center"
-                            android:text="铜板 :"
+                            android:text="@string/tb"
                             android:textColor="@color/t6"
                             android:textSize="27pt" />
 
@@ -328,7 +328,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/d1"
                             android:gravity="center"
-                            android:text="备注 :"
+                            android:text="@string/remark"
                             android:textColor="@color/t6"
                             android:textSize="27pt" />
 
@@ -368,7 +368,7 @@
                     android:paddingTop="10pt"
                     android:paddingRight="30pt"
                     android:paddingBottom="10pt"
-                    android:text="清除"
+                    android:text="@string/clear"
                     android:textColor="@android:color/white"
 
                     />
@@ -389,7 +389,7 @@
             android:layout_marginBottom="20pt"
             android:background="@drawable/shape_a4"
             android:gravity="center"
-            android:text="确定提交"
+            android:text="@string/qdtj"
             android:textColor="#fff"
             android:textSize="32pt" />
 

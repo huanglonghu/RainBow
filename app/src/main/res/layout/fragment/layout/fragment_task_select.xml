@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30pt"
-                android:text="收款管理"
+                android:text="@string/skgl"
                 android:textColor="#fff"
                 android:textSize="38pt" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30pt"
-                android:text="机室管理"
+                android:text="@string/jsgl"
                 android:textColor="#fff"
                 android:textSize="38pt" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30pt"
-                android:text="维修管理"
+                android:text="@string/wxgl"
                 android:textColor="#fff"
                 android:textSize="38pt" />
 

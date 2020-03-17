@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="182pt"
-                android:text="彩虹线路管理系统"
+                android:text="@string/chxlglxt"
                 android:textColor="@android:color/black"
                 android:textSize="63pt" />
 
@@ -62,7 +62,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20pt"
                     android:background="@null"
-                    android:hint="请输入用户名"
+                    android:hint="@string/qsryhm"
                     android:textColorHint="@color/t12"
                     android:textSize="31pt" />
 
@@ -89,7 +89,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20pt"
                     android:background="@null"
-                    android:hint="请输入密码"
+                    android:hint="@string/qsrmm"
                     android:inputType="textPassword"
                     android:textColorHint="@color/t12"
                     android:textSize="31pt" />
@@ -105,7 +105,7 @@
                 android:layout_marginTop="83pt"
                 android:background="@drawable/shape_a8"
                 android:gravity="center"
-                android:text="登录"
+                android:text="@string/login"
                 android:textColor="@android:color/white"
                 android:textSize="37pt" />
 

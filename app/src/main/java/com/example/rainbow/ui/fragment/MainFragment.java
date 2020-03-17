@@ -56,8 +56,7 @@ public class MainFragment extends BaseFragment {
         fragments.add(notice);
         MyViewPagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager(), fragments);
         binding.vpMain.setAdapter(pagerAdapter);
-
-        String[] languages = {"简体中文", "英语", "西班牙语"};
+        String[] languages = getResources().getStringArray(R.array.language);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item2, languages);
         adapter.setDropDownViewResource(R.layout.spinner_item3);
         binding.spLanguage.setAdapter(adapter);

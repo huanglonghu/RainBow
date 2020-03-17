@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15pt"
-                    android:text="拍照上传"
+                    android:text="@string/pzsc"
                     android:textColor="@color/t8"
                     android:textSize="23pt" />
 
@@ -88,7 +88,7 @@
             android:layout_marginLeft="48pt"
             android:layout_marginTop="34pt"
             android:layout_marginBottom="26pt"
-            android:text="问题描述"
+            android:text="@string/wtms"
             android:textColor="@color/t8"
             android:textSize="30pt" />
 
@@ -111,7 +111,7 @@
             android:layout_marginRight="30pt"
             android:background="@drawable/shape_a4"
             android:gravity="center"
-            android:text="提交"
+            android:text="@string/commit"
             android:textColor="#fff"
             android:textSize="32pt" />
 
