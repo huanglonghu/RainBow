@@ -1,5 +1,6 @@
 package com.example.rainbow.ui.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -47,26 +48,31 @@ public class EditPwd extends BaseFragment {
 
         UserBean userBean = UserOption.getInstance().querryUser();
         binding.sure.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
-
                 String oldPwd = binding.oldPwd.getText().toString();
                 if (TextUtils.isEmpty(oldPwd)) {
-                    Toast.makeText(getContext(), "请输入原密码", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr6);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 String newPwd = binding.newPwd.getText().toString();
                 if (TextUtils.isEmpty(newPwd)) {
-                    Toast.makeText(getContext(), "请输入新密码", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr7);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String surePwd = binding.surePwd.getText().toString();
                 if (TextUtils.isEmpty(surePwd)) {
-                    Toast.makeText(getContext(), "请再次输入新密码", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr19);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     if (!surePwd.endsWith(newPwd)) {
-                        Toast.makeText(getContext(), "两次输入的新密码不一致", Toast.LENGTH_SHORT).show();
+                        String toastStr = getString(R.string.toastStr18);
+                        Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -74,14 +80,16 @@ public class EditPwd extends BaseFragment {
                 if (userBean.getUserType() == 2) {
                     HttpUtil.getInstance().editeditMachineRoomUserPwd(oldPwd, newPwd).subscribe(
                             str -> {
-                                Toast.makeText(getContext(), "密码修改成功", Toast.LENGTH_SHORT).show();
+                                String toastStr = getString(R.string.toastStr9);
+                                Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                             }
                     );
 
                 } else if (userBean.getUserType() == 3) {
                     HttpUtil.getInstance().editRouterPwd(oldPwd, newPwd).subscribe(
                             str -> {
-                                Toast.makeText(getContext(), "密码修改成功", Toast.LENGTH_SHORT).show();
+                                String toastStr = getString(R.string.toastStr9);
+                                Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                             }
                     );
                 }

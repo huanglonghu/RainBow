@@ -142,9 +142,10 @@ public class Machine extends BaseFragment {
                 machineSettleBody.setTotalBet(totalTb);
                 machineSettleBody.setTotalOut(totalCb);
                 machineSettleBody.setTotalWashScore(totalXf);
+                String toastStr2 = getString(R.string.toastStr5);
                 HttpUtil.getInstance().machineSettle(machineSettleBody).subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "提交成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), toastStr2, Toast.LENGTH_SHORT).show();
                             MachineDetailResponse machineDetailResponse = GsonUtil.fromJson(str, MachineDetailResponse.class);
                             MachineDetailResponse.DataBean dataBean = machineDetailResponse.getData();
                             data.setIsSettled(true);

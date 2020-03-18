@@ -1,9 +1,9 @@
 package com.example.rainbow.ui.fragment.task;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.UploadPictureResponse;
@@ -23,12 +22,8 @@ import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.util.GsonUtil;
-import com.example.rainbow.util.LogUtil;
-
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,11 +65,13 @@ public class UploadFault extends BaseFragment {
     public void initlisten() {
 
         binding.commit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
                 String faultDescribe = binding.faultDescribe.getText().toString();
                 if (pathList.isEmpty()) {
-                    Toast.makeText(getContext(), "请拍照上传故障", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr15);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 StringBuffer sb = new StringBuffer();
@@ -88,12 +85,14 @@ public class UploadFault extends BaseFragment {
                     }
                 }
                 if (TextUtils.isEmpty(faultDescribe)) {
-                    Toast.makeText(getContext(), "请输入问题描述", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr17);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 HttpUtil.getInstance().uploadFault(machineId, sb.toString(), faultDescribe).subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "故障提交成功", Toast.LENGTH_SHORT).show();
+                            String toastStr = getString(R.string.toastStr18);
+                            Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         }
                 );
 
@@ -105,7 +104,8 @@ public class UploadFault extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (pathList.size() == 4) {
-                    Toast.makeText(getContext(), "最多上传四张照片", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr22);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 goCamera();

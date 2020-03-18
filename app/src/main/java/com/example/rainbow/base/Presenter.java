@@ -89,7 +89,8 @@ public class Presenter {
             mapIntent.setPackage("com.google.android.apps.maps");
             context.startActivity(mapIntent);
         } else {
-            Toast.makeText(context, "您尚未安装谷歌地图或地图版本过低", Toast.LENGTH_SHORT).show();
+            String toastStr = context.getString(R.string.toastStr1);
+            Toast.makeText(context, toastStr, Toast.LENGTH_SHORT).show();
         }
     }
 

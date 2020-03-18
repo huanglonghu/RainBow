@@ -27,9 +27,7 @@ import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.util.GsonUtil;
-
 import java.io.File;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,20 +73,22 @@ public class Signed extends BaseFragment {
         binding.sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (TextUtils.isEmpty(signBody.getShopImage())) {
-                    Toast.makeText(getContext(), "请上传图片", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr10);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String remark = binding.etRemark.getText().toString();
                 if (TextUtils.isEmpty(remark)) {
-                    Toast.makeText(getContext(), "请输入备注", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr11);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 signBody.setRemarks(remark);
                 HttpUtil.getInstance().shopSign(signBody).subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "签到成功", Toast.LENGTH_SHORT).show();
+                            String toastStr = getString(R.string.toastStr12);
+                            Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         }
                 );
             }
@@ -136,7 +136,7 @@ public class Signed extends BaseFragment {
                             UploadPictureResponse uploadPictureResponse = GsonUtil.fromJson(str, UploadPictureResponse.class);
                             String path = uploadPictureResponse.getData();
                             BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
-                            binding.takePhoto.setBackground(bitmapDrawable);
+                            binding.img.setBackground(bitmapDrawable);
                             signBody.setShopImage(path);
                         }
                 );

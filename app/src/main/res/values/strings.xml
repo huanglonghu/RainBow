@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">RainBow</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-
 
     <string name="nickName">昵称</string>
 
@@ -145,8 +142,26 @@
         <item>问题记录</item>
 
     </string-array>
-    
+
+    <string name="netError">网络异常,请重试</string>
 
 
-
+    <string name="toastStr1">您尚未安装谷歌地图或地图版本过低</string>
+    <string name="toastStr5">提交成功</string>
+    <string name="toastStr6">请输入原密码</string>
+    <string name="toastStr7">请输入新密码</string>
+    <string name="toastStr8">两次输入的新密码不一致</string>
+    <string name="toastStr9">密码修改成功</string>
+    <string name="toastStr10">请上传图片</string>
+    <string name="toastStr11">请输入备注</string>
+    <string name="toastStr12">签到成功</string>
+    <string name="toastStr14">请输入签名</string>
+    <string name="toastStr15">请拍照上传故障</string>
+    <string name="toastStr16">上班打卡成功</string>
+    <string name="toastStr17">请输入问题描述</string>
+    <string name="toastStr18">故障提交成功</string>
+    <string name="toastStr19">请再次输入新密码</string>
+    <string name="toastStr20">下班打卡成功</string>
+    <string name="toastStr21">二维码已经保存到手机相册中</string>
+    <string name="toastStr22">最多上传四张图片</string>
 </resources>

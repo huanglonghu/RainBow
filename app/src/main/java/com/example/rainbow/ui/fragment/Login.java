@@ -53,12 +53,15 @@ public class Login extends BaseFragment {
             public void onClick(View v) {
                 String userName = binding.userName.getText().toString();
                 if (TextUtils.isEmpty(userName)) {
-                    Toast.makeText(getContext(), "请输入用户名", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.qsryhm);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String pwd = binding.pwd.getText().toString();
+
                 if (TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(getContext(), "请输入密码", Toast.LENGTH_SHORT).show();
+                    String toastStr2 = getString(R.string.qsrmm);
+                    Toast.makeText(getContext(), toastStr2, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 HttpUtil.getInstance().login(userName, pwd).subscribe(

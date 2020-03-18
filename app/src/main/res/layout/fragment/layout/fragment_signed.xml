@@ -17,30 +17,42 @@
             android:layout_height="wrap_content">
 
 
-            <LinearLayout
-                android:id="@+id/takePhoto"
+            <FrameLayout
                 android:layout_width="800pt"
-                android:layout_height="500pt"
-                android:background="@drawable/bg_takephoto"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="500pt">
 
+                <LinearLayout
+                    android:id="@+id/takePhoto"
+                    android:layout_width="800pt"
+                    android:layout_height="500pt"
+                    android:background="@drawable/bg_takephoto"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="136pt"
+                        android:layout_height="100pt"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/takephoto" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="17pt"
+                        android:text="@string/pzsc"
+                        android:textColor="@color/t8"
+                        android:textSize="30pt" />
+
+
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_width="136pt"
-                    android:layout_height="100pt"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/takephoto" />
+                    android:id="@+id/img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="17pt"
-                    android:text="@string/pzsc"
-                    android:textColor="@color/t8"
-                    android:textSize="30pt" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

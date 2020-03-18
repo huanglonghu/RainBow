@@ -109,7 +109,8 @@ public class ShopSettle extends BaseFragment {
                     }
 
                 } else {
-                    Toast.makeText(getContext(), "请输入签名", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr14);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                 }
 
 

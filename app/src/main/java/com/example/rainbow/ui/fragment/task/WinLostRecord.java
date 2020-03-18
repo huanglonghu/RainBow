@@ -116,14 +116,16 @@ public class WinLostRecord extends BaseFragment {
                 Integer id = machineMap.get(selectedItem);
                 enterBody.setMachineId(id);
                 String xf = binding.etXf.getText().toString();
+                String toastStr = getString(R.string.hint3);
                 if (TextUtils.isEmpty(xf)) {
-                    Toast.makeText(getContext(), "请输入本店总洗分", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 enterBody.setLossMoney(Integer.parseInt(xf));
+                String toastStr2 = getString(R.string.toastStr5);
                 HttpUtil.getInstance().enterXf(enterBody).subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "提交成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), toastStr2, Toast.LENGTH_SHORT).show();
                         }
                 );
 

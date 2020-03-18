@@ -142,7 +142,8 @@ public class ClockIn extends BaseFragment {
             public void onClick(View view) {
                 HttpUtil.getInstance().toWork().subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "上班打卡成功", Toast.LENGTH_SHORT).show();
+                            String toastStr = getString(R.string.toastStr16);
+                            Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                             //刷新打卡记录
 //                            refreshRecord(1);
 
@@ -157,7 +158,8 @@ public class ClockIn extends BaseFragment {
             public void onClick(View view) {
                 HttpUtil.getInstance().offWork().subscribe(
                         str -> {
-                            Toast.makeText(getContext(), "下班打卡成功", Toast.LENGTH_SHORT).show();
+                            String toastStr = getString(R.string.toastStr20);
+                            Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         }
                 );
             }

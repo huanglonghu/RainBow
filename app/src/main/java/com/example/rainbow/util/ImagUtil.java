@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.rainbow.R;
 import com.example.rainbow.base.RainBowApplication;
 import com.example.rainbow.constant.HttpParam;
 import java.io.File;
@@ -115,7 +117,8 @@ public class ImagUtil {
                 out.close();
                 MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), bitName, null);
             }
-            Toast.makeText(context, "二维码已经保存到手机相册中", Toast.LENGTH_SHORT).show();
+            String toastStr = context.getString(R.string.toastStr21);
+            Toast.makeText(context, toastStr, Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

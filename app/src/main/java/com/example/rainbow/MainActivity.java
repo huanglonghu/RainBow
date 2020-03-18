@@ -3,17 +3,13 @@ package com.example.rainbow;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-
-import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.fragment.Login;
-import com.example.rainbow.ui.fragment.MainFragment;
 import com.example.rainbow.util.statusBarHandler.StatusBarUtil;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;

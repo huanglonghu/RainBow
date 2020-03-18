@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.example.rainbow.R;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.EnterBody;
 import com.example.rainbow.bean.ErrorBody;
@@ -321,34 +322,6 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
-
-    @NonNull
-    private Observable<String> enqueueCall2(Call<ResponseBody> call) {
-        netLoading = new NetLoading(context);
-        netLoading.show();
-        map.put(call, netLoading);
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
-                b(observableEmitter, call);
-            }
-        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
-    }
-
-
-    @NonNull
-    private Observable<String> enqueueCall3(final Call<ResponseBody> call) {
-        netLoading = new NetLoading(context);
-        netLoading.show();
-        map.put(call, netLoading);
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
-                c(observableEmitter, call);
-            }
-        }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
-    }
-
     private void a(final ObservableEmitter<String> observableEmitter, final Call<ResponseBody> call) {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -359,7 +332,6 @@ public class HttpUtil {
                     netLoading = null;
                     map.remove(netLoading);
                 }
-                //  {"Errcode":1002,"Message":"用户名或密码错误！","Data":null}
                 try {
                     if (response.isSuccessful()) {
                         String body = response.body().string();
@@ -368,85 +340,23 @@ public class HttpUtil {
                         } else {
                             try {
                                 JSONObject jb = new JSONObject(body);
-                                String message = jb.getString("Message");
-                                int errcode = jb.getInt("Errcode");
+                                String message = jb.getString("msg");
+                                int errcode = jb.getInt("code");
                                 //5008 楼盘未绑定经纪人 1009 尚未注册
-                                if (errcode == 1009 || errcode == 5008) {
-                                    observableEmitter.onNext(body);
-                                } else {
-                                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                                }
+                                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                             } catch (Exception e) {
 
                             }
                         }
                     } else {
-
                         String body = response.errorBody().string();
-
-                        /**
-                         * Errcode : 400
-                         * Message : 参数错误
-                         * Data : ["字段 Password 必须是一个字符串，其最小长度为 6，最大长度为 15。"]
-                         */
-                        ErrorBody errorBody = GsonUtil.fromJson(body, ErrorBody.class);
-                        List<String> data = errorBody.getData();
-                        if(data!=null&&data.size()>0){
-                            LogUtil.log(body+"================================"+data.get(0).toString());
-                            if (data != null && data.size() > 0) {
-                                Toast.makeText(context, data.get(0), Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (!"已拒绝为此请求授权。".equals(errorBody.getMessage())) {
-                                    Toast.makeText(context, errorBody.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        }
-
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call1, Throwable t) {
-                Toast.makeText(context, "网络异常,请重试", Toast.LENGTH_SHORT).show();
-                if (map.get(call) != null) {
-                    NetLoading netLoading = map.get(call);
-                    netLoading.cancel();
-                    netLoading = null;
-                    map.remove(netLoading);
-                }
-            }
-        });
-    }
-
-
-    private void b(final ObservableEmitter<String> observableEmitter, final Call<ResponseBody> call) {
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call1, Response<ResponseBody> response) {
-                if (map.get(call) != null) {
-                    NetLoading netLoading = map.get(call);
-                    netLoading.cancel();
-                    netLoading = null;
-                    map.remove(netLoading);
-                }
-                //  {"Errcode":1002,"Message":"用户名或密码错误！","Data":null}
-                try {
-                    if (response.isSuccessful()) {
-                        String body = response.body().string();
-                        observableEmitter.onNext(body);
-                    } else {
-                        String body = response.errorBody().string();
-                        ErrorBody errorBody = GsonUtil.fromJson(body, ErrorBody.class);
-                        List<String> data = errorBody.getData();
-                        if (data != null && data.size() > 0) {
-                            Toast.makeText(context, data.get(0), Toast.LENGTH_SHORT).show();
-                        } else {
-                            if (!"已拒绝为此请求授权。".equals(errorBody.getMessage())) {
-                                Toast.makeText(context, errorBody.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
+                        try {
+                            JSONObject jb = new JSONObject(body);
+                            String message = jb.getString("msg");
+                            int errcode = jb.getInt("code");
+                            //5008 楼盘未绑定经纪人 1009 尚未注册
+                            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
                         }
                     }
                 } catch (IOException e) {
@@ -456,7 +366,8 @@ public class HttpUtil {
 
             @Override
             public void onFailure(Call<ResponseBody> call1, Throwable t) {
-                Toast.makeText(context, "网络异常,请重试", Toast.LENGTH_SHORT).show();
+                String netError = context.getString(R.string.netError);
+                Toast.makeText(context, netError, Toast.LENGTH_SHORT).show();
                 if (map.get(call) != null) {
                     NetLoading netLoading = map.get(call);
                     netLoading.cancel();
@@ -468,38 +379,5 @@ public class HttpUtil {
     }
 
 
-    private void c(final ObservableEmitter<String> observableEmitter, final Call<ResponseBody> call) {
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call1, Response<ResponseBody> response) {
-                if (map.get(call) != null) {
-                    NetLoading netLoading = map.get(call);
-                    netLoading.cancel();
-                    netLoading = null;
-                    map.remove(netLoading);
-                }
-                //  {"Errcode":1002,"Message":"用户名或密码错误！","Data":null}
-                try {
-                    if (response.isSuccessful()) {
-                        String body = response.body().string();
-                        observableEmitter.onNext(body);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call1, Throwable t) {
-                Toast.makeText(context, "网络异常,请重试", Toast.LENGTH_SHORT).show();
-                if (map.get(call) != null) {
-                    NetLoading netLoading = map.get(call);
-                    netLoading.cancel();
-                    netLoading = null;
-                    map.remove(netLoading);
-                }
-            }
-        });
-    }
 
 }
