@@ -13,6 +13,12 @@
             name="data"
             type="com.example.rainbow.bean.ShopDetailResponse.DataBean" />
 
+        <variable
+            name="isRepair"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
 
     </data>
 
@@ -179,7 +185,8 @@
                     android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
                     android:clickable="@{data.isSettled?false:true}"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="@{isRepair?View.GONE:View.VISIBLE}">
 
                     <ImageView
                         android:layout_width="62pt"

@@ -16,6 +16,12 @@
             name="selectPosition"
             type="int" />
 
+        <variable
+            name="userType"
+            type="int" />
+
+        <import type="android.view.View" />
+
 
     </data>
 
@@ -86,7 +92,8 @@
                     android:background="@{selectPosition==1?@drawable/bg_toggle:null}"
                     android:gravity="center"
                     android:onClick="@{()->main.toggleVpMain(1)}"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="@{userType==2?View.VISIBLE:View.GONE}">
 
 
                     <ImageView
@@ -108,9 +115,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="178pt"
-                    android:background="@{selectPosition==2?@drawable/bg_toggle:null}"
+                    android:background="@{selectPosition==1?@drawable/bg_toggle:null}"
                     android:gravity="center"
-                    android:onClick="@{()->main.toggleVpMain(2)}"
+                    android:onClick="@{()->main.toggleVpMain(1)}"
                     android:orientation="vertical">
 
 
@@ -133,9 +140,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="178pt"
-                    android:background="@{selectPosition==3?@drawable/bg_toggle:null}"
+                    android:background="@{selectPosition==2?@drawable/bg_toggle:null}"
                     android:gravity="center"
-                    android:onClick="@{()->main.toggleVpMain(3)}"
+                    android:onClick="@{()->main.toggleVpMain(2)}"
                     android:orientation="vertical">
 
 
@@ -149,6 +156,32 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
                         android:text="@string/notice"
+                        android:textColor="#fff"
+                        android:textSize="33pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="178pt"
+                    android:background="@{selectPosition==3?@drawable/bg_toggle:null}"
+                    android:gravity="center"
+                    android:onClick="@{()->main.toggleVpMain(3)}"
+                    android:visibility="@{userType==3?View.VISIBLE:View.GONE}"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="53pt"
+                        android:layout_height="53pt"
+                        android:src="@drawable/wxzn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15pt"
+                        android:text="@string/wxzn"
                         android:textColor="#fff"
                         android:textSize="33pt" />
 

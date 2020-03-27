@@ -111,6 +111,9 @@
     <string name="hint1">请输入本次洗分金额</string>
     <string name="hint2">请选择机器</string>
     <string name="hint3">请输入本店总洗分</string>
+    <string name="hint4">请输入机器名称</string>
+    <string name="hint5">请输入机器型号</string>
+
     <string name="qztj">签字提交</string>
     <string name="pzsc">拍照上传</string>
     <string name="lrrq">录入日期</string>
@@ -164,4 +167,8 @@
     <string name="toastStr20">下班打卡成功</string>
     <string name="toastStr21">二维码已经保存到手机相册中</string>
     <string name="toastStr22">最多上传四张图片</string>
+
+
+    <string name="wxzn">维修指南</string>
+
 </resources>

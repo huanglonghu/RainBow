@@ -73,13 +73,18 @@ public class CollectionManagement extends BaseFragment {
         binding.lvCollectionManagement.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 GetJobsResponse.DataBean.ItemsBean bean = datas.get(position);
                 LineSelect lineSelect = new LineSelect();
-                Bundle bundle = new Bundle();
+                Bundle bundle = getArguments();
+                if (bundle == null) {
+                    bundle = new Bundle();
+                }
                 bundle.putString("name", bean.getRouteName());
                 bundle.putInt("id", bean.getId());
                 lineSelect.setArguments(bundle);
-                task.step2Task("lineSelect", lineSelect," > "+bean.getRouteName());
+                task.step2Task("lineSelect", lineSelect, " > " + bean.getRouteName());
             }
         });
 

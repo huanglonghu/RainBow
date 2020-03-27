@@ -8,21 +8,23 @@ import android.widget.ArrayAdapter;
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
+import com.example.rainbow.database.entity.UserBean;
+import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentMainBinding;
 import com.example.rainbow.ui.adapter.MyViewPagerAdapter;
 import com.example.rainbow.ui.main.ClockIn;
 import com.example.rainbow.ui.main.Notice;
 import com.example.rainbow.ui.main.PersonDetail;
 import com.example.rainbow.ui.main.Task;
+import com.example.rainbow.ui.main.Wxzn;
+import com.example.rainbow.ui.main.WxznList;
 import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
 public class MainFragment extends BaseFragment {
-
     private FragmentMainBinding binding;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,23 +39,28 @@ public class MainFragment extends BaseFragment {
         return binding.getRoot();
     }
 
-
     @Override
     public void initData() {
-
     }
-
     @Override
     public void initView() {
+        UserBean userBean = UserOption.getInstance().querryUser();
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         Task task = new Task();
-        ClockIn clockIn = new ClockIn();
+        fragments.add(task);
         PersonDetail personDetail = new PersonDetail();
         Notice notice = new Notice();
-        fragments.add(task);
-        fragments.add(clockIn);
+        if (userBean != null) {
+            if (userBean.getUserType() == 2) {
+                ClockIn clockIn = new ClockIn();
+                fragments.add(clockIn);
+            }
+            binding.setUserType(userBean.getUserType());
+        }
         fragments.add(personDetail);
         fragments.add(notice);
+        Wxzn wxzn = new Wxzn();
+        fragments.add(wxzn);
         MyViewPagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager(), fragments);
         binding.vpMain.setAdapter(pagerAdapter);
         String[] languages = getResources().getStringArray(R.array.language);
@@ -69,7 +76,6 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public void initlisten() {
-
         binding.config.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +93,5 @@ public class MainFragment extends BaseFragment {
     public void exit() {
         System.exit(0);
     }
-
 
 }

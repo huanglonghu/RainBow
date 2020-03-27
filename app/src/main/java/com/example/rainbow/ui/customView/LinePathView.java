@@ -178,7 +178,6 @@ public class LinePathView extends View {
         long l = System.currentTimeMillis();
         File file = new File(filesDir,l+"sign.png");
         if (buffer != null) {
-
             if (file.exists()) {
                 file.delete();
             }

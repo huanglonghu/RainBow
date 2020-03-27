@@ -1,12 +1,15 @@
 package com.example.rainbow.net;
 
 import com.example.rainbow.bean.EnterBody;
+import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
 import com.example.rainbow.bean.ShopSettleBody;
 import com.example.rainbow.bean.SignBody;
+
 import java.util.HashMap;
+
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -104,4 +107,10 @@ public interface HttpInterface {
 
     @GET("/api/v1/notice/get")
     Call<ResponseBody> getNoticeDetailById(@Query("id") int id);
+
+    @POST("/api/v1/machinesguide/querypage")
+    Call<ResponseBody> getWxznList(@Body MachineGuideBody body);
+
+    @GET("/api/v1/machinesguide/get")
+    Call<ResponseBody> getWxznDetailById(@Query("id") int id);
 }

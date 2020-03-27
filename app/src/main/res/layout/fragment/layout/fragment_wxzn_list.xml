@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30pt"
+            android:paddingTop="24pt"
+            android:paddingRight="30pt"
+            android:paddingBottom="30pt">
+
+
+            <EditText
+                android:id="@+id/machineName"
+                android:layout_width="0dp"
+                android:layout_height="68pt"
+                android:layout_weight="1"
+                android:background="@drawable/shape_a1"
+                android:hint="@string/hint4"
+                android:inputType="number"
+                android:paddingLeft="20pt"
+                android:textColorHint="@color/d2"
+                android:textSize="30pt" />
+
+
+            <EditText
+                android:id="@+id/machineModle"
+                android:layout_width="0dp"
+                android:layout_height="68pt"
+                android:layout_marginLeft="20pt"
+                android:layout_weight="1"
+                android:background="@drawable/shape_a1"
+                android:hint="@string/hint5"
+                android:inputType="number"
+                android:paddingLeft="20pt"
+                android:textColorHint="@color/d2"
+                android:textSize="30pt" />
+
+
+            <TextView
+                android:id="@+id/commit"
+                android:layout_width="350pt"
+                android:layout_height="68pt"
+                android:layout_marginLeft="20pt"
+                android:background="@drawable/shape_a4"
+                android:gravity="center"
+                android:paddingLeft="20pt"
+                android:text="@string/commit"
+                android:textColor="@android:color/white"
+                android:textSize="30pt" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="12pt"
+            android:background="@color/d1" />
+
+
+        <ListView
+            android:id="@+id/lvWxzn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@drawable/ll_divider1"
+            android:paddingLeft="30pt"
+            android:paddingRight="30pt"
+            android:scrollbars="none" />
+
+
+    </LinearLayout>
+</layout>

@@ -26,8 +26,6 @@ public class EditPwd extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_editpwd, container, false);
         initlisten();
         return binding.getRoot();
@@ -48,7 +46,6 @@ public class EditPwd extends BaseFragment {
 
         UserBean userBean = UserOption.getInstance().querryUser();
         binding.sure.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
                 String oldPwd = binding.oldPwd.getText().toString();
@@ -57,7 +54,6 @@ public class EditPwd extends BaseFragment {
                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 String newPwd = binding.newPwd.getText().toString();
                 if (TextUtils.isEmpty(newPwd)) {
                     String toastStr = getString(R.string.toastStr7);
@@ -76,7 +72,6 @@ public class EditPwd extends BaseFragment {
                         return;
                     }
                 }
-
                 if (userBean.getUserType() == 2) {
                     HttpUtil.getInstance().editeditMachineRoomUserPwd(oldPwd, newPwd).subscribe(
                             str -> {
@@ -84,7 +79,6 @@ public class EditPwd extends BaseFragment {
                                 Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                             }
                     );
-
                 } else if (userBean.getUserType() == 3) {
                     HttpUtil.getInstance().editRouterPwd(oldPwd, newPwd).subscribe(
                             str -> {
@@ -93,8 +87,6 @@ public class EditPwd extends BaseFragment {
                             }
                     );
                 }
-
-
             }
         });
 

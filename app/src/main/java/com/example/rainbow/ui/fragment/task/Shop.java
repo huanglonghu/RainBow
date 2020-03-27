@@ -21,6 +21,7 @@ import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.adapter.MyPageAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+import com.example.rainbow.util.LogUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -56,6 +57,8 @@ public class Shop extends BaseFragment {
 
     @Override
     public void initData() {
+
+
         HttpUtil.getInstance().getShopDetail(id, shopId).subscribe(
                 str -> {
                     ShopDetailResponse shopDetailResponse = GsonUtil.fromJson(str, ShopDetailResponse.class);
@@ -75,11 +78,22 @@ public class Shop extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         shopId = bundle.getInt("businessId");
-        String[] titles = getResources().getStringArray(R.array.shopItemTitle);
+        boolean isRepair = bundle.getBoolean("isRepair");
+        LogUtil.log("=====================isRepair========================" + isRepair);
+        binding.setIsRepair(isRepair);
         fragments = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        String[] titles;
+        if (isRepair) {
+            titles=new String[1];
+            titles[0]="待处理问题";
             ShopItem shopItem = new ShopItem();
             fragments.add(shopItem);
+        } else {
+            titles = getResources().getStringArray(R.array.shopItemTitle);
+            for (int i = 0; i < 2; i++) {
+                ShopItem shopItem = new ShopItem();
+                fragments.add(shopItem);
+            }
         }
         MyPageAdapter myPageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments, titles);
         binding.vp.setAdapter(myPageAdapter);

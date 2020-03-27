@@ -26,6 +26,7 @@ public class LineSelect extends BaseFragment {
     private List<GetJobDetailResponse.DataBean.ShopsBean> datas;
     private SelectLineAdapter adapter;
     private Task task;
+    private boolean isRepair;
 
     @Nullable
     @Override
@@ -58,8 +59,9 @@ public class LineSelect extends BaseFragment {
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        String name = bundle.getString("name");
+
         id = bundle.getInt("id");
+        isRepair = bundle.getBoolean("isRepair");
         datas = new ArrayList<>();
         adapter = new SelectLineAdapter(getContext(), datas, R.layout.lv_item_line);
         binding.lvLine.setAdapter(adapter);
@@ -78,6 +80,9 @@ public class LineSelect extends BaseFragment {
                 bundle.putInt("id", id);
                 bundle.putInt("businessId", bean.getId());
                 bundle.putString("shopName", bean.getShopName());
+                if(isRepair){
+                    bundle.putBoolean("isRepair",isRepair);
+                }
                 shop.setArguments(bundle);
                 task.step2Task("shop", shop, " > " + bean.getShopName());
             }

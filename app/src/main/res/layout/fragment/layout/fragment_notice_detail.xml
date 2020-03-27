@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="bean"
+            type="com.example.rainbow.bean.NoticeListResponse.DataBean.ItemsBean" />
+
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,14 +23,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30pt"
             android:textColor="@color/t9"
+            android:text="@{bean.title}"
             android:textSize="36pt" />
-
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22pt"
+            android:text="@{bean.creationTime}"
             android:textColor="@color/t1"
             android:textSize="21pt" />
 
@@ -38,7 +47,6 @@
             android:layout_marginTop="30pt"
             android:textColor="@color/t1"
             android:textSize="27pt" />
-
 
     </LinearLayout>
 </layout>

@@ -7,6 +7,12 @@
             name="presenter"
             type="com.example.rainbow.base.Presenter" />
 
+        <variable
+            name="userType"
+            type="int" />
+
+        <import type="android.view.View" />
+
 
     </data>
 
@@ -14,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:padding="30pt">
+        android:padding="30pt"
+        android:weightSum="3">
 
 
         <LinearLayout
@@ -24,7 +31,8 @@
             android:layout_weight="1"
             android:background="@color/c2"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="@{userType==3?View.VISIBLE:View.GONE}">
 
 
             <ImageView
@@ -49,11 +57,11 @@
             android:layout_width="0dp"
             android:layout_height="500pt"
             android:layout_marginLeft="30pt"
-            android:layout_marginRight="30pt"
             android:layout_weight="1"
             android:background="@color/c3"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="@{userType==2?View.VISIBLE:View.GONE}">
 
             <ImageView
                 android:layout_width="142pt"
@@ -73,12 +81,15 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/wxgl"
             android:layout_width="0dp"
             android:layout_height="500pt"
             android:layout_weight="1"
+            android:layout_marginLeft="30pt"
             android:background="@color/c4"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="@{userType==3?View.VISIBLE:View.GONE}">
 
 
             <ImageView

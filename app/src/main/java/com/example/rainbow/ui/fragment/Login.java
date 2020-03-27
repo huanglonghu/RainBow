@@ -1,13 +1,11 @@
 package com.example.rainbow.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -17,7 +15,6 @@ import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentLoginBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.util.GsonUtil;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -73,6 +70,8 @@ public class Login extends BaseFragment {
                             userBean.setNickName(loginResponse.getData().getUserName());
                             UserOption.getInstance().addUser(userBean);
                             Presenter.getInstance().step2MainFragment("main");
+
+                            //userType 3路线员工 2机室员工
                         }
                 );
 

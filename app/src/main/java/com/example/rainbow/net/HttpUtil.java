@@ -8,6 +8,7 @@ import com.example.rainbow.R;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.EnterBody;
 import com.example.rainbow.bean.ErrorBody;
+import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
@@ -311,6 +312,17 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
+    public Observable<String> getWxznList(MachineGuideBody body) {
+        Call<ResponseBody> call = httpInterface.getWxznList(body);
+        return enqueueCall(call);
+    }
+
+    public Observable<String> getWxznDetailById(int id) {
+
+        Call<ResponseBody> call = httpInterface.getWxznDetailById(id);
+        return enqueueCall(call);
+    }
+
 
     public Observable<String> shopSettle(ShopBody shopBody) {
         Call<ResponseBody> call = httpInterface.shopSettle(shopBody);
@@ -377,7 +389,6 @@ public class HttpUtil {
             }
         });
     }
-
 
 
 }
