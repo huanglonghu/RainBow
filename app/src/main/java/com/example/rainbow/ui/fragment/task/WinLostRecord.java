@@ -20,6 +20,9 @@ import com.example.rainbow.databinding.FragmentWinlostRecordBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.WinLostListAdapter;
 import com.example.rainbow.util.GsonUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,16 +57,7 @@ public class WinLostRecord extends BaseFragment {
 
     @Override
     public void initData() {
-
-        HttpUtil.getInstance().querryXFRecord(1).subscribe(
-                str -> {
-                    XFRecord xfRecord = GsonUtil.fromJson(str, XFRecord.class);
-                    XFRecord.DataBean data = xfRecord.getData();
-                    List<XFRecord.DataBean.ItemsBean> items = data.getItems();
-                    datas.addAll(items);
-                    winLostListAdapter.notifyDataSetChanged();
-                }
-        );
+        getXfRecord();
         machineMap = new HashMap<>();
         HttpUtil.getInstance().querryMachines().subscribe(
                 str -> {
@@ -79,6 +73,26 @@ public class WinLostRecord extends BaseFragment {
                 }
         );
 
+    }
+
+    private void getXfRecord() {
+        HttpUtil.getInstance().querryXFRecord(page).subscribe(
+                str -> {
+
+                    XFRecord xfRecord = GsonUtil.fromJson(str, XFRecord.class);
+                    XFRecord.DataBean data = xfRecord.getData();
+                    List<XFRecord.DataBean.ItemsBean> items = data.getItems();
+                    binding.refreshLayout.finishLoadMore();
+                    if (items != null && items.size() > 0) {
+                        datas.addAll(items);
+                        winLostListAdapter.notifyDataSetChanged();
+                        page++;
+                    } else {
+                        binding.refreshLayout.setEnableLoadMore(false);
+                    }
+
+                }
+        );
     }
 
     @Override
@@ -103,6 +117,8 @@ public class WinLostRecord extends BaseFragment {
         public void onNothingSelected(AdapterView<?> arg0) {
         }
     }
+
+    private int page = 1;
 
     @Override
     public void initlisten() {
@@ -129,6 +145,15 @@ public class WinLostRecord extends BaseFragment {
                         }
                 );
 
+            }
+        });
+
+        binding.refreshLayout.setRefreshFooter(new ClassicsFooter(getContext()));
+
+        binding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                getXfRecord();
             }
         });
 

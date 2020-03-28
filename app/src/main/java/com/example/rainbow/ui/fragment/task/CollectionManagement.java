@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
@@ -16,6 +17,9 @@ import com.example.rainbow.ui.adapter.CollectionManagementAdapter;
 import com.example.rainbow.ui.fragment.MainFragment;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +66,9 @@ public class CollectionManagement extends BaseFragment {
 
     @Override
     public void initView() {
+
+
+
         datas = new ArrayList<>();
         adapter = new CollectionManagementAdapter(getContext(), datas, R.layout.lv_item_skgl);
         binding.lvCollectionManagement.setAdapter(adapter);

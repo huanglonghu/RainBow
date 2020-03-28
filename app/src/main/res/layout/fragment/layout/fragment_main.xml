@@ -89,9 +89,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="178pt"
-                    android:background="@{selectPosition==1?@drawable/bg_toggle:null}"
+                    android:background="@{selectPosition==3?@drawable/bg_toggle:null}"
                     android:gravity="center"
-                    android:onClick="@{()->main.toggleVpMain(1)}"
+                    android:onClick="@{()->main.toggleVpMain(3)}"
                     android:orientation="vertical"
                     android:visibility="@{userType==2?View.VISIBLE:View.GONE}">
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -18,13 +19,16 @@ import com.example.rainbow.ui.main.PersonDetail;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.main.Wxzn;
 import com.example.rainbow.ui.main.WxznList;
+
 import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
 public class MainFragment extends BaseFragment {
     private FragmentMainBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class MainFragment extends BaseFragment {
             binding.setPresenter(Presenter.getInstance());
             Presenter.getInstance().setMainFm(getChildFragmentManager());
             binding.setMain(this);
+            UserBean userBean = UserOption.getInstance().querryUser();
+            if (userBean != null) {
+                binding.setUserType(userBean.getUserType());
+            }
             initView();
             initlisten();
         }
@@ -42,25 +50,26 @@ public class MainFragment extends BaseFragment {
     @Override
     public void initData() {
     }
+
     @Override
     public void initView() {
-        UserBean userBean = UserOption.getInstance().querryUser();
+
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         Task task = new Task();
-        fragments.add(task);
         PersonDetail personDetail = new PersonDetail();
         Notice notice = new Notice();
-        if (userBean != null) {
-            if (userBean.getUserType() == 2) {
-                ClockIn clockIn = new ClockIn();
-                fragments.add(clockIn);
-            }
-            binding.setUserType(userBean.getUserType());
-        }
+        fragments.add(task);
         fragments.add(personDetail);
         fragments.add(notice);
-        Wxzn wxzn = new Wxzn();
-        fragments.add(wxzn);
+        if (binding.getUserType() == 3) {
+            Wxzn wxzn = new Wxzn();
+            fragments.add(wxzn);
+        }else {
+            ClockIn clockIn = new ClockIn();
+            fragments.add(clockIn);
+        }
+
+
         MyViewPagerAdapter pagerAdapter = new MyViewPagerAdapter(getChildFragmentManager(), fragments);
         binding.vpMain.setAdapter(pagerAdapter);
         String[] languages = getResources().getStringArray(R.array.language);

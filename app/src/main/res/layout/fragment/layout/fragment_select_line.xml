@@ -98,15 +98,12 @@
             android:orientation="vertical">
 
 
-
             <ListView
                 android:id="@+id/lv_line"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:divider="@drawable/lv_divider1" />
-
-
             <TextView
                 android:id="@+id/totalSettle"
                 android:layout_width="match_parent"

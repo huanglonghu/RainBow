@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.GetJobDetailResponse;
@@ -13,8 +15,15 @@ import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.SelectLineAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -58,6 +67,9 @@ public class LineSelect extends BaseFragment {
 
     @Override
     public void initView() {
+
+
+
         Bundle bundle = getArguments();
 
         id = bundle.getInt("id");
@@ -70,7 +82,6 @@ public class LineSelect extends BaseFragment {
     @Override
     public void initlisten() {
 
-
         binding.lvLine.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
@@ -80,8 +91,8 @@ public class LineSelect extends BaseFragment {
                 bundle.putInt("id", id);
                 bundle.putInt("businessId", bean.getId());
                 bundle.putString("shopName", bean.getShopName());
-                if(isRepair){
-                    bundle.putBoolean("isRepair",isRepair);
+                if (isRepair) {
+                    bundle.putBoolean("isRepair", isRepair);
                 }
                 shop.setArguments(bundle);
                 task.step2Task("shop", shop, " > " + bean.getShopName());
@@ -96,7 +107,7 @@ public class LineSelect extends BaseFragment {
                 LineSettle lineSettle = new LineSettle();
                 String title = getString(R.string.settle);
                 Bundle bundle = new Bundle();
-                bundle.putInt("id",id);
+                bundle.putInt("id", id);
                 lineSettle.setArguments(bundle);
                 task.step2Task("lineSettle", lineSettle, " > " + title);
             }
