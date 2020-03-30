@@ -79,6 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
+                        android:gravity="center"
                         android:text="@string/gzrw"
                         android:textColor="#fff"
                         android:textSize="33pt" />
@@ -105,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
+                        android:gravity="center"
                         android:text="@string/sxbdk"
                         android:textColor="#fff"
                         android:textSize="33pt" />
@@ -130,6 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
+                        android:gravity="center"
                         android:text="@string/grxx"
                         android:textColor="#fff"
                         android:textSize="33pt" />
@@ -155,6 +158,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
+                        android:gravity="center"
                         android:text="@string/notice"
                         android:textColor="#fff"
                         android:textSize="33pt" />
@@ -168,8 +172,8 @@
                     android:background="@{selectPosition==3?@drawable/bg_toggle:null}"
                     android:gravity="center"
                     android:onClick="@{()->main.toggleVpMain(3)}"
-                    android:visibility="@{userType==3?View.VISIBLE:View.GONE}"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="@{userType==3?View.VISIBLE:View.GONE}">
 
 
                     <ImageView
@@ -181,6 +185,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15pt"
+                        android:gravity="center"
                         android:text="@string/wxzn"
                         android:textColor="#fff"
                         android:textSize="33pt" />

@@ -1,10 +1,12 @@
 package com.example.rainbow.base;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.rainbow.database.DaoMaster;
 import com.example.rainbow.database.DaoSession;
+import com.example.rainbow.language.LanguagesManager;
 import com.example.rainbow.util.RudenessScreenHelper;
 
 public class RainBowApplication extends Application {
@@ -17,6 +19,7 @@ public class RainBowApplication extends Application {
         float designWidth = 1920;
         new RudenessScreenHelper(this, designWidth).activate();
         setDatabase();
+        initI18();
     }
 
 
@@ -49,6 +52,22 @@ public class RainBowApplication extends Application {
 
     public static RainBowApplication getApplication() {
         return application;
+    }
+
+
+    /**
+     * 初始化国际化语言，繁体字和简体字
+     */
+    private void initI18() {
+        LanguagesManager.init(this);
+
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        // 国际化适配（绑定语种）
+        super.attachBaseContext(LanguagesManager.attach(base));
     }
 
 

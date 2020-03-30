@@ -193,7 +193,6 @@ public class ClockIn extends BaseFragment {
                 int month = position2 + 1;
                 String[] dates = getDates(year, month);
                 refreshRecord(dates[0], dates[1]);
-
             }
         });
 

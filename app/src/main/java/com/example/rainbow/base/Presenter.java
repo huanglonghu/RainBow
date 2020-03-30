@@ -114,8 +114,8 @@ public class Presenter {
     }
 
 
-    public void step2MainFragment(String name) {
-        fm.beginTransaction().replace(R.id.activity_container, getFragment(name)).commit();
+    public void step2MainFragment(String name,BaseFragment fragment) {
+        fm.beginTransaction().replace(R.id.activity_container, fragment).commit();
     }
 
 

@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
 
-
 public class NoticeDetail extends BaseFragment {
 
     private FragmentNoticeDetailBinding binding;
