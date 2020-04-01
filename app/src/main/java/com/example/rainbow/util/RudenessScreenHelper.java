@@ -90,7 +90,7 @@ public class RudenessScreenHelper {
 
     private Application.ActivityLifecycleCallbacks activityLifecycleCallbacks;
     private Application mApplication;
-    private float designWidth = 720;
+    private float designWidth = 1920;
 
     /**
      *

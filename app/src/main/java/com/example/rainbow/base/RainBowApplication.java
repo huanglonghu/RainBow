@@ -3,6 +3,8 @@ package com.example.rainbow.base;
 import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 
 import com.example.rainbow.database.DaoMaster;
 import com.example.rainbow.database.DaoSession;
@@ -25,6 +27,24 @@ public class RainBowApplication extends Application {
 
     private DaoSession mDaoSession;
     private SQLiteDatabase db;
+
+
+    public int getWindowWidth() {
+        DisplayMetrics metric = new DisplayMetrics();
+        WindowManager mWindowManager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        mWindowManager.getDefaultDisplay().getMetrics(metric);
+        int windownWidth = metric.widthPixels;
+        return windownWidth;
+    }
+
+    public int getWindowHeight() {
+        DisplayMetrics metric = new DisplayMetrics();
+        WindowManager mWindowManager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        mWindowManager.getDefaultDisplay().getMetrics(metric);
+        int windowHeight = metric.heightPixels;
+        return windowHeight;
+    }
+
 
     private void setDatabase() {
         // 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。

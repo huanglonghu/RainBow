@@ -7,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.database.entity.UserBean;
 import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentEditpwdBinding;
 import com.example.rainbow.net.HttpUtil;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -67,7 +65,7 @@ public class EditPwd extends BaseFragment {
                     return;
                 } else {
                     if (!surePwd.endsWith(newPwd)) {
-                        String toastStr = getString(R.string.toastStr18);
+                        String toastStr = getString(R.string.toastStr8);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         return;
                     }

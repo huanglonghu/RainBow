@@ -56,6 +56,14 @@ public class HttpUtil {
     private OkHttpClient client;
     private NetLoading netLoading;
 
+    public Retrofit getRetrofit() {
+        return retrofit;
+    }
+
+    public void setRetrofit(Retrofit retrofit) {
+        this.retrofit = retrofit;
+    }
+
     private HttpUtil() {
         //打印retrofit日志
         loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {

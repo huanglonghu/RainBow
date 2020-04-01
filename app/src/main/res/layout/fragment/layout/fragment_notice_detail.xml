@@ -5,7 +5,7 @@
 
         <variable
             name="bean"
-            type="com.example.rainbow.bean.NoticeListResponse.DataBean.ItemsBean" />
+            type="com.example.rainbow.bean.NoticeDetailResponse.DataBean" />
 
     </data>
 
@@ -24,23 +24,24 @@
             android:layout_marginTop="30pt"
             android:textColor="@color/t9"
             android:text="@{bean.title}"
-            android:textSize="36pt" />
+            android:textSize="37pt" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="22pt"
+            android:layout_marginBottom="28pt"
             android:text="@{bean.creationTime}"
             android:textColor="@color/t1"
-            android:textSize="21pt" />
+            android:textSize="26pt" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1pt"
             android:background="@color/s1" />
 
-        <TextView
+        <com.example.rainbow.ui.customView.MyWebView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
