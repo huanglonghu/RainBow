@@ -50,7 +50,6 @@
     <string name="syjl">输赢记录</string>
 
     <string name="wtms">问题描述</string>
-    <string name="clsm">处理说明 : </string>
 
     <string name="faultState1">待处理</string>
     <string name="faultState2">已解决</string>
