@@ -3,6 +3,10 @@
 
     <data>
 
+        <variable
+            name="shopName"
+            type="String" />
+
     </data>
 
     <LinearLayout
@@ -65,7 +69,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="A某某店铺(曜和广场)签到"
+                    android:text="@{shopName+@string/sign}"
                     android:textColor="#000"
                     android:textSize="35pt" />
 

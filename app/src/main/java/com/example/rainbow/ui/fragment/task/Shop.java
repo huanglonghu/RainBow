@@ -40,6 +40,7 @@ public class Shop extends BaseFragment {
     private int shopId;
     private ArrayList<BaseFragment> fragments;
     private Task task;
+    private ShopDetailResponse.DataBean data;
 
     @Nullable
     @Override
@@ -62,13 +63,20 @@ public class Shop extends BaseFragment {
         HttpUtil.getInstance().getShopDetail(id, shopId).subscribe(
                 str -> {
                     ShopDetailResponse shopDetailResponse = GsonUtil.fromJson(str, ShopDetailResponse.class);
-                    ShopDetailResponse.DataBean data = shopDetailResponse.getData();
+                    data = shopDetailResponse.getData();
                     List<ShopDetailResponse.DataBean.MachineProfitLossBean> machineProfitLoss = data.getMachineProfitLoss();
                     for (int i = 0; i < fragments.size(); i++) {
                         ShopItem shopItem = (ShopItem) fragments.get(i);
                         shopItem.setData(machineProfitLoss, id);
                     }
                     binding.setData(data);
+                }
+        );
+
+
+        HttpUtil.getInstance().getShopfaultDetail(id, shopId).subscribe(
+                str -> {
+
                 }
         );
     }
@@ -84,14 +92,22 @@ public class Shop extends BaseFragment {
         fragments = new ArrayList<>();
         String[] titles;
         if (isRepair) {
-            titles=new String[1];
-            titles[0]="待处理问题";
+            titles = new String[1];
+            titles[0] = "待处理问题";
             ShopItem shopItem = new ShopItem();
+            Bundle b = new Bundle();
+            b.putInt("type", 2);
+            b.putBoolean("isRepair",isRepair);
+            shopItem.setArguments(b);
             fragments.add(shopItem);
         } else {
             titles = getResources().getStringArray(R.array.shopItemTitle);
             for (int i = 0; i < 2; i++) {
                 ShopItem shopItem = new ShopItem();
+                Bundle b = new Bundle();
+                b.putInt("type", i + 1);
+                b.putBoolean("isRepair",isRepair);
+                shopItem.setArguments(b);
                 fragments.add(shopItem);
             }
         }
@@ -116,6 +132,7 @@ public class Shop extends BaseFragment {
                 Signed signed = new Signed();
                 Bundle bundle = new Bundle();
                 bundle.putInt("id", id);
+                bundle.putString("shopName", data.getShopName());
                 bundle.putInt("shopId", shopId);
                 signed.setArguments(bundle);
                 String title = getString(R.string.sign);

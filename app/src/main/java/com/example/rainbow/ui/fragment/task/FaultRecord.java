@@ -5,13 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.MachineDetailResponse;
 import com.example.rainbow.databinding.FragmentFaultRecordBinding;
 import com.example.rainbow.ui.adapter.FaultRecordAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -40,8 +43,10 @@ public class FaultRecord extends BaseFragment {
 
     }
 
+    private int machineId;
 
-    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults) {
+    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int machineId) {
+        this.machineId = machineId;
         if (machineFaults != null) {
             datas.addAll(machineFaults);
             faultRecordAdapter.notifyDataSetChanged();
@@ -65,6 +70,10 @@ public class FaultRecord extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FaultDetail faultDetail = new FaultDetail();
                 String title = getContext().getString(R.string.faultDetail);
+                Bundle bundle = new Bundle();
+                MachineDetailResponse.DataBean.MachineFaultsBean bean = datas.get(position);
+                bundle.putInt("id", bean.getId());
+                faultDetail.setArguments(bundle);
                 machine.toggle("faultDetail", faultDetail, " > " + title);
             }
         });

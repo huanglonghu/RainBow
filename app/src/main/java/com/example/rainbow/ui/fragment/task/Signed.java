@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
+import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.SignBody;
 import com.example.rainbow.bean.UploadPictureResponse;
 import com.example.rainbow.database.entity.UserBean;
@@ -65,6 +66,8 @@ public class Signed extends BaseFragment {
         Bundle bundle = getArguments();
         int id = bundle.getInt("id");
         int shopId = bundle.getInt("shopId");
+        String shopName = bundle.getString("shopName");
+        binding.setShopName(shopName);
         UserBean userBean = UserOption.getInstance().querryUser();
         signBody = new SignBody();
         signBody.setJobId(id);
@@ -89,6 +92,7 @@ public class Signed extends BaseFragment {
                         str -> {
                             String toastStr = getString(R.string.toastStr12);
                             Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
+                            Presenter.getInstance().back();
                         }
                 );
             }

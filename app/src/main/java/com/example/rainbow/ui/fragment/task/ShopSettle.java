@@ -99,7 +99,7 @@ public class ShopSettle extends BaseFragment {
                                     shopSettleBody.setSign(path);
                                     HttpUtil.getInstance().shopSettle(shopSettleBody).subscribe(
                                             str2 -> {
-
+                                               Presenter.getInstance().back();
                                             }
                                     );
                                 }
@@ -112,8 +112,6 @@ public class ShopSettle extends BaseFragment {
                     String toastStr = getString(R.string.toastStr14);
                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 

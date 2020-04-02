@@ -1,6 +1,7 @@
 package com.example.rainbow.net;
 
 import com.example.rainbow.bean.EnterBody;
+import com.example.rainbow.bean.HandlerFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
@@ -80,8 +81,15 @@ public interface HttpInterface {
     @POST("/api/v1/job/appgetjobshopprofitlossdetails")
     Call<ResponseBody> getShopDetail(@Body HashMap<String, Integer> map);
 
+    @POST("/api/v1/job/appgetjobshopdetails")
+    Call<ResponseBody> getShopfaultDetail(@Body HashMap<String, Integer> map);
+
+
     @POST("/api/v1/job/appgetjobmachinedetails")
     Call<ResponseBody> getMachineDetail(@Body HashMap<String, Integer> map);
+
+    @GET("/api/v1/machinefault/get")
+    Call<ResponseBody> getMachineFaultDeail(@Query("id") int id);
 
     @POST("/api/v1/shopsignin/create")
     Call<ResponseBody> shopSign(@Body SignBody body);
@@ -94,6 +102,9 @@ public interface HttpInterface {
 
     @POST("/api/v1/machinefault/create")
     Call<ResponseBody> uploadFault(@Body HashMap<String, Object> map);
+
+    @POST("/api/v1/machinefault/update")
+    Call<ResponseBody> handleFault(@Body HandlerFaultBody handlerFaultBody);
 
     @POST("/api/v1/jobshopprofitloss/create")
     Call<ResponseBody> shopSettle(@Body ShopBody body);

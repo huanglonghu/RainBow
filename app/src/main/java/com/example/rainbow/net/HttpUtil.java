@@ -8,6 +8,7 @@ import com.example.rainbow.R;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.EnterBody;
 import com.example.rainbow.bean.ErrorBody;
+import com.example.rainbow.bean.HandlerFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
@@ -262,6 +263,15 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
+    public Observable<String> getShopfaultDetail(int id, int businessId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("businessId", businessId);
+        map.put("id", id);
+        Call<ResponseBody> call = httpInterface.getShopfaultDetail(map);
+        return enqueueCall(call);
+    }
+
+
     public Observable<String> toWork() {//上班打卡
         Call<ResponseBody> call = httpInterface.toWork();
         return enqueueCall(call);
@@ -281,6 +291,12 @@ public class HttpUtil {
         Call<ResponseBody> call = httpInterface.getMachineDetail(map);
         return enqueueCall(call);
     }
+
+    public Observable<String> getMachineFaultDeail(int id) {
+        Call<ResponseBody> call = httpInterface.getMachineFaultDeail(id);
+        return enqueueCall(call);
+    }
+
 
     public Observable<String> shopSign(SignBody signBody) {
         Call<ResponseBody> call = httpInterface.shopSign(signBody);
@@ -306,6 +322,12 @@ public class HttpUtil {
         map.put("faultImage", faultImage);
         map.put("faultDescribe", describe);
         Call<ResponseBody> call = httpInterface.uploadFault(map);
+        return enqueueCall(call);
+    }
+
+
+    public Observable<String> handleFault(HandlerFaultBody body) {
+        Call<ResponseBody> call = httpInterface.handleFault(body);
         return enqueueCall(call);
     }
 

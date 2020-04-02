@@ -22,6 +22,7 @@ public class ShopItem extends BaseFragment {
     private ArrayList<ShopDetailResponse.DataBean.MachineProfitLossBean> datas;
     private ShopItemAdapter shopItemAdapter;
     private Shop shop;
+    private boolean isRepair;
 
 
     @Nullable
@@ -45,8 +46,11 @@ public class ShopItem extends BaseFragment {
 
     @Override
     public void initView() {
+        Bundle bundle = getArguments();
+        int type = bundle.getInt("type");
+        isRepair = bundle.getBoolean("isRepair");
         datas = new ArrayList<>();
-        shopItemAdapter = new ShopItemAdapter(getContext(), datas, R.layout.lv_item_shop);
+        shopItemAdapter = new ShopItemAdapter(getContext(), datas, R.layout.lv_item_shop,type);
         binding.lvShopItem.setAdapter(shopItemAdapter);
     }
 
@@ -66,14 +70,26 @@ public class ShopItem extends BaseFragment {
         binding.lvShopItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
-                ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
-                Bundle bundle = new Bundle();
-                bundle.putString("machineName", machineProfitLossBean.getMachineName());
-                bundle.putInt("machineId", machineProfitLossBean.getId());
-                bundle.putInt("id", id);
-                Machine machine = new Machine();
-                machine.setArguments(bundle);
-                shop.toggle("machine", machine, " > " + machineProfitLossBean.getMachineName());
+                if(isRepair){
+                    ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("machineName", machineProfitLossBean.getMachineName());
+                    bundle.putInt("machineId", machineProfitLossBean.getId());
+                    bundle.putInt("id", id);
+                    Machine machine = new Machine();
+                    machine.setArguments(bundle);
+                    shop.toggle("machine", machine, " > " + machineProfitLossBean.getMachineName());
+                }else {
+                    ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("machineName", machineProfitLossBean.getMachineName());
+                    bundle.putInt("machineId", machineProfitLossBean.getId());
+                    bundle.putInt("id", id);
+                    Machine machine = new Machine();
+                    machine.setArguments(bundle);
+                    shop.toggle("machine", machine, " > " + machineProfitLossBean.getMachineName());
+                }
+
 
             }
         });

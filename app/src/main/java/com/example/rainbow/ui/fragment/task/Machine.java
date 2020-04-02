@@ -53,9 +53,9 @@ public class Machine extends BaseFragment {
             binding = DataBindingUtil.inflate(inflater, R.layout.fragment_machine, container, false);
             binding.setPresenter(Presenter.getInstance());
             initView();
-            initData();
             initlisten();
         }
+        initData();
         return binding.getRoot();
     }
 
@@ -75,7 +75,7 @@ public class Machine extends BaseFragment {
                     List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     historyRecord.setData(machineHistoryProfitLoss);
-                    faultRecord.setData(machineFaults);
+                    faultRecord.setData(machineFaults,machineId);
                 }
         );
 

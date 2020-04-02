@@ -22,7 +22,7 @@ import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.base.RainBowApplication;
 import com.example.rainbow.bean.UploadPictureResponse;
-import com.example.rainbow.databinding.FragmentUploadFaultBinding;
+import com.example.rainbow.databinding.FragmentHandleFaultBinding;
 import com.example.rainbow.databinding.ImgItemBinding;
 import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpInterface;
@@ -30,9 +30,11 @@ import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.widget.NetLoading;
 import com.example.rainbow.util.GsonUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,11 +56,10 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import static okhttp3.MultipartBody.*;
 
-public class UploadFault extends BaseFragment {
+public class HandleFault extends BaseFragment {
 
-    private FragmentUploadFaultBinding binding;
+    private FragmentHandleFaultBinding binding;
     private int machineId;
     private ArrayList<String> pathList;
     private int windowWidth;
@@ -67,10 +68,7 @@ public class UploadFault extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_upload_fault, container, false);
-        initView();
-        initData();
-        initlisten();
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_handle_fault, container, false);
         return binding.getRoot();
     }
 
@@ -79,6 +77,8 @@ public class UploadFault extends BaseFragment {
         pathList = new ArrayList<>();
         Bundle bundle = getArguments();
         machineId = bundle.getInt("machineId");
+        int faultState = bundle.getInt("faultState");
+
     }
 
     @Override
@@ -94,13 +94,13 @@ public class UploadFault extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (parts.isEmpty()) {
-                    String toastStr = getString(R.string.toastStr15);
+                    String toastStr = getString(R.string.toastStr4);
                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String faultDescribe = binding.faultDescribe.getText().toString();
                 if (TextUtils.isEmpty(faultDescribe)) {
-                    String toastStr = getString(R.string.toastStr17);
+                    String toastStr = getString(R.string.toastStr3);
                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -167,7 +167,7 @@ public class UploadFault extends BaseFragment {
                     imgItemBinding.delete.setLayoutParams(lp3);
                     imgItemBinding.photo.setImageDrawable(new BitmapDrawable(bitmap));
                     binding.photoContainer.addView(item);
-                    Part filePart = Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+                    MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
                     parts.add(filePart);
                     imgItemBinding.delete.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -184,7 +184,7 @@ public class UploadFault extends BaseFragment {
 
     }
 
-    private void upload(String faultDescribe) {
+    private void upload(String handleDescribe) {
         Observable<String>[] observables = new Observable[parts.size()];
         for (int i = 0; i < parts.size(); i++) {
             MultipartBody.Part part = parts.get(i);
@@ -205,6 +205,7 @@ public class UploadFault extends BaseFragment {
                                 }
                             }
                         }
+
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
 
@@ -235,7 +236,7 @@ public class UploadFault extends BaseFragment {
         }).observeOn(AndroidSchedulers.mainThread()).subscribe(
                 a -> {
                     netLoading.dismiss();
-                    if(!TextUtils.isEmpty(a)){
+                    if (!TextUtils.isEmpty(a)) {
                         String toastStr = getString(R.string.toastStr18);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         Presenter.getInstance().back();
@@ -264,6 +265,4 @@ public class UploadFault extends BaseFragment {
         map.put("faultDescribe", faultDescribe);
         return map;
     }
-
-
 }

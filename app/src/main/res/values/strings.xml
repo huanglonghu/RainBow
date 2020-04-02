@@ -150,6 +150,8 @@
 
 
     <string name="toastStr1">您尚未安装谷歌地图或地图版本过低</string>
+    <string name="toastStr3">请输入处理说明</string>
+    <string name="toastStr4">请拍照上传处理结果</string>
     <string name="toastStr5">提交成功</string>
     <string name="toastStr6">请输入原密码</string>
     <string name="toastStr7">请输入新密码</string>
@@ -170,5 +172,7 @@
 
 
     <string name="wxzn">维修指南</string>
+
+    <string name="clsm">处理说明</string>
 
 </resources>

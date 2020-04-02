@@ -7,6 +7,10 @@
             name="data"
             type="com.example.rainbow.bean.ShopDetailResponse.DataBean.MachineProfitLossBean" />
 
+        <variable
+            name="type"
+            type="int" />
+
         <import type="android.view.View" />
 
     </data>
@@ -14,8 +18,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:paddingLeft="10pt"
-        android:layout_height="100pt">
+        android:layout_height="100pt"
+        android:paddingLeft="10pt">
 
         <ImageView
             android:id="@+id/a1"
@@ -45,7 +49,8 @@
             android:layout_marginRight="270pt"
             android:text='@{data.profitLoss&lt;0?(@string/bcyk+data.profitLoss):(@string/bcyk+"+"+data.profitLoss)}'
             android:textColor="@{(data.profitLoss&lt;0)?@color/c3:@color/b2}"
-            android:textSize="28pt" />
+            android:textSize="28pt"
+            android:visibility="@{type==1?View.VISIBLE:View.GONE}" />
 
 
         <ImageView
