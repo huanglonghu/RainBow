@@ -22,8 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30pt"
-            android:textColor="@color/t9"
             android:text="@{bean.title}"
+            android:textColor="@color/t9"
             android:textSize="37pt" />
 
         <TextView

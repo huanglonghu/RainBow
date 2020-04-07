@@ -5,13 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.ShopDetailResponse;
 import com.example.rainbow.databinding.FragmentShopitemBinding;
 import com.example.rainbow.ui.adapter.ShopItemAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -50,7 +53,7 @@ public class ShopItem extends BaseFragment {
         int type = bundle.getInt("type");
         isRepair = bundle.getBoolean("isRepair");
         datas = new ArrayList<>();
-        shopItemAdapter = new ShopItemAdapter(getContext(), datas, R.layout.lv_item_shop,type);
+        shopItemAdapter = new ShopItemAdapter(getContext(), datas, R.layout.lv_item_shop, type);
         binding.lvShopItem.setAdapter(shopItemAdapter);
     }
 
@@ -70,16 +73,16 @@ public class ShopItem extends BaseFragment {
         binding.lvShopItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
-                if(isRepair){
+                if (isRepair) {
                     ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
                     Bundle bundle = new Bundle();
                     bundle.putString("machineName", machineProfitLossBean.getMachineName());
                     bundle.putInt("machineId", machineProfitLossBean.getId());
                     bundle.putInt("id", id);
-                    Machine machine = new Machine();
+                    Machine2 machine = new Machine2();
                     machine.setArguments(bundle);
                     shop.toggle("machine", machine, " > " + machineProfitLossBean.getMachineName());
-                }else {
+                } else {
                     ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
                     Bundle bundle = new Bundle();
                     bundle.putString("machineName", machineProfitLossBean.getMachineName());

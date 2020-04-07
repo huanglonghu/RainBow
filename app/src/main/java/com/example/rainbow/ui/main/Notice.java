@@ -45,6 +45,11 @@ public class Notice extends BaseFragment {
 
     public void step2NoticeDetail(String name, BaseFragment fragment) {
         fm.beginTransaction().replace(R.id.notice_container, fragment).addToBackStack(name).commit();
+        if (fragment instanceof NoticeList) {
+            binding.back.setVisibility(View.GONE);
+        }else {
+            binding.back.setVisibility(View.VISIBLE);
+        }
     }
 
     public void hideBack() {
@@ -59,7 +64,7 @@ public class Notice extends BaseFragment {
 
     public void back() {
         BaseFragment fragment = (BaseFragment) fm.findFragmentById(R.id.personDetailContainer);
-        if (!(fragment instanceof PersonalData)) {
+        if (!(fragment instanceof NoticeList)) {
             fm.popBackStack();
         }
     }

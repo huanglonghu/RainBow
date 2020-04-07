@@ -75,7 +75,7 @@ public class Machine extends BaseFragment {
                     List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     historyRecord.setData(machineHistoryProfitLoss);
-                    faultRecord.setData(machineFaults,machineId);
+                    faultRecord.setData(machineFaults,machineId,task,false);
                 }
         );
 
@@ -164,9 +164,6 @@ public class Machine extends BaseFragment {
     }
 
 
-    public void toggle(String name, BaseFragment fragment, String title) {
-        task.step2Task(name, fragment, title);
-    }
 
 
     public void selectPhoto(View view, int type) {

@@ -9,7 +9,10 @@ import android.view.WindowManager;
 import com.example.rainbow.database.DaoMaster;
 import com.example.rainbow.database.DaoSession;
 import com.example.rainbow.language.LanguagesManager;
+import com.example.rainbow.util.LogUtil;
 import com.example.rainbow.util.RudenessScreenHelper;
+
+import java.util.Locale;
 
 public class RainBowApplication extends Application {
 
@@ -21,7 +24,10 @@ public class RainBowApplication extends Application {
         float designWidth = 1920;
         new RudenessScreenHelper(this, designWidth).activate();
         setDatabase();
-        initI18();
+        LanguagesManager.init(this);
+        Locale systemLanguage = LanguagesManager.getSystemLanguage();
+        LogUtil.log("==============system=============="+systemLanguage.getCountry());
+        LanguagesManager.setAppLanguage(this, systemLanguage);
     }
 
 
@@ -74,15 +80,6 @@ public class RainBowApplication extends Application {
         return application;
     }
 
-
-    /**
-     * 初始化国际化语言，繁体字和简体字
-     */
-    private void initI18() {
-        LanguagesManager.init(this);
-
-
-    }
 
     @Override
     protected void attachBaseContext(Context base) {

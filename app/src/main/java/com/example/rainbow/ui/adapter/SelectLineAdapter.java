@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rainbow.R;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.GetJobDetailResponse;
 import com.example.rainbow.databinding.LvItemLineBinding;
@@ -24,6 +25,14 @@ public class SelectLineAdapter extends BaseListAdapter {
         GetJobDetailResponse.DataBean.ShopsBean bean = (GetJobDetailResponse.DataBean.ShopsBean) datas.get(position);
         LvItemLineBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
         binding.setBean(bean);
+        if(position==0){
+            binding.ivSign.setBackgroundResource(R.drawable.line_sign2);
+        }else {
+            binding.ivSign.setBackgroundResource(R.drawable.line_sign1);
+        }
+        if(bean.isIsSignIn()){
+            binding.ivSign.setSelected(true);
+        }
         binding.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

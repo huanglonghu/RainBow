@@ -11,6 +11,7 @@ import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.MachineDetailResponse;
 import com.example.rainbow.databinding.FragmentFaultRecordBinding;
 import com.example.rainbow.ui.adapter.FaultRecordAdapter;
+import com.example.rainbow.ui.main.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ public class FaultRecord extends BaseFragment {
 
 
     private FragmentFaultRecordBinding binding;
-    private Machine machine;
     private ArrayList<MachineDetailResponse.DataBean.MachineFaultsBean> datas;
     private FaultRecordAdapter faultRecordAdapter;
 
@@ -31,7 +31,6 @@ public class FaultRecord extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        machine = (Machine) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fault_record, container, false);
         initView();
         initlisten();
@@ -43,10 +42,13 @@ public class FaultRecord extends BaseFragment {
 
     }
 
-    private int machineId;
+    private int jobId;
+    private boolean isRepair;
 
-    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int machineId) {
-        this.machineId = machineId;
+    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int jobId, Task task, boolean isRepair) {
+        this.jobId = jobId;
+        this.task = task;
+        this.isRepair = isRepair;
         if (machineFaults != null) {
             datas.addAll(machineFaults);
             faultRecordAdapter.notifyDataSetChanged();
@@ -61,20 +63,44 @@ public class FaultRecord extends BaseFragment {
         binding.lvFaultRecord.setAdapter(faultRecordAdapter);
     }
 
+
+    private Task task;
+
     @Override
     public void initlisten() {
-
 
         binding.lvFaultRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FaultDetail faultDetail = new FaultDetail();
-                String title = getContext().getString(R.string.faultDetail);
-                Bundle bundle = new Bundle();
+
                 MachineDetailResponse.DataBean.MachineFaultsBean bean = datas.get(position);
-                bundle.putInt("id", bean.getId());
-                faultDetail.setArguments(bundle);
-                machine.toggle("faultDetail", faultDetail, " > " + title);
+                if (isRepair) {
+                    if (bean.getFaultState() == 0 || bean.getFaultState() == 2) {
+                        HandleFault handleFault = new HandleFault();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("faultState", bean.getFaultState());
+                        bundle.putInt("id", bean.getId());
+                        bundle.putInt("jobId", jobId);
+                        handleFault.setArguments(bundle);
+                        String title = getString(R.string.scgzcl);
+                        task.step2Task("handlerFault", handleFault, " > " + title);
+                    } else {
+                        FaultDetail faultDetail = new FaultDetail();
+                        String title = getContext().getString(R.string.faultDetail);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("id", bean.getId());
+                        faultDetail.setArguments(bundle);
+                        task.step2Task("faultDetail", faultDetail, " > " + title);
+                    }
+                } else {
+                    FaultDetail faultDetail = new FaultDetail();
+                    String title = getContext().getString(R.string.faultDetail);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", bean.getId());
+                    faultDetail.setArguments(bundle);
+                    task.step2Task("faultDetail", faultDetail, " > " + title);
+                }
+
             }
         });
 

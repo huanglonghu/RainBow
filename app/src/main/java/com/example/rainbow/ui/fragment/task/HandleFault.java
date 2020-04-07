@@ -21,7 +21,11 @@ import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.base.RainBowApplication;
+import com.example.rainbow.bean.HandlerFaultBody;
+import com.example.rainbow.bean.MachineFaultDetailResponse;
 import com.example.rainbow.bean.UploadPictureResponse;
+import com.example.rainbow.database.entity.UserBean;
+import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentHandleFaultBinding;
 import com.example.rainbow.databinding.ImgItemBinding;
 import com.example.rainbow.handler.ActivityResultHandler;
@@ -33,7 +37,6 @@ import com.example.rainbow.util.GsonUtil;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,15 +63,19 @@ import retrofit2.Response;
 public class HandleFault extends BaseFragment {
 
     private FragmentHandleFaultBinding binding;
-    private int machineId;
     private ArrayList<String> pathList;
     private int windowWidth;
     private NetLoading netLoading;
+    private int id;
+    private int jobId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_handle_fault, container, false);
+        initView();
+        initData();
+        initlisten();
         return binding.getRoot();
     }
 
@@ -76,9 +83,8 @@ public class HandleFault extends BaseFragment {
     public void initData() {
         pathList = new ArrayList<>();
         Bundle bundle = getArguments();
-        machineId = bundle.getInt("machineId");
-        int faultState = bundle.getInt("faultState");
-
+        id = bundle.getInt("id");
+        jobId = bundle.getInt("jobId");
     }
 
     @Override
@@ -226,8 +232,8 @@ public class HandleFault extends BaseFragment {
             public ObservableSource<String> apply(String s) throws Exception {
                 pathList.add(s);
                 if (pathList.size() == parts.size()) {
-                    HashMap<String, Object> map = merageMap(faultDescribe);
-                    String content = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).uploadFault(map).execute().body().toString();
+                    HandlerFaultBody handlerFaultBody = merage(handleDescribe);
+                    String content = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).handleFault(handlerFaultBody).execute().body().toString();
                     return Observable.just(content);
                 } else {
                     return Observable.just("");
@@ -237,7 +243,7 @@ public class HandleFault extends BaseFragment {
                 a -> {
                     netLoading.dismiss();
                     if (!TextUtils.isEmpty(a)) {
-                        String toastStr = getString(R.string.toastStr18);
+                        String toastStr = getString(R.string.toastStr2);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         Presenter.getInstance().back();
                     }
@@ -248,7 +254,10 @@ public class HandleFault extends BaseFragment {
     }
 
 
-    public HashMap<String, Object> merageMap(String faultDescribe) {
+    public HandlerFaultBody merage(String handlerDescribe) {
+
+        HandlerFaultBody handlerFaultBody = new HandlerFaultBody();
+
         StringBuffer sb = new StringBuffer();
         int size = pathList.size();
         for (int i = 0; i < size; i++) {
@@ -259,10 +268,13 @@ public class HandleFault extends BaseFragment {
                 sb.append(path);
             }
         }
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("machineId", machineId);
-        map.put("faultImage", sb.toString());
-        map.put("faultDescribe", faultDescribe);
-        return map;
+        handlerFaultBody.setHandleDescribe(handlerDescribe);
+        handlerFaultBody.setHandleImage(sb.toString());
+        UserBean userBean = UserOption.getInstance().querryUser();
+        handlerFaultBody.setHandlePeople(userBean.getNickName());
+        handlerFaultBody.setFaultState(1);
+        handlerFaultBody.setId(id);
+        handlerFaultBody.setJobId(jobId);
+        return handlerFaultBody;
     }
 }

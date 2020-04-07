@@ -106,28 +106,31 @@ public class MainFragment extends BaseFragment {
             }
         });
 
+
         Locale locale = LanguagesManager.getAppLanguage(getContext());
-        Locale spanish = new Locale("es", "ES");
+
+        LogUtil.log("============locale=============="+locale.getCountry());
         if (LanguagesManager.equalsCountry(locale, Locale.CHINA)) {
             binding.spLanguage.setSelection(0);
         } else if (LanguagesManager.equalsCountry(locale, Locale.ENGLISH)) {
             binding.spLanguage.setSelection(1);
-        } else if (LanguagesManager.equalsCountry(locale,spanish)) {
+        } else if (LanguagesManager.equalsCountry(locale, Locale.forLanguageTag("ES"))) {
             binding.spLanguage.setSelection(2);
         }
+
         binding.spLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 boolean restart;
                 if (isInit) {
                     if (position == 0) {
-                        Locale locale = Locale.CHINA;
-                        restart = LanguagesManager.setAppLanguage(getContext(), locale);
+                        restart = LanguagesManager.setAppLanguage(getContext(), Locale.CHINA);
                     } else {
-                        Locale spanish = new Locale("es", "ES");
-                        restart = LanguagesManager.setAppLanguage(getContext(), spanish);
+                        restart = LanguagesManager.setAppLanguage(getContext(), Locale.forLanguageTag("es"));
                     }
+                    LogUtil.log(position + "==================restart=============" + restart);
                     if (restart) {
+                        isInit = false;
                         startActivity(new Intent(getActivity(), MainActivity.class));
                         getActivity().overridePendingTransition(R.anim.activity_alpha_in, R.anim.activity_alpha_out);
                     }

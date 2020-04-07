@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 
+import com.example.rainbow.util.LogUtil;
+
 import java.util.Locale;
 
 /**
@@ -33,13 +35,16 @@ final class LanguagesUtils {
      * 更新当前 App 的语种
      */
     static Context updateLanguages(Context context, Locale locale) {
+        LogUtil.log("===============updateLanguge=============");
         Resources resources = context.getResources();
         Configuration config = new Configuration(resources.getConfiguration());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             config.setLocale(locale);
+            LogUtil.log("11===============updateLanguge============="+locale.getCountry());
             context = context.createConfigurationContext(config);
         } else {
+            LogUtil.log("22===============updateLanguge============="+locale.getCountry());
             config.locale = locale;
         }
         resources.updateConfiguration(config, resources.getDisplayMetrics());

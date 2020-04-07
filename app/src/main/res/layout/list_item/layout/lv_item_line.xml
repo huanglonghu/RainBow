@@ -11,85 +11,100 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180pt"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingTop="20pt"
-        android:paddingBottom="20pt">
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/iv_sign"
+            android:layout_width="158pt"
+            android:layout_height="180pt" />
 
 
         <ImageView
             android:layout_width="140pt"
-            android:layout_height="140pt" />
+            android:layout_height="140pt"
+            android:background="@mipmap/ic_launcher" />
 
 
         <LinearLayout
-            android:layout_width="836pt"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="180pt"
+            android:layout_marginLeft="30pt"
+            android:background="@drawable/bg_ll_bottom"
+            android:gravity="center_vertical">
 
-            <TextView
+
+            <LinearLayout
+                android:layout_width="836pt"
+                android:layout_height="wrap_content"
+
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.shopName}"
+                    android:textColor="@color/t3"
+                    android:textSize="35pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20pt"
+                    android:text="@{@string/address+bean.address}"
+                    android:textColor="@color/t4"
+                    android:textSize="29pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10pt"
+                    android:text="@{@string/phone+bean.telephone}"
+                    android:textColor="@color/t4"
+                    android:textSize="31pt" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{bean.shopName}"
-                android:textColor="@color/t3"
-                android:textSize="33pt" />
+                android:background="@drawable/shape_a1"
+                android:gravity="center"
+                android:paddingLeft="28pt"
+                android:paddingTop="16pt"
+                android:paddingRight="28pt"
+                android:paddingBottom="16pt">
 
 
+                <ImageView
+                    android:layout_width="62pt"
+                    android:layout_height="44pt"
+                    android:src="@drawable/line" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20pt"
-                android:text="@{@string/address+bean.address}"
-                android:textColor="@color/t4"
-                android:textSize="26pt" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15pt"
-                android:text="@{@string/phone+bean.telephone}"
-                android:textColor="@color/t4"
-                android:textSize="28pt" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15pt"
+                    android:text="@string/line"
+                    android:textColor="@color/t5"
+                    android:textSize="28pt" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/line"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_a1"
-            android:gravity="center"
-            android:paddingLeft="28pt"
-            android:paddingTop="16pt"
-            android:paddingRight="28pt"
-            android:paddingBottom="16pt">
+            </LinearLayout>
 
 
             <ImageView
-                android:layout_width="62pt"
-                android:layout_height="44pt"
-                android:src="@drawable/line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15pt"
-                android:text="@string/line"
-                android:textColor="@color/t5"
-                android:textSize="28pt" />
-
+                android:layout_width="42pt"
+                android:layout_height="42pt"
+                android:layout_marginLeft="205pt"
+                android:src="@drawable/back1" />
 
         </LinearLayout>
-
-
-        <ImageView
-            android:layout_width="42pt"
-            android:layout_height="42pt"
-            android:layout_marginLeft="205pt"
-            android:src="@drawable/back1" />
 
 
     </LinearLayout>

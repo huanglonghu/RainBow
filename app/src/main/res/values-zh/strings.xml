@@ -86,14 +86,14 @@
     <string name="sxbdk">上下班打卡</string>
 
     <string name="aqtc">安全退出</string>
-    
+
     <string name="welcome">欢迎!进入彩虹线路管理系统</string>
-    
+
     <string name="fzr">负责人 : </string>
-    
+
     <string name="drivier">司机 : </string>
     <string name="cph">车牌号 : </string>
-     <string name="zyk">总盈亏</string>
+    <string name="zyk">总盈亏</string>
     <string name="gzbx">工作报销</string>
     <string name="zsf">住宿费 :</string>
     <string name="zwf">杂物费 ：</string>
@@ -170,7 +170,6 @@
     <string name="toastStr21">二维码已经保存到手机相册中</string>
     <string name="toastStr22">最多上传四张图片</string>
     <string name="toastStr23">请按顺序结算</string>
-
 
     <string name="wxzn">维修指南</string>
 

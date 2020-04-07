@@ -140,9 +140,6 @@ public class Presenter {
                 case "shop":
                     fragment = new Shop();
                     break;
-                case "machine":
-                    fragment = new Machine();
-                    break;
                 case "uploadFault":
                     fragment = new UploadFault();
                     break;

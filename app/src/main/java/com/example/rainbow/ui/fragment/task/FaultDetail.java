@@ -2,6 +2,7 @@ package com.example.rainbow.ui.fragment.task;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,12 +77,26 @@ public class FaultDetail extends BaseFragment {
                         pathArray=new String[]{faultImage};
                     }
                     PhotoGraphWindow photoGraphWindow = new PhotoGraphWindow(getContext(), pathArray);
-                    photoGraphWindow.showAsDropDown(v);
+                    photoGraphWindow.showAtLocation(v, Gravity.CENTER,0,0);
                 }
 
             }
         });
-
+        binding.lookPhoto2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(handleImage)) {
+                    String[] pathArray=null;
+                    if (handleImage.contains(",")) {
+                        pathArray = handleImage.split(",");
+                    }else {
+                        pathArray=new String[]{handleImage};
+                    }
+                    PhotoGraphWindow photoGraphWindow = new PhotoGraphWindow(getContext(), pathArray);
+                    photoGraphWindow.showAtLocation(v, Gravity.CENTER,0,0);
+                }
+            }
+        });
 
     }
 }

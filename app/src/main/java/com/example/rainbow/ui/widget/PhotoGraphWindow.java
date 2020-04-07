@@ -1,15 +1,20 @@
 package com.example.rainbow.ui.widget;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
+
 import com.example.rainbow.R;
+import com.example.rainbow.base.RainBowApplication;
 import com.example.rainbow.databinding.LayoutPhotographBinding;
 import com.example.rainbow.ui.adapter.PhotoGraphWindowAdpter;
 import com.example.rainbow.util.RudenessScreenHelper;
+
 import java.util.List;
+
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -18,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PhotoGraphWindow extends PopupWindow {
 
-    private float windowHeight;
     private LayoutPhotographBinding binding;
     private Context context;
 
@@ -27,8 +31,9 @@ public class PhotoGraphWindow extends PopupWindow {
         setFocusable(false);
         setOutsideTouchable(false);
         setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
-        windowHeight = RudenessScreenHelper.pt2px(context, 230);
-        setHeight((int) windowHeight);
+        int windowWidth = RainBowApplication.getApplication().getWindowWidth();
+        int h = (windowWidth * 220) / 1920;
+        setHeight(h);
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.layout_photograph, null, false);
         setContentView(binding.getRoot());
         setOutsideTouchable(true);
@@ -36,9 +41,6 @@ public class PhotoGraphWindow extends PopupWindow {
     }
 
 
-    public void show(View v) {
-        showAsDropDown(v);
-    }
 
     private void initRvItem(String[] pathArray, RecyclerView recyclerView) {
         DividerItemDecoration divider = new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL);

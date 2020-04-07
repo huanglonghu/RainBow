@@ -4,10 +4,11 @@ import java.util.List;
 
 public class ShopDetailResponse {
 
+
     /**
      * code : 0
      * msg : success
-     * data : {"splitRatio":0.4,"remarks":null,"machineProfitLoss":[{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":false,"id":8}],"shopName":"D店铺","contact":"小d","telephone":"123","image":"string","address":"广州天河","sort":0,"isSignIn":false,"isSettled":false,"isNotGo":false,"id":4}
+     * data : {"shopName":"D店铺","contact":"小d","telephone":"123","image":"string","address":"广州天河","coordinate":null,"isSignIn":true,"isSettled":false,"splitRatio":0.4,"remarks":null,"machineProfitLoss":[{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":true,"id":8}],"machineFault":[{"machineName":"机器8","sort":1,"isFault":true,"id":8}],"id":4}
      */
 
     private int code;
@@ -40,50 +41,34 @@ public class ShopDetailResponse {
 
     public static class DataBean {
         /**
-         * splitRatio : 0.4
-         * remarks : null
-         * machineProfitLoss : [{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":false,"id":8}]
          * shopName : D店铺
          * contact : 小d
          * telephone : 123
          * image : string
          * address : 广州天河
-         * sort : 0
-         * isSignIn : false
+         * coordinate : null
+         * isSignIn : true
          * isSettled : false
-         * isNotGo : false
+         * splitRatio : 0.4
+         * remarks : null
+         * machineProfitLoss : [{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":true,"id":8}]
+         * machineFault : [{"machineName":"机器8","sort":1,"isFault":true,"id":8}]
          * id : 4
          */
 
-        private double splitRatio;
-        private Object remarks;
         private String shopName;
         private String contact;
         private String telephone;
         private String image;
         private String address;
-        private int sort;
+        private Object coordinate;
         private boolean isSignIn;
         private boolean isSettled;
-        private boolean isNotGo;
+        private double splitRatio;
+        private Object remarks;
         private int id;
         private List<MachineProfitLossBean> machineProfitLoss;
-
-        public double getSplitRatio() {
-            return splitRatio;
-        }
-
-        public void setSplitRatio(double splitRatio) {
-            this.splitRatio = splitRatio;
-        }
-
-        public Object getRemarks() {
-            return remarks;
-        }
-
-        public void setRemarks(Object remarks) {
-            this.remarks = remarks;
-        }
+        private List<MachineFaultBean> machineFault;
 
         public String getShopName() {
             return shopName;
@@ -125,12 +110,12 @@ public class ShopDetailResponse {
             this.address = address;
         }
 
-        public int getSort() {
-            return sort;
+        public Object getCoordinate() {
+            return coordinate;
         }
 
-        public void setSort(int sort) {
-            this.sort = sort;
+        public void setCoordinate(Object coordinate) {
+            this.coordinate = coordinate;
         }
 
         public boolean isIsSignIn() {
@@ -149,12 +134,20 @@ public class ShopDetailResponse {
             this.isSettled = isSettled;
         }
 
-        public boolean isIsNotGo() {
-            return isNotGo;
+        public double getSplitRatio() {
+            return splitRatio;
         }
 
-        public void setIsNotGo(boolean isNotGo) {
-            this.isNotGo = isNotGo;
+        public void setSplitRatio(double splitRatio) {
+            this.splitRatio = splitRatio;
+        }
+
+        public Object getRemarks() {
+            return remarks;
+        }
+
+        public void setRemarks(Object remarks) {
+            this.remarks = remarks;
         }
 
         public int getId() {
@@ -173,13 +166,21 @@ public class ShopDetailResponse {
             this.machineProfitLoss = machineProfitLoss;
         }
 
+        public List<MachineFaultBean> getMachineFault() {
+            return machineFault;
+        }
+
+        public void setMachineFault(List<MachineFaultBean> machineFault) {
+            this.machineFault = machineFault;
+        }
+
         public static class MachineProfitLossBean {
             /**
              * isSettled : true
              * profitLoss : 0.0
              * machineName : 机器8
              * sort : 1
-             * isFault : false
+             * isFault : true
              * id : 8
              */
 
@@ -205,6 +206,52 @@ public class ShopDetailResponse {
             public void setProfitLoss(double profitLoss) {
                 this.profitLoss = profitLoss;
             }
+
+            public String getMachineName() {
+                return machineName;
+            }
+
+            public void setMachineName(String machineName) {
+                this.machineName = machineName;
+            }
+
+            public int getSort() {
+                return sort;
+            }
+
+            public void setSort(int sort) {
+                this.sort = sort;
+            }
+
+            public boolean isIsFault() {
+                return isFault;
+            }
+
+            public void setIsFault(boolean isFault) {
+                this.isFault = isFault;
+            }
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+        }
+
+        public static class MachineFaultBean {
+            /**
+             * machineName : 机器8
+             * sort : 1
+             * isFault : true
+             * id : 8
+             */
+
+            private String machineName;
+            private int sort;
+            private boolean isFault;
+            private int id;
 
             public String getMachineName() {
                 return machineName;

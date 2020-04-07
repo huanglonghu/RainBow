@@ -8,14 +8,14 @@
 
 
     <RelativeLayout
-        android:layout_width="150pt"
-        android:layout_height="150pt">
+        android:layout_width="200pt"
+        android:layout_height="200pt">
 
 
         <ImageView
             android:id="@+id/ivvr"
-            android:layout_width="150pt"
-            android:layout_height="150pt"
+            android:layout_width="200pt"
+            android:layout_height="200pt"
             android:scaleType="fitXY" />
 
         <ProgressBar

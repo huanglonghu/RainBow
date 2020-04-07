@@ -41,6 +41,7 @@ public class Shop extends BaseFragment {
     private ArrayList<BaseFragment> fragments;
     private Task task;
     private ShopDetailResponse.DataBean data;
+    private boolean isRepair;
 
     @Nullable
     @Override
@@ -58,8 +59,6 @@ public class Shop extends BaseFragment {
 
     @Override
     public void initData() {
-
-
         HttpUtil.getInstance().getShopDetail(id, shopId).subscribe(
                 str -> {
                     ShopDetailResponse shopDetailResponse = GsonUtil.fromJson(str, ShopDetailResponse.class);
@@ -72,13 +71,6 @@ public class Shop extends BaseFragment {
                     binding.setData(data);
                 }
         );
-
-
-        HttpUtil.getInstance().getShopfaultDetail(id, shopId).subscribe(
-                str -> {
-
-                }
-        );
     }
 
     @Override
@@ -86,8 +78,7 @@ public class Shop extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         shopId = bundle.getInt("businessId");
-        boolean isRepair = bundle.getBoolean("isRepair");
-        LogUtil.log("=====================isRepair========================" + isRepair);
+        isRepair = bundle.getBoolean("isRepair");
         binding.setIsRepair(isRepair);
         fragments = new ArrayList<>();
         String[] titles;
@@ -97,7 +88,7 @@ public class Shop extends BaseFragment {
             ShopItem shopItem = new ShopItem();
             Bundle b = new Bundle();
             b.putInt("type", 2);
-            b.putBoolean("isRepair",isRepair);
+            b.putBoolean("isRepair", isRepair);
             shopItem.setArguments(b);
             fragments.add(shopItem);
         } else {
@@ -106,7 +97,7 @@ public class Shop extends BaseFragment {
                 ShopItem shopItem = new ShopItem();
                 Bundle b = new Bundle();
                 b.putInt("type", i + 1);
-                b.putBoolean("isRepair",isRepair);
+                b.putBoolean("isRepair", isRepair);
                 shopItem.setArguments(b);
                 fragments.add(shopItem);
             }

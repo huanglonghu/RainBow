@@ -39,13 +39,18 @@ public class Wxzn extends BaseFragment {
     @Override
     public void initView() {
 
-        WxznList wxznList=new WxznList();
+        WxznList wxznList = new WxznList();
         step2wxzn("wxznList", wxznList);
 
     }
 
     public void step2wxzn(String name, BaseFragment fragment) {
         fm.beginTransaction().replace(R.id.wxzn_container, fragment).addToBackStack(name).commit();
+        if (fragment instanceof WxznList) {
+            binding.back.setVisibility(View.GONE);
+        } else {
+            binding.back.setVisibility(View.VISIBLE);
+        }
     }
 
     public void hideBack() {
@@ -60,7 +65,7 @@ public class Wxzn extends BaseFragment {
 
     public void back() {
         BaseFragment fragment = (BaseFragment) fm.findFragmentById(R.id.wxzn_container);
-        if (!(fragment instanceof PersonalData)) {
+        if (!(fragment instanceof WxznList)) {
             fm.popBackStack();
         }
     }
