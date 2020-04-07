@@ -1,5 +1,6 @@
 package com.example.rainbow.ui.fragment;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-
 import com.example.rainbow.MainActivity;
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
@@ -22,12 +22,9 @@ import com.example.rainbow.ui.main.Notice;
 import com.example.rainbow.ui.main.PersonDetail;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.main.Wxzn;
-import com.example.rainbow.ui.main.WxznList;
 import com.example.rainbow.util.LogUtil;
-
 import java.util.ArrayList;
 import java.util.Locale;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -92,6 +89,11 @@ public class MainFragment extends BaseFragment {
 
     private boolean isInit;
 
+    private void rollingOver(View v,float f1,float f2) {
+        ObjectAnimator rotate = ObjectAnimator.ofFloat(v, "rotation", f1, f2).setDuration(200);
+        rotate.start();
+    }
+
     @Override
     public void initlisten() {
         binding.config.setOnClickListener(new View.OnClickListener() {
@@ -99,9 +101,11 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 int visibility = binding.leftll.getVisibility();
                 if (visibility == View.VISIBLE) {
+                    rollingOver(v,0,180);
                     binding.leftll.setVisibility(View.GONE);
                 } else {
                     binding.leftll.setVisibility(View.VISIBLE);
+                    rollingOver(v,180,0);
                 }
             }
         });
@@ -109,7 +113,7 @@ public class MainFragment extends BaseFragment {
 
         Locale locale = LanguagesManager.getAppLanguage(getContext());
 
-        LogUtil.log("============locale=============="+locale.getCountry());
+        LogUtil.log("============locale==============" + locale.getCountry());
         if (LanguagesManager.equalsCountry(locale, Locale.CHINA)) {
             binding.spLanguage.setSelection(0);
         } else if (LanguagesManager.equalsCountry(locale, Locale.ENGLISH)) {
