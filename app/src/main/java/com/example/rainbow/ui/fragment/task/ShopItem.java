@@ -26,6 +26,7 @@ public class ShopItem extends BaseFragment {
     private ShopItemAdapter shopItemAdapter;
     private Shop shop;
     private boolean isRepair;
+    private int type;
 
 
     @Nullable
@@ -50,10 +51,10 @@ public class ShopItem extends BaseFragment {
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        int type = bundle.getInt("type");
+        type = bundle.getInt("type");
         isRepair = bundle.getBoolean("isRepair");
         datas = new ArrayList<>();
-        shopItemAdapter = new ShopItemAdapter(getContext(), datas, R.layout.lv_item_shop, type);
+        shopItemAdapter = new ShopItemAdapter(getContext(), datas, type == 1 ? R.layout.lv_item_shop : R.layout.lv_item_shop1, type);
         binding.lvShopItem.setAdapter(shopItemAdapter);
     }
 
@@ -62,6 +63,7 @@ public class ShopItem extends BaseFragment {
     public void setData(List<ShopDetailResponse.DataBean.MachineProfitLossBean> machineProfitLoss, int id) {
         this.id = id;
         datas.clear();
+        shopItemAdapter.clearView();
         datas.addAll(machineProfitLoss);
         shopItemAdapter.notifyDataSetChanged();
     }
@@ -73,7 +75,7 @@ public class ShopItem extends BaseFragment {
         binding.lvShopItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
-                if (isRepair) {
+                if (isRepair || type == 2) {
                     ShopDetailResponse.DataBean.MachineProfitLossBean machineProfitLossBean = datas.get(position);
                     Bundle bundle = new Bundle();
                     bundle.putString("machineName", machineProfitLossBean.getMachineName());
@@ -92,8 +94,6 @@ public class ShopItem extends BaseFragment {
                     machine.setArguments(bundle);
                     shop.toggle("machine", machine, " > " + machineProfitLossBean.getMachineName());
                 }
-
-
             }
         });
 

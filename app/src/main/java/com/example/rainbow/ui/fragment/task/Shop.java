@@ -25,6 +25,7 @@ import com.example.rainbow.util.LogUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -66,7 +67,19 @@ public class Shop extends BaseFragment {
                     List<ShopDetailResponse.DataBean.MachineProfitLossBean> machineProfitLoss = data.getMachineProfitLoss();
                     for (int i = 0; i < fragments.size(); i++) {
                         ShopItem shopItem = (ShopItem) fragments.get(i);
-                        shopItem.setData(machineProfitLoss, id);
+                        if (i == 1) {
+                            List<ShopDetailResponse.DataBean.MachineProfitLossBean> list=new ArrayList<>();
+                            for (int j=0;j<machineProfitLoss.size();j++){
+                                ShopDetailResponse.DataBean.MachineProfitLossBean bean = machineProfitLoss.get(j);
+                                if(bean.isIsFault()){
+                                    list.add(bean);
+                                }
+                            }
+                            shopItem.setData(list, id);
+                        }else {
+                            shopItem.setData(machineProfitLoss, id);
+                        }
+
                     }
                     binding.setData(data);
                 }

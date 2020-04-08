@@ -91,7 +91,7 @@ public class LineSelect extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
                 GetJobDetailResponse.DataBean.ShopsBean bean = datas.get(position);
-                if (!bean.isIsNotGo()) {
+                if (bean.isIsNotGo()) {
                     toShop(bean);
                 } else {
                     //判断是否按顺序

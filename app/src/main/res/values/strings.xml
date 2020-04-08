@@ -61,9 +61,9 @@
     <string name="bctb">本次投币</string>
     <string name="totalSettle">总结算</string>
 
-    <string name="dqtb">当前投币 : </string>
-    <string name="dqxf">当前洗分 : </string>
-    <string name="dqcb">当前出币 : </string>
+    <string name="dqtb">当次投币 : </string>
+    <string name="dqxf">当次洗分 : </string>
+    <string name="dqcb">当次出币 : </string>
 
 
     <string name="cktp">查看图片</string>
@@ -99,6 +99,15 @@
     <string name="zwf">杂物费 ：</string>
     <string name="zpq">总赔钱 :</string>
     <string name="zkq">总扣钱 :</string>
+    <string name="ryf">燃油费 :</string>
+    <string name="cyf">餐饮费 :</string>
+
+    <string name="dffy">垫付费用 :</string>
+    <string name="dkfy">抵扣费用 :</string>
+    <string name="xfyl">洗分盈利 :</string>
+
+    <string name="dpfy">店铺费用 :</string>
+
     <string name="ssje">实收金额</string>
     <string name="bankNote">纸钞 :</string>
     <string name="tb">铜板 :</string>

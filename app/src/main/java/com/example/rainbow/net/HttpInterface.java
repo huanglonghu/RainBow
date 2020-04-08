@@ -65,7 +65,7 @@ public interface HttpInterface {
     Call<ResponseBody> querryRoutes(@Body HashMap<String, Object> map);
 
     @GET("/api/v1/job/appgetongoingjob")
-    Call<ResponseBody> getJob();
+    Call<ResponseBody> getJob(@Query("missionType") int missionType);
 
     @GET("/api/v1/job/appgetjobdetails")
     Call<ResponseBody> getJobDetail(@Query("id") int id);

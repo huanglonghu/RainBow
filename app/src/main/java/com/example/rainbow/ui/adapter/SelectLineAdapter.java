@@ -36,7 +36,7 @@ public class SelectLineAdapter extends BaseListAdapter {
         binding.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Presenter.getInstance().startNaviGoogle();
+                Presenter.getInstance().startNaviGoogle(23.1066805, 113.3245904);
             }
         });
         return binding.getRoot();

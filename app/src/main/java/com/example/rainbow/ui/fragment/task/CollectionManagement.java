@@ -52,9 +52,10 @@ public class CollectionManagement extends BaseFragment {
     @Override
     public void initData() {
 
-        HttpUtil.getInstance().getJob().subscribe(
-                str -> {
+        int missionType = getArguments().getInt("missionType");
 
+        HttpUtil.getInstance().getJob(missionType).subscribe(
+                str -> {
                     GetJobsResponse gjr = GsonUtil.fromJson(str, GetJobsResponse.class);
                     GetJobsResponse.DataBean data = gjr.getData();
                     datas.addAll(data.getItems());

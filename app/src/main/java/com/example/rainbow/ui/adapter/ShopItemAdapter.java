@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rainbow.bean.ShopDetailResponse;
+import com.example.rainbow.databinding.LvItemShop1Binding;
 import com.example.rainbow.databinding.LvItemShopBinding;
 
 import java.util.List;
@@ -23,10 +24,17 @@ public class ShopItemAdapter extends BaseListAdapter {
 
     @Override
     protected View initView(LayoutInflater layoutInflater, int res, List datas, int position, ViewGroup parent) {
-        LvItemShopBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
+        View view=null;
         ShopDetailResponse.DataBean.MachineProfitLossBean bean = (ShopDetailResponse.DataBean.MachineProfitLossBean) datas.get(position);
-        binding.setData(bean);
-        binding.setType(type);
-        return binding.getRoot();
+        if (type == 1) {
+            LvItemShopBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
+            binding.setData(bean);
+            view=binding.getRoot();
+        } else {
+            LvItemShop1Binding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
+            binding.setData(bean);
+            view=binding.getRoot();
+        }
+        return view;
     }
 }

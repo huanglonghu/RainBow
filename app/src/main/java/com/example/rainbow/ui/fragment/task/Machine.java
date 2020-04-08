@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +76,7 @@ public class Machine extends BaseFragment {
                     List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     historyRecord.setData(machineHistoryProfitLoss);
-                    faultRecord.setData(machineFaults,machineId,task,false);
+                    faultRecord.setData(machineFaults, machineId, task, false);
                 }
         );
 
@@ -136,6 +137,29 @@ public class Machine extends BaseFragment {
                 String tbStr = binding.etTb.getText().toString();
                 String xfStr = binding.etXf.getText().toString();
                 String cbStr = binding.etCb.getText().toString();
+                if (TextUtils.isEmpty(tbStr)) {
+                    Toast.makeText(getContext(), "请输入当次投币", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(xfStr)) {
+                    Toast.makeText(getContext(), "请输入当次洗分", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(cbStr)) {
+                    Toast.makeText(getContext(), "请输入当次出币", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(machineSettleBody.getNumberImage())) {
+                    Toast.makeText(getContext(), "请上传编号图", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(machineSettleBody.getCodeImage())) {
+                    Toast.makeText(getContext(), "请上传码表图", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 int totalTb = Integer.parseInt(tbStr);
                 int totalXf = Integer.parseInt(xfStr);
                 int totalCb = Integer.parseInt(cbStr);
@@ -162,8 +186,6 @@ public class Machine extends BaseFragment {
 
 
     }
-
-
 
 
     public void selectPhoto(View view, int type) {

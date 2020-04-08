@@ -7,9 +7,6 @@
             name="data"
             type="com.example.rainbow.bean.ShopDetailResponse.DataBean.MachineProfitLossBean" />
 
-        <variable
-            name="type"
-            type="int" />
 
         <import type="android.view.View" />
 
@@ -50,7 +47,7 @@
             android:text='@{data.profitLoss&lt;0?(@string/bcyk+data.profitLoss):(@string/bcyk+"+"+data.profitLoss)}'
             android:textColor="@{(data.profitLoss&lt;0)?@color/c3:@color/b2}"
             android:textSize="28pt"
-            android:visibility="@{type==1?View.VISIBLE:View.GONE}" />
+            android:visibility="@{data.isSettled?View.VISIBLE:View.GONE}" />
 
 
         <ImageView

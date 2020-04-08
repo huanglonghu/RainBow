@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
+import com.example.rainbow.bean.LineSettleResponse;
 import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.databinding.FragmentSettleAccountsBinding;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.util.GsonUtil;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +37,9 @@ public class LineSettle extends BaseFragment {
         int id = getArguments().getInt("id");
         HttpUtil.getInstance().getRouteWinlostDetail(id).subscribe(
                 str -> {
-
+                    LineSettleResponse lineSettleResponse = GsonUtil.fromJson(str, LineSettleResponse.class);
+                    LineSettleResponse.DataBean data = lineSettleResponse.getData();
+                    binding.setData(data);
                 }
         );
 

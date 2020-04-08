@@ -5,13 +5,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
-
 import com.example.rainbow.database.DaoMaster;
 import com.example.rainbow.database.DaoSession;
 import com.example.rainbow.language.LanguagesManager;
 import com.example.rainbow.util.LogUtil;
 import com.example.rainbow.util.RudenessScreenHelper;
-
 import java.util.Locale;
 
 public class RainBowApplication extends Application {

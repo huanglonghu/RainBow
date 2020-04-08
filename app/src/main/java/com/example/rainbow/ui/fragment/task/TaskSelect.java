@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -11,6 +12,7 @@ import com.example.rainbow.database.entity.UserBean;
 import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentTaskSelectBinding;
 import com.example.rainbow.ui.main.Task;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -53,6 +55,9 @@ public class TaskSelect extends BaseFragment {
             @Override
             public void onClick(View view) {
                 CollectionManagement collectionManagement = new CollectionManagement();
+                Bundle bundle = new Bundle();
+                bundle.putInt("missionType", 1);
+                collectionManagement.setArguments(bundle);
                 String title = getString(R.string.skgl);
                 task.step2Task("skgl", collectionManagement, " > " + title);
             }
@@ -75,7 +80,9 @@ public class TaskSelect extends BaseFragment {
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("isRepair", true);
                 CollectionManagement collectionManagement = new CollectionManagement();
-                String title = getString(R.string.skgl);
+                bundle.putInt("missionType", 1);
+                collectionManagement.setArguments(bundle);
+                String title = getString(R.string.wxgl);
                 collectionManagement.setArguments(bundle);
                 task.step2Task("skgl", collectionManagement, " > " + title);
             }

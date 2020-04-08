@@ -220,8 +220,8 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
-    public Observable<String> getJob() {
-        Call<ResponseBody> call = httpInterface.getJob();
+    public Observable<String> getJob(int missionType) {
+        Call<ResponseBody> call = httpInterface.getJob(missionType);
         return enqueueCall(call);
     }
 
