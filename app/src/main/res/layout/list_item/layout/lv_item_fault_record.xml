@@ -32,6 +32,8 @@
             android:layout_weight="1"
             android:textColor="@color/t1"
             android:text="@{bean.faultDescribe}"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textSize="26pt" />
 
         <TextView

@@ -2,13 +2,11 @@ package com.example.rainbow.bean;
 
 import java.util.List;
 
-public class ShopDetailResponse {
-
-
+public class ShopFaultResponse {
     /**
      * code : 0
      * msg : success
-     * data : {"shopName":"D店铺","contact":"小d","telephone":"123","image":"string","address":"广州天河","coordinate":null,"isSignIn":true,"isSettled":false,"splitRatio":0.4,"remarks":null,"machineProfitLoss":[{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":true,"id":8}],"machineFault":[{"machineName":"机器8","sort":1,"isFault":true,"id":8}],"id":4}
+     * data : {"shopName":"棠下店","contact":"李老板","telephone":"18502085956","image":"images\\bda44826719d4ac69dc9bf8564d61545.jpg","address":"天河区棠下小区三愧里大街5巷1栋","coordinate":"23.136651,113.382284","isSignIn":false,"isSettled":false,"splitRatio":0.3,"remarks":null,"machineFault":[{"machineName":"水果乐园","sort":2,"isFault":true,"id":18},{"machineName":"消消乐","sort":3,"isFault":true,"id":19},{"machineName":"赛车","sort":1,"isFault":false,"id":17}],"id":8}
      */
 
     private int code;
@@ -41,19 +39,18 @@ public class ShopDetailResponse {
 
     public static class DataBean {
         /**
-         * shopName : D店铺
-         * contact : 小d
-         * telephone : 123
-         * image : string
-         * address : 广州天河
-         * coordinate : null
-         * isSignIn : true
+         * shopName : 棠下店
+         * contact : 李老板
+         * telephone : 18502085956
+         * image : images\bda44826719d4ac69dc9bf8564d61545.jpg
+         * address : 天河区棠下小区三愧里大街5巷1栋
+         * coordinate : 23.136651,113.382284
+         * isSignIn : false
          * isSettled : false
-         * splitRatio : 0.4
+         * splitRatio : 0.3
          * remarks : null
-         * machineProfitLoss : [{"isSettled":true,"profitLoss":0,"machineName":"机器8","sort":1,"isFault":true,"id":8}]
-         * machineFault : [{"machineName":"机器8","sort":1,"isFault":true,"id":8}]
-         * id : 4
+         * machineFault : [{"machineName":"水果乐园","sort":2,"isFault":true,"id":18},{"machineName":"消消乐","sort":3,"isFault":true,"id":19},{"machineName":"赛车","sort":1,"isFault":false,"id":17}]
+         * id : 8
          */
 
         private String shopName;
@@ -61,13 +58,12 @@ public class ShopDetailResponse {
         private String telephone;
         private String image;
         private String address;
-        private Object coordinate;
+        private String coordinate;
         private boolean isSignIn;
         private boolean isSettled;
         private double splitRatio;
         private Object remarks;
         private int id;
-        private List<MachineProfitLossBean> machineProfitLoss;
         private List<MachineFaultBean> machineFault;
 
         public String getShopName() {
@@ -110,11 +106,11 @@ public class ShopDetailResponse {
             this.address = address;
         }
 
-        public Object getCoordinate() {
+        public String getCoordinate() {
             return coordinate;
         }
 
-        public void setCoordinate(Object coordinate) {
+        public void setCoordinate(String coordinate) {
             this.coordinate = coordinate;
         }
 
@@ -158,14 +154,6 @@ public class ShopDetailResponse {
             this.id = id;
         }
 
-        public List<MachineProfitLossBean> getMachineProfitLoss() {
-            return machineProfitLoss;
-        }
-
-        public void setMachineProfitLoss(List<MachineProfitLossBean> machineProfitLoss) {
-            this.machineProfitLoss = machineProfitLoss;
-        }
-
         public List<MachineFaultBean> getMachineFault() {
             return machineFault;
         }
@@ -174,78 +162,12 @@ public class ShopDetailResponse {
             this.machineFault = machineFault;
         }
 
-        public static class MachineProfitLossBean {
-            /**
-             * isSettled : true
-             * profitLoss : 0.0
-             * machineName : 机器8
-             * sort : 1
-             * isFault : true
-             * id : 8
-             */
-
-            private boolean isSettled;
-            private double profitLoss;
-            private String machineName;
-            private int sort;
-            private boolean isFault;
-            private int id;
-
-            public boolean isIsSettled() {
-                return isSettled;
-            }
-
-            public void setIsSettled(boolean isSettled) {
-                this.isSettled = isSettled;
-            }
-
-            public double getProfitLoss() {
-                return profitLoss;
-            }
-
-            public void setProfitLoss(double profitLoss) {
-                this.profitLoss = profitLoss;
-            }
-
-            public String getMachineName() {
-                return machineName;
-            }
-
-            public void setMachineName(String machineName) {
-                this.machineName = machineName;
-            }
-
-            public int getSort() {
-                return sort;
-            }
-
-            public void setSort(int sort) {
-                this.sort = sort;
-            }
-
-            public boolean isIsFault() {
-                return isFault;
-            }
-
-            public void setIsFault(boolean isFault) {
-                this.isFault = isFault;
-            }
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-        }
-
         public static class MachineFaultBean {
             /**
-             * machineName : 机器8
-             * sort : 1
+             * machineName : 水果乐园
+             * sort : 2
              * isFault : true
-             * id : 8
+             * id : 18
              */
 
             private String machineName;

@@ -259,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginRight="256pt"
+                    android:layout_marginRight="60pt"
                     android:divider="@drawable/ll_divider5"
                     android:showDividers="beginning|end|middle">
 

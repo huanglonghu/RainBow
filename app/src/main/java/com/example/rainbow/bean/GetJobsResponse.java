@@ -1,5 +1,9 @@
 package com.example.rainbow.bean;
 
+import android.text.TextUtils;
+
+import com.example.rainbow.util.TimeUtil;
+
 import java.util.List;
 
 public class GetJobsResponse {
@@ -8,7 +12,7 @@ public class GetJobsResponse {
     /**
      * code : 0
      * msg : success
-     * data : {"items":[{"routeName":"华师到番禺1","id":1},{"routeName":"华师到番禺2","id":2}]}
+     * data : {"items":[{"routeName":"华师到番禺1","startTime":"2020-04-07T00:00:00","id":34},{"routeName":"华师到番禺2","startTime":"2020-04-07T00:00:00","id":35}]}
      */
 
     private int code;
@@ -53,10 +57,12 @@ public class GetJobsResponse {
         public static class ItemsBean {
             /**
              * routeName : 华师到番禺1
-             * id : 1
+             * startTime : 2020-04-07T00:00:00
+             * id : 34
              */
 
             private String routeName;
+            private String startTime;
             private int id;
 
             public String getRouteName() {
@@ -65,6 +71,17 @@ public class GetJobsResponse {
 
             public void setRouteName(String routeName) {
                 this.routeName = routeName;
+            }
+
+            public String getStartTime() {
+                if(!TextUtils.isEmpty(startTime)){
+                    startTime= TimeUtil.getStringToDate(startTime);
+                }
+                return startTime;
+            }
+
+            public void setStartTime(String startTime) {
+                this.startTime = startTime;
             }
 
             public int getId() {

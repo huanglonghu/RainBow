@@ -76,9 +76,14 @@ public class WinLostRecord extends BaseFragment {
     }
 
     private void getXfRecord() {
-        HttpUtil.getInstance().querryXFRecord(page).subscribe(
+        UserBean userBean = UserOption.getInstance().querryUser();
+        int shopId = userBean.getShopId();
+        HttpUtil.getInstance().querryXFRecord(shopId, page).subscribe(
                 str -> {
-
+                    if (page == 1 && datas.size() > 0) {
+                        datas.clear();
+                        winLostListAdapter.clearView();
+                    }
                     XFRecord xfRecord = GsonUtil.fromJson(str, XFRecord.class);
                     XFRecord.DataBean data = xfRecord.getData();
                     List<XFRecord.DataBean.ItemsBean> items = data.getItems();
@@ -141,6 +146,8 @@ public class WinLostRecord extends BaseFragment {
                 String toastStr2 = getString(R.string.toastStr5);
                 HttpUtil.getInstance().enterXf(enterBody).subscribe(
                         str -> {
+                            page = 1;
+                            getXfRecord();
                             Toast.makeText(getContext(), toastStr2, Toast.LENGTH_SHORT).show();
                         }
                 );

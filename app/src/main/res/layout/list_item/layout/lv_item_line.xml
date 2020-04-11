@@ -23,9 +23,9 @@
 
 
         <ImageView
+            android:id="@+id/iv"
             android:layout_width="140pt"
-            android:layout_height="140pt"
-            android:background="@mipmap/ic_launcher" />
+            android:layout_height="140pt" />
 
 
         <LinearLayout

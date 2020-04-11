@@ -98,13 +98,14 @@ public class ClockIn extends BaseFragment {
         binding.lvClockIn.setAdapter(clockInListAdapter);
 
         String[] years = new String[10];
+        String year= getString(R.string.year);
         for (int i = 0; i < 10; i++) {
-            years[i] = (currentYear - i) + "年";
+            years[i] = (currentYear - i) + year;
         }
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), R.layout.spinner_item1, years);
         adapter2.setDropDownViewResource(R.layout.spinner_item1);
         binding.spYear.setAdapter(adapter2);
-        String[] months = new String[]{"1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"};
+        String[] months = getResources().getStringArray(R.array.moth);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), R.layout.spinner_item1, months);
         adapter1.setDropDownViewResource(R.layout.spinner_item1);
         binding.spMonth.setAdapter(adapter1);

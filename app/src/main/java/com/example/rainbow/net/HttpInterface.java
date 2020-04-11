@@ -8,6 +8,7 @@ import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
 import com.example.rainbow.bean.ShopSettleBody;
 import com.example.rainbow.bean.SignBody;
+import com.example.rainbow.bean.WxRouteSettleBody;
 
 import java.util.HashMap;
 
@@ -124,4 +125,10 @@ public interface HttpInterface {
 
     @GET("/api/v1/machinesguide/get")
     Call<ResponseBody> getWxznDetailById(@Query("id") int id);
+
+
+    @POST("/api/v1/jobrouteprofitloss/repaircreate")
+    Call<ResponseBody> wxRouteSettle(@Body WxRouteSettleBody wxRouteSettleBody);
+
+
 }

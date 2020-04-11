@@ -15,6 +15,7 @@ import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
 import com.example.rainbow.bean.ShopSettleBody;
 import com.example.rainbow.bean.SignBody;
+import com.example.rainbow.bean.WxRouteSettleBody;
 import com.example.rainbow.constant.HttpParam;
 import com.example.rainbow.database.entity.UserBean;
 import com.example.rainbow.database.option.UserOption;
@@ -186,10 +187,11 @@ public class HttpUtil {
     }
 
 
-    public Observable<String> querryXFRecord(int page) {
+    public Observable<String> querryXFRecord(int shopId, int page) {
         HashMap<String, Integer> map = new HashMap<>();
         map.put("limit", 10);
         map.put("page", page);
+        map.put("shopId", shopId);
         Call<ResponseBody> call = httpInterface.querryXFRecord(map);
         return enqueueCall(call);
     }
@@ -350,6 +352,12 @@ public class HttpUtil {
     public Observable<String> getWxznDetailById(int id) {
 
         Call<ResponseBody> call = httpInterface.getWxznDetailById(id);
+        return enqueueCall(call);
+    }
+
+
+    public Observable<String> wxRouteSettle(WxRouteSettleBody wxRouteSettleBody) {
+        Call<ResponseBody> call = httpInterface.wxRouteSettle(wxRouteSettleBody);
         return enqueueCall(call);
     }
 

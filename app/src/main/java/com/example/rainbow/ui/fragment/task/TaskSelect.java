@@ -80,7 +80,7 @@ public class TaskSelect extends BaseFragment {
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("isRepair", true);
                 CollectionManagement collectionManagement = new CollectionManagement();
-                bundle.putInt("missionType", 1);
+                bundle.putInt("missionType", 2);
                 collectionManagement.setArguments(bundle);
                 String title = getString(R.string.wxgl);
                 collectionManagement.setArguments(bundle);

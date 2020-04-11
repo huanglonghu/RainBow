@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="com.example.rainbow.bean.ShopDetailResponse.DataBean.MachineProfitLossBean" />
+            type="com.example.rainbow.bean.ShopProfitLossResponse.DataBean.MachineProfitLossBean" />
 
 
         <import type="android.view.View" />

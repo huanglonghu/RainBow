@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.example.rainbow.R;
 import com.example.rainbow.catche.Loader.RxImageLoader;
+import com.example.rainbow.ui.widget.BigImg;
 import com.example.rainbow.util.ImagUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +32,6 @@ public class PhotoGraphWindowAdpter extends RecyclerView.Adapter<PhotoGraphWindo
         return vrItemViewHolder;
     }
 
-    private int mSelectedPos;
 
     @Override
     public void onBindViewHolder(VrItemViewHolder viewHolder, int i) {
@@ -42,6 +43,7 @@ public class PhotoGraphWindowAdpter extends RecyclerView.Adapter<PhotoGraphWindo
                     imageBean -> {
                         viewHolder.loading.setVisibility(View.GONE);
                         Bitmap bitmap = imageBean.getBitmap();
+                        viewHolder.setBitmap(bitmap);
                         viewHolder.img.setImageDrawable(new BitmapDrawable(bitmap));
                     }
             );
@@ -68,6 +70,14 @@ public class PhotoGraphWindowAdpter extends RecyclerView.Adapter<PhotoGraphWindo
             super(itemView);
             this.img = itemView.findViewById(R.id.ivvr);
             this.loading = itemView.findViewById(R.id.img_loading);
+
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BigImg bigImg = new BigImg(context, bitmap);
+                    bigImg.showAsDropDown(v,0,0, Gravity.CENTER);
+                }
+            });
         }
 
         public Bitmap getBitmap() {

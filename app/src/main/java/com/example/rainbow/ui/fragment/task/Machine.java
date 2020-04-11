@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -45,6 +44,7 @@ public class Machine extends BaseFragment {
     private HistoryRecord historyRecord;
     private FaultRecord faultRecord;
     private MachineSettleBody machineSettleBody;
+    private boolean isShopSign;
 
     @Nullable
     @Override
@@ -67,16 +67,29 @@ public class Machine extends BaseFragment {
                 str -> {
                     MachineDetailResponse machineDetailResponse = GsonUtil.fromJson(str, MachineDetailResponse.class);
                     data = machineDetailResponse.getData();
-                    if (data.isIsSettled()) {
-                        binding.setData(data);
+                    List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
+                    List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
+                    MachineDetailResponse.DataBean.MachineHistoryProfitLossBean bean = machineHistoryProfitLoss.get(0);
+                    binding.setData(data);
+
+                    if(data.isIsSettled()){
+                        if (machineHistoryProfitLoss.size() > 1) {
+                            MachineDetailResponse.DataBean.MachineHistoryProfitLossBean bean2 = machineHistoryProfitLoss.get(1);
+                            binding.sctb.setText(bean2.getTotalBet() + "");
+                            binding.scxf.setText(bean2.getTotalWashScore() + "");
+                            binding.sccb.setText(bean2.getTotalOut() + "");
+                        }
                         binding.etCb.setText(data.getTotalOut() + "");
                         binding.etTb.setText(data.getTotalBet() + "");
                         binding.etXf.setText(data.getTotalWashScore() + "");
+                    }else {
+                        MachineDetailResponse.DataBean.MachineHistoryProfitLossBean bean2 = machineHistoryProfitLoss.get(0);
+                        binding.sctb.setText(bean2.getTotalBet() + "");
+                        binding.scxf.setText(bean2.getTotalWashScore() + "");
+                        binding.sccb.setText(bean2.getTotalOut() + "");
                     }
-                    List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
-                    List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     historyRecord.setData(machineHistoryProfitLoss);
-                    faultRecord.setData(machineFaults, machineId, task, false);
+                    faultRecord.setData(machineFaults, id, task, false,isShopSign);
                 }
         );
 
@@ -87,6 +100,7 @@ public class Machine extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         machineId = bundle.getInt("machineId");
+        isShopSign = bundle.getBoolean("isShopSign");
         String[] titles = getResources().getStringArray(R.array.machinItemTitle);
         historyRecord = new HistoryRecord();
         faultRecord = new FaultRecord();
@@ -119,12 +133,18 @@ public class Machine extends BaseFragment {
         binding.uploadFault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UploadFault uploadFault = new UploadFault();
-                Bundle bundle = new Bundle();
-                bundle.putInt("machineId", machineId);
-                uploadFault.setArguments(bundle);
-                String title = getString(R.string.uploadFault);
-                task.step2Task("uploadFault", uploadFault, " > " + title);
+                if (isShopSign) {
+                    UploadFault uploadFault = new UploadFault();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("machineId", machineId);
+                    uploadFault.setArguments(bundle);
+                    String title = getString(R.string.uploadFault);
+                    task.step2Task("uploadFault", uploadFault, " > " + title);
+                } else {
+                    String toastStr = getString(R.string.toastStr25);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         machineSettleBody = new MachineSettleBody();
@@ -138,25 +158,30 @@ public class Machine extends BaseFragment {
                 String xfStr = binding.etXf.getText().toString();
                 String cbStr = binding.etCb.getText().toString();
                 if (TextUtils.isEmpty(tbStr)) {
-                    Toast.makeText(getContext(), "请输入当次投币", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr32);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(xfStr)) {
-                    Toast.makeText(getContext(), "请输入当次洗分", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr33);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(cbStr)) {
-                    Toast.makeText(getContext(), "请输入当次出币", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr34);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(machineSettleBody.getNumberImage())) {
-                    Toast.makeText(getContext(), "请上传编号图", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr35);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(machineSettleBody.getCodeImage())) {
-                    Toast.makeText(getContext(), "请上传码表图", Toast.LENGTH_SHORT).show();
+                    String toastStr = getString(R.string.toastStr36);
+                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

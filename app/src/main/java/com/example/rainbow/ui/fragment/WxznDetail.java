@@ -61,17 +61,13 @@ public class WxznDetail extends BaseFragment {
         head.append("<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />");
         Elements elements = doc.getElementsByTag("img");
         for (Element element : elements) {
-            LogUtil.log("11=================element==============" + element.toString());
             element.attr("width", "100%")
                     .attr("height", "auto")
                     .attr("img_width", "100%");
 
             element.attr("style", null);
-            //element.attr("style","width:100%;"+"height:auto;");
-            LogUtil.log("22=================element==============" + element.toString());
         }
         String html = doc.toString();
-        LogUtil.log("==========AAAAAAAAAAAA==========" + html);
         return html;
     }
 

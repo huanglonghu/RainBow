@@ -15,9 +15,13 @@ public class UserBean {
     private int shopId;
     private String shopName;
     private String token;
-    @Generated(hash = 594836297)
+    private boolean isRemember;
+    private String userName;
+    private String pwd;
+    @Generated(hash = 1087483118)
     public UserBean(String nickName, long id, int userType, String mobile,
-            int shopId, String shopName, String token) {
+            int shopId, String shopName, String token, boolean isRemember,
+            String userName, String pwd) {
         this.nickName = nickName;
         this.id = id;
         this.userType = userType;
@@ -25,6 +29,9 @@ public class UserBean {
         this.shopId = shopId;
         this.shopName = shopName;
         this.token = token;
+        this.isRemember = isRemember;
+        this.userName = userName;
+        this.pwd = pwd;
     }
     @Generated(hash = 1203313951)
     public UserBean() {
@@ -71,6 +78,23 @@ public class UserBean {
     public void setToken(String token) {
         this.token = token;
     }
-
-
+    public boolean getIsRemember() {
+        return this.isRemember;
+    }
+    public void setIsRemember(boolean isRemember) {
+        this.isRemember = isRemember;
+    }
+    public String getUserName() {
+        return this.userName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public String getPwd() {
+        return this.pwd;
+    }
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+    
 }

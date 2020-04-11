@@ -6,8 +6,9 @@ import com.example.rainbow.bean.ImageBean;
 import com.example.rainbow.catche.catcheObservable.DiskCacheObservable;
 import com.example.rainbow.catche.catcheObservable.MemoryCacheObservable;
 import com.example.rainbow.catche.catcheObservable.NetworkCacheObservable;
+
+import androidx.annotation.NonNull;
 import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
 

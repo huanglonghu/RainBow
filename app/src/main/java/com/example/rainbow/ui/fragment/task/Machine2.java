@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -13,8 +14,10 @@ import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.MyPageAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -27,6 +30,8 @@ public class Machine2 extends BaseFragment {
     private MachineDetailResponse.DataBean data;
     private Task task;
     private FaultRecord faultRecord;
+    private boolean isRepair;
+    private boolean isShopSign;
 
 
     @Nullable
@@ -52,7 +57,7 @@ public class Machine2 extends BaseFragment {
                     binding.setData(data);
                     List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
-                    faultRecord.setData(machineFaults,machineId,task,true);
+                    faultRecord.setData(machineFaults, id, task, isRepair,isShopSign);
                 }
         );
 
@@ -63,6 +68,8 @@ public class Machine2 extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         machineId = bundle.getInt("machineId");
+        isRepair = bundle.getBoolean("isRepair");
+        isShopSign = bundle.getBoolean("isShopSign");
         String title = getString(R.string.wtjl);
         String[] titles = {title};
         faultRecord = new FaultRecord();
@@ -87,8 +94,6 @@ public class Machine2 extends BaseFragment {
             }
         });
     }
-
-
 
 
 }

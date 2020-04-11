@@ -65,6 +65,10 @@
     <string name="dqxf">当次洗分 : </string>
     <string name="dqcb">当次出币 : </string>
 
+    <string name="sctb">上次投币 :</string>
+    <string name="scxf">上次洗分 :</string>
+    <string name="sccb">上次出币 :</string>
+
 
     <string name="cktp">查看图片</string>
     <string name="tpsc">图片上传</string>
@@ -96,18 +100,17 @@
      <string name="zyk">总盈亏</string>
     <string name="gzbx">工作报销</string>
     <string name="zsf">住宿费 :</string>
-    <string name="zwf">杂物费 ：</string>
+    <string name="zwf">杂物费 :</string>
     <string name="zpq">总赔钱 :</string>
     <string name="zkq">总扣钱 :</string>
     <string name="ryf">燃油费 :</string>
     <string name="cyf">餐饮费 :</string>
-
     <string name="dffy">垫付费用 :</string>
     <string name="dkfy">抵扣费用 :</string>
     <string name="xfyl">洗分盈利 :</string>
-
     <string name="dpfy">店铺费用 :</string>
-
+    <string name="dkje">抵扣金额</string>
+    <string name="sfje">实付金额</string>
     <string name="ssje">实收金额</string>
     <string name="bankNote">纸钞 :</string>
     <string name="tb">铜板 :</string>
@@ -121,7 +124,6 @@
     <string name="hint3">请输入本店总洗分</string>
     <string name="hint4">请输入机器名称</string>
     <string name="hint5">请输入机器型号</string>
-
     <string name="qztj">签字提交</string>
     <string name="pzsc">拍照上传</string>
     <string name="lrrq">录入日期</string>
@@ -145,6 +147,8 @@
         <item>待处理问题</item>
 
     </string-array>
+
+    <string name="dclwt">待处理问题</string>
 
 
     <string-array name="machinItemTitle">
@@ -179,7 +183,20 @@
     <string name="toastStr21">二维码已经保存到手机相册中</string>
     <string name="toastStr22">最多上传四张图片</string>
     <string name="toastStr23">请按顺序结算</string>
-
+    <string name="toastStr24">请输入洗分</string>
+    <string name="toastStr25">请先去店铺签到</string>
+    <string name="toastStr26">请输入住宿费</string>
+    <string name="toastStr27">请输入杂物费</string>
+    <string name="toastStr28">请输入燃油费</string>
+    <string name="toastStr29">请输入餐饮费</string>
+    <string name="toastStr30">请输入纸钞数目</string>
+    <string name="toastStr31">请输入铜板数目</string>
+    <string name="toastStr32">请输入当次投币</string>
+    <string name="toastStr33">请输入当次洗分</string>
+    <string name="toastStr34">请输入当次出币</string>
+    <string name="toastStr35">请上传编号图</string>
+    <string name="toastStr36">请上传码表图</string>
+    <string name="toastSrt37">任务结算成功</string>
 
     <string name="wxzn">维修指南</string>
 
@@ -187,5 +204,32 @@
 
     <string name="wtjl">问题记录</string>
     <string name="scgzcl">上传故障处理结果</string>
+
+
+    <string-array name="faultStateArray">
+
+        <item>待处理</item>
+        <item>已解决</item>
+        <item>未能解决</item>
+    </string-array>
+
+    <string name="year">年</string>
+
+    <string-array name="moth">
+
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+
+    </string-array>
 
 </resources>

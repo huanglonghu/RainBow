@@ -11,11 +11,8 @@
 
         <variable
             name="data"
-            type="com.example.rainbow.bean.ShopProfitLossResponse.DataBean" />
+            type="com.example.rainbow.bean.ShopFaultResponse.DataBean" />
 
-        <variable
-            name="isRepair"
-            type="boolean" />
 
         <import type="android.view.View" />
 
@@ -121,34 +118,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/takePhoto"
-                    android:layout_width="138pt"
-                    android:layout_height="112pt"
-                    android:layout_marginLeft="20pt"
-                    android:background="@drawable/shape_a1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <ImageView
-                        android:layout_width="52pt"
-                        android:layout_height="39pt"
-                        android:src="@drawable/takephoto" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:text="@string/jqpz"
-                        android:textColor="@color/t4"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/toSign"
                     android:layout_width="138pt"
                     android:layout_height="112pt"
@@ -156,7 +125,6 @@
                     android:background="@{data.isSignIn?@drawable/shape_b2:@drawable/shape_a1}"
                     android:gravity="center"
                     android:orientation="vertical">
-
 
                     <ImageView
                         android:layout_width="62pt"
@@ -176,34 +144,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/shopSettle"
-                    android:layout_width="138pt"
-                    android:layout_height="112pt"
-                    android:layout_marginLeft="20pt"
-                    android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
-                    android:clickable="@{data.isSettled?false:true}"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="@{isRepair?View.GONE:View.VISIBLE}">
-
-                    <ImageView
-                        android:layout_width="62pt"
-                        android:layout_height="44pt"
-                        android:src="@{data.isSettled?@drawable/settled:@drawable/settle}" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:text="@{data.isSettled?@string/settled:@string/settle}"
-                        android:textColor="@{data.isSettled?@color/c2:@color/t4}"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
-
 
             </LinearLayout>
 
@@ -216,24 +156,14 @@
             android:layout_height="12pt"
             android:background="@color/d1" />
 
-        <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/tab"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="100pt"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="60pt"
-            android:layout_marginRight="30pt"
-            app:stl_defaultTabTextColor="@color/t9"
-            app:stl_defaultTabTextHorizontalPadding="15pt"
-            app:stl_defaultTabTextSize="31pt"
-            app:stl_dividerColor="@android:color/transparent"
-            app:stl_indicatorColor="@color/c2"
-            app:stl_indicatorCornerRadius="3pt"
-            app:stl_indicatorGravity="bottom"
-            app:stl_indicatorInterpolation="linear"
-            app:stl_indicatorThickness="5pt"
-            app:stl_indicatorWithoutPadding="true"
-            app:stl_underlineThickness="0dp" />
+            android:textColor="@color/t9"
+            android:gravity="center_vertical"
+            android:textSize="31pt"
+            android:paddingLeft="60pt"
+            android:text="@string/dclwt" />
 
         <View
             android:layout_width="match_parent"
@@ -241,8 +171,8 @@
             android:background="@color/d1" />
 
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp"
+        <ListView
+            android:id="@+id/lv_shop2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="60pt"

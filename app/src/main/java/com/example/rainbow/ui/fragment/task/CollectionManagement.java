@@ -5,25 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
-import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.GetJobsResponse;
 import com.example.rainbow.databinding.FragmentSkglBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.CollectionManagementAdapter;
-import com.example.rainbow.ui.fragment.MainFragment;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -34,7 +25,6 @@ public class CollectionManagement extends BaseFragment {
     private CollectionManagementAdapter adapter;
     private List<GetJobsResponse.DataBean.ItemsBean> datas;
     private Task task;
-
 
     @Nullable
     @Override
@@ -67,9 +57,6 @@ public class CollectionManagement extends BaseFragment {
 
     @Override
     public void initView() {
-
-
-
         datas = new ArrayList<>();
         adapter = new CollectionManagementAdapter(getContext(), datas, R.layout.lv_item_skgl);
         binding.lvCollectionManagement.setAdapter(adapter);
@@ -81,8 +68,6 @@ public class CollectionManagement extends BaseFragment {
         binding.lvCollectionManagement.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                 GetJobsResponse.DataBean.ItemsBean bean = datas.get(position);
                 LineSelect lineSelect = new LineSelect();
                 Bundle bundle = getArguments();
@@ -95,6 +80,9 @@ public class CollectionManagement extends BaseFragment {
                 task.step2Task("lineSelect", lineSelect, " > " + bean.getRouteName());
             }
         });
+
+
+
 
     }
 }

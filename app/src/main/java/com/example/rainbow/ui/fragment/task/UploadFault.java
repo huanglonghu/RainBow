@@ -214,13 +214,14 @@ public class UploadFault extends BaseFragment {
             }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
 
         }
+
         Observable.mergeArray(observables).doOnSubscribe(new Consumer<Disposable>() {
             @Override
             public void accept(Disposable disposable) throws Exception {
                 netLoading = new NetLoading(getContext());
                 netLoading.show();
             }
-        }).observeOn(Schedulers.io()).flatMap(new Function<String, ObservableSource<String>>() {
+        }).subscribeOn(Schedulers.io()).flatMap(new Function<String, ObservableSource<String>>() {
             @Override
             public ObservableSource<String> apply(String s) throws Exception {
                 pathList.add(s);

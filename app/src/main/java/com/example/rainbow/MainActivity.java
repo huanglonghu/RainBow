@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         new Presenter.Builder().context(this).fragmentManager(fm).build();
         HttpUtil.getInstance().init(this);
-        LogUtil.log("==========tokendd==========="+HttpParam.token);
         if(TextUtils.isEmpty(HttpParam.token)){
             Login login = new Login();
             fm.beginTransaction().replace(R.id.activity_container, login).commit();

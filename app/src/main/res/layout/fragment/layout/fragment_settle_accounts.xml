@@ -8,13 +8,19 @@
             name="data"
             type="com.example.rainbow.bean.LineSettleResponse.DataBean" />
 
+        <variable
+            name="bean"
+            type="com.example.rainbow.bean.RouteSettleBody" />
+
+
     </data>
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:background="#fff">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +43,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="180pt"
+                        android:layout_height="140pt"
                         android:orientation="horizontal">
 
 
@@ -80,7 +86,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="274pt"
+                        android:layout_height="240pt"
                         android:layout_marginTop="20pt"
                         android:orientation="horizontal">
 
@@ -137,8 +143,8 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@{String.valueOf(data.loanMoney)}"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:text="@{String.valueOf(data.loanMoney)}" />
 
 
                             </LinearLayout>
@@ -160,8 +166,8 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@{String.valueOf(data.deductionMoney)}"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:text="@{String.valueOf(data.deductionMoney)}" />
 
 
                             </LinearLayout>
@@ -183,8 +189,8 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@{String.valueOf(data.washScoreMoney)}"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:text="@{String.valueOf(data.washScoreMoney)}" />
 
                             </LinearLayout>
 
@@ -195,7 +201,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="366pt"
+                        android:layout_height="320pt"
                         android:layout_marginTop="20pt"
                         android:orientation="horizontal">
 
@@ -250,9 +256,11 @@
                                     android:textSize="29pt" />
 
                                 <EditText
+                                    android:id="@+id/zsf"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:inputType="numberDecimal" />
 
 
                             </LinearLayout>
@@ -272,9 +280,11 @@
                                     android:textSize="29pt" />
 
                                 <EditText
+                                    android:id="@+id/zwf"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:inputType="numberDecimal" />
 
 
                             </LinearLayout>
@@ -294,9 +304,11 @@
                                     android:textSize="29pt" />
 
                                 <EditText
+                                    android:id="@+id/ryf"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:inputType="numberDecimal" />
 
 
                             </LinearLayout>
@@ -316,9 +328,11 @@
                                     android:textSize="29pt" />
 
                                 <EditText
+                                    android:id="@+id/cyf"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:background="@null" />
+                                    android:background="@null"
+                                    android:inputType="numberDecimal" />
 
 
                             </LinearLayout>
@@ -331,7 +345,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="186pt"
+                        android:layout_height="140pt"
                         android:layout_marginTop="20pt"
                         android:orientation="horizontal">
 
@@ -410,10 +424,12 @@
                                 android:textSize="27pt" />
 
                             <EditText
+                                android:id="@+id/note"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:background="@null"
+                                android:inputType="number"
                                 android:paddingLeft="10pt"
                                 android:textColor="@color/t6"
                                 android:textSize="27pt" />
@@ -429,10 +445,12 @@
                                 android:textSize="27pt" />
 
                             <EditText
+                                android:id="@+id/coin"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:background="@null"
+                                android:inputType="number"
                                 android:paddingLeft="10pt"
                                 android:textColor="@color/t6"
                                 android:textSize="27pt" />
@@ -462,6 +480,7 @@
                                 android:textSize="27pt" />
 
                             <EditText
+                                android:id="@+id/remark"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -483,6 +502,8 @@
                         android:layout_height="500pt"
                         android:layout_marginTop="20pt"
                         android:background="@drawable/shape_a3"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:padding="1pt" />
 
                     <TextView

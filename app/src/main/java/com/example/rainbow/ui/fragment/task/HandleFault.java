@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import com.example.rainbow.net.HttpInterface;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.widget.NetLoading;
+import com.example.rainbow.ui.widget.PhotoGraphWindow;
 import com.example.rainbow.util.GsonUtil;
 
 import java.io.File;
@@ -68,6 +70,8 @@ public class HandleFault extends BaseFragment {
     private NetLoading netLoading;
     private int id;
     private int jobId;
+    private String faultImage;
+    private boolean isShopSign;
 
     @Nullable
     @Override
@@ -85,6 +89,18 @@ public class HandleFault extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         jobId = bundle.getInt("jobId");
+        isShopSign = bundle.getBoolean("isShopSign");
+        HttpUtil.getInstance().getMachineFaultDeail(id).subscribe(
+                str -> {
+                    MachineFaultDetailResponse machineFaultDetailResponse = GsonUtil.fromJson(str, MachineFaultDetailResponse.class);
+                    MachineFaultDetailResponse.DataBean data = machineFaultDetailResponse.getData();
+                    binding.setData(data);
+                    faultImage = data.getFaultImage();
+                    if (TextUtils.isEmpty(faultImage)) {
+                        binding.lookPhoto1.setVisibility(View.GONE);
+                    }
+                }
+        );
     }
 
     @Override
@@ -99,18 +115,23 @@ public class HandleFault extends BaseFragment {
         binding.commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (parts.isEmpty()) {
-                    String toastStr = getString(R.string.toastStr4);
+                if (isShopSign) {
+                    if (parts.isEmpty()) {
+                        String toastStr = getString(R.string.toastStr4);
+                        Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    String faultDescribe = binding.faultDescribe.getText().toString();
+                    if (TextUtils.isEmpty(faultDescribe)) {
+                        String toastStr = getString(R.string.toastStr3);
+                        Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    upload(faultDescribe);
+                } else {
+                    String toastStr = getString(R.string.toastStr25);
                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                    return;
                 }
-                String faultDescribe = binding.faultDescribe.getText().toString();
-                if (TextUtils.isEmpty(faultDescribe)) {
-                    String toastStr = getString(R.string.toastStr3);
-                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                upload(faultDescribe);
             }
         });
 
@@ -123,6 +144,23 @@ public class HandleFault extends BaseFragment {
                     return;
                 }
                 goCamera();
+            }
+        });
+
+
+        binding.lookPhoto1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(faultImage)) {
+                    String[] pathArray = null;
+                    if (faultImage.contains(",")) {
+                        pathArray = faultImage.split(",");
+                    } else {
+                        pathArray = new String[]{faultImage};
+                    }
+                    PhotoGraphWindow photoGraphWindow = new PhotoGraphWindow(getContext(), pathArray);
+                    photoGraphWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                }
             }
         });
 

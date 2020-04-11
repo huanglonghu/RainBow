@@ -44,11 +44,13 @@ public class FaultRecord extends BaseFragment {
 
     private int jobId;
     private boolean isRepair;
+    private boolean isShopSign;
 
-    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int jobId, Task task, boolean isRepair) {
+    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int jobId, Task task, boolean isRepair, boolean isShopSign) {
         this.jobId = jobId;
         this.task = task;
         this.isRepair = isRepair;
+        this.isShopSign = isShopSign;
         if (machineFaults != null) {
             datas.addAll(machineFaults);
             faultRecordAdapter.notifyDataSetChanged();
@@ -79,6 +81,7 @@ public class FaultRecord extends BaseFragment {
                         HandleFault handleFault = new HandleFault();
                         Bundle bundle = new Bundle();
                         bundle.putInt("faultState", bean.getFaultState());
+                        bundle.putBoolean("isShopSign",isShopSign);
                         bundle.putInt("id", bean.getId());
                         bundle.putInt("jobId", jobId);
                         handleFault.setArguments(bundle);

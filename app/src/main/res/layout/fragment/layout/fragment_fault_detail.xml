@@ -37,10 +37,10 @@
 
 
             <TextView
+                android:id="@+id/faultState"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="未处理"
                 android:textColor="@color/b2"
                 android:textSize="28pt" />
 

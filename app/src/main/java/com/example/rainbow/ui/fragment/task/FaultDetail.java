@@ -37,13 +37,15 @@ public class FaultDetail extends BaseFragment {
 
     @Override
     public void initData() {
-
         int id = getArguments().getInt("id");
         HttpUtil.getInstance().getMachineFaultDeail(id).subscribe(
                 str -> {
                     MachineFaultDetailResponse machineFaultDetailResponse = GsonUtil.fromJson(str, MachineFaultDetailResponse.class);
                     MachineFaultDetailResponse.DataBean data = machineFaultDetailResponse.getData();
                     binding.setData(data);
+                    int faultState = data.getFaultState();
+                    String[] faultArray = getResources().getStringArray(R.array.faultStateArray);
+                    binding.faultState.setText(faultArray[faultState]);
                     faultImage = data.getFaultImage();
                     handleImage = data.getHandleImage();
                     if (TextUtils.isEmpty(faultImage)) {
@@ -54,7 +56,6 @@ public class FaultDetail extends BaseFragment {
                     }
                 }
         );
-
     }
 
     @Override
@@ -70,14 +71,14 @@ public class FaultDetail extends BaseFragment {
             public void onClick(View v) {
 
                 if (!TextUtils.isEmpty(faultImage)) {
-                    String[] pathArray=null;
+                    String[] pathArray = null;
                     if (faultImage.contains(",")) {
                         pathArray = faultImage.split(",");
-                    }else {
-                        pathArray=new String[]{faultImage};
+                    } else {
+                        pathArray = new String[]{faultImage};
                     }
                     PhotoGraphWindow photoGraphWindow = new PhotoGraphWindow(getContext(), pathArray);
-                    photoGraphWindow.showAtLocation(v, Gravity.CENTER,0,0);
+                    photoGraphWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
                 }
 
             }
@@ -86,14 +87,14 @@ public class FaultDetail extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(handleImage)) {
-                    String[] pathArray=null;
+                    String[] pathArray = null;
                     if (handleImage.contains(",")) {
                         pathArray = handleImage.split(",");
-                    }else {
-                        pathArray=new String[]{handleImage};
+                    } else {
+                        pathArray = new String[]{handleImage};
                     }
                     PhotoGraphWindow photoGraphWindow = new PhotoGraphWindow(getContext(), pathArray);
-                    photoGraphWindow.showAtLocation(v, Gravity.CENTER,0,0);
+                    photoGraphWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
                 }
             }
         });

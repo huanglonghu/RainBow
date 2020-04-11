@@ -1,13 +1,11 @@
 package com.example.rainbow.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -18,7 +16,6 @@ import com.example.rainbow.database.option.UserOption;
 import com.example.rainbow.databinding.FragmentLoginBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.util.GsonUtil;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -43,14 +40,27 @@ public class Login extends BaseFragment {
 
     @Override
     public void initView() {
-
+        UserBean userBean = UserOption.getInstance().querryUser();
+        if (userBean != null) {
+            binding.cb.setSelected(userBean.getIsRemember());
+            if (userBean.getIsRemember()) {
+                binding.userName.setText(userBean.getUserName());
+                binding.pwd.setText(userBean.getPwd());
+            }
+        }
+        binding.jzmmLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean selected = binding.cb.isSelected();
+                binding.cb.setSelected(!selected);
+            }
+        });
     }
 
     @Override
     public void initlisten() {
 
         binding.login.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("CheckResult")
             @Override
             public void onClick(View v) {
                 String userName = binding.userName.getText().toString();
@@ -69,12 +79,16 @@ public class Login extends BaseFragment {
                 HttpUtil.getInstance().login(userName, pwd).subscribe(
                         str -> {
                             LoginResponse loginResponse = GsonUtil.fromJson(str, LoginResponse.class);
+                            LoginResponse.DataBean data = loginResponse.getData();
                             UserBean userBean = new UserBean();
-                            String token = loginResponse.getData().getToken();
+                            userBean.setIsRemember(binding.cb.isSelected());
+                            userBean.setPwd(pwd);
+                            String token = data.getToken();
                             userBean.setToken(token);
                             HttpParam.token = token;
-                            userBean.setUserType(loginResponse.getData().getUserType());
-                            userBean.setNickName(loginResponse.getData().getUserName());
+                            userBean.setUserType(data.getUserType());
+                            userBean.setUserName(userName);
+                            userBean.setNickName(data.getUserName());
                             UserOption.getInstance().addUser(userBean);
                             MainFragment mainFragment = new MainFragment();
                             Presenter.getInstance().step2MainFragment("main",mainFragment);

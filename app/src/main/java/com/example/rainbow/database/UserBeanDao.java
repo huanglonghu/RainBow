@@ -31,6 +31,9 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         public final static Property ShopId = new Property(4, int.class, "shopId", false, "SHOP_ID");
         public final static Property ShopName = new Property(5, String.class, "shopName", false, "SHOP_NAME");
         public final static Property Token = new Property(6, String.class, "token", false, "TOKEN");
+        public final static Property IsRemember = new Property(7, boolean.class, "isRemember", false, "IS_REMEMBER");
+        public final static Property UserName = new Property(8, String.class, "userName", false, "USER_NAME");
+        public final static Property Pwd = new Property(9, String.class, "pwd", false, "PWD");
     }
 
 
@@ -52,7 +55,10 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
                 "\"MOBILE\" TEXT," + // 3: mobile
                 "\"SHOP_ID\" INTEGER NOT NULL ," + // 4: shopId
                 "\"SHOP_NAME\" TEXT," + // 5: shopName
-                "\"TOKEN\" TEXT);"); // 6: token
+                "\"TOKEN\" TEXT," + // 6: token
+                "\"IS_REMEMBER\" INTEGER NOT NULL ," + // 7: isRemember
+                "\"USER_NAME\" TEXT," + // 8: userName
+                "\"PWD\" TEXT);"); // 9: pwd
     }
 
     /** Drops the underlying database table. */
@@ -87,6 +93,17 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         if (token != null) {
             stmt.bindString(7, token);
         }
+        stmt.bindLong(8, entity.getIsRemember() ? 1L: 0L);
+ 
+        String userName = entity.getUserName();
+        if (userName != null) {
+            stmt.bindString(9, userName);
+        }
+ 
+        String pwd = entity.getPwd();
+        if (pwd != null) {
+            stmt.bindString(10, pwd);
+        }
     }
 
     @Override
@@ -115,6 +132,17 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         if (token != null) {
             stmt.bindString(7, token);
         }
+        stmt.bindLong(8, entity.getIsRemember() ? 1L: 0L);
+ 
+        String userName = entity.getUserName();
+        if (userName != null) {
+            stmt.bindString(9, userName);
+        }
+ 
+        String pwd = entity.getPwd();
+        if (pwd != null) {
+            stmt.bindString(10, pwd);
+        }
     }
 
     @Override
@@ -131,7 +159,10 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // mobile
             cursor.getInt(offset + 4), // shopId
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // shopName
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // token
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // token
+            cursor.getShort(offset + 7) != 0, // isRemember
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // userName
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // pwd
         );
         return entity;
     }
@@ -145,6 +176,9 @@ public class UserBeanDao extends AbstractDao<UserBean, Long> {
         entity.setShopId(cursor.getInt(offset + 4));
         entity.setShopName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setToken(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setIsRemember(cursor.getShort(offset + 7) != 0);
+        entity.setUserName(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setPwd(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
      }
     
     @Override

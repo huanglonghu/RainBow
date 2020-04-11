@@ -15,13 +15,18 @@ import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.SelectLineAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+import com.example.rainbow.util.LogUtil;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding2.widget.RxAdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import rx.functions.Action1;
 
 public class LineSelect extends BaseFragment {
 
@@ -87,38 +92,50 @@ public class LineSelect extends BaseFragment {
     @Override
     public void initlisten() {
 
-        binding.lvLine.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long i) {
-                GetJobDetailResponse.DataBean.ShopsBean bean = datas.get(position);
-                if (bean.isIsNotGo()) {
-                    toShop(bean);
-                } else {
-                    //判断是否按顺序
-                    if (position == 0) {
+
+        RxAdapterView.itemClicks(binding.lvLine).throttleFirst(1, TimeUnit.SECONDS).subscribe(
+                position -> {
+                    LogUtil.log("============position============" + position);
+                    GetJobDetailResponse.DataBean.ShopsBean bean = datas.get(position);
+                    if (bean.isIsNotGo()) {
                         toShop(bean);
                     } else {
-                        if (isSignArray[position - 1]) {
+                        //判断是否按顺序
+                        if (position == 0) {
                             toShop(bean);
                         } else {
-                            String content = getString(R.string.toastStr23);
-                            Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
+                            GetJobDetailResponse.DataBean.ShopsBean bean1 = datas.get(position - 1);
+                            if (isSignArray[position - 1] || bean1.isIsNotGo()) {
+                                toShop(bean);
+                            } else {
+                                String content = getString(R.string.toastStr23);
+                                Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 }
-            }
-        });
+        );
 
 
         binding.totalSettle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LineSettle lineSettle = new LineSettle();
-                String title = getString(R.string.settle);
-                Bundle bundle = new Bundle();
-                bundle.putInt("id", id);
-                lineSettle.setArguments(bundle);
-                task.step2Task("lineSettle", lineSettle, " > " + title);
+                if (isRepair) {
+                    WxSettle wxSettle = new WxSettle();
+                    String title = getString(R.string.settle);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    wxSettle.setArguments(bundle);
+                    task.step2Task("wxSettle", wxSettle, " > " + title);
+                } else {
+                    LineSettle lineSettle = new LineSettle();
+                    String title = getString(R.string.settle);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    lineSettle.setArguments(bundle);
+                    task.step2Task("lineSettle", lineSettle, " > " + title);
+                }
+
             }
         });
 
@@ -126,15 +143,23 @@ public class LineSelect extends BaseFragment {
     }
 
     private void toShop(GetJobDetailResponse.DataBean.ShopsBean bean) {
-        Shop shop = new Shop();
-        Bundle bundle = new Bundle();
-        bundle.putInt("id", id);
-        bundle.putInt("businessId", bean.getId());
-        bundle.putString("shopName", bean.getShopName());
         if (isRepair) {
-            bundle.putBoolean("isRepair", isRepair);
+            Shop2 shop = new Shop2();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", id);
+            bundle.putInt("businessId", bean.getId());
+            bundle.putString("shopName", bean.getShopName());
+            shop.setArguments(bundle);
+            task.step2Task("shop2", shop, " > " + bean.getShopName());
+        } else {
+            Shop shop = new Shop();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", id);
+            bundle.putInt("businessId", bean.getId());
+            bundle.putString("shopName", bean.getShopName());
+            shop.setArguments(bundle);
+            task.step2Task("shop", shop, " > " + bean.getShopName());
         }
-        shop.setArguments(bundle);
-        task.step2Task("shop", shop, " > " + bean.getShopName());
+
     }
 }

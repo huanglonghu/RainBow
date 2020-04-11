@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.rainbow.bean.GetJobsResponse;
+import com.example.rainbow.databinding.LvItemSkglBinding;
 
 import java.util.List;
 
@@ -20,8 +21,10 @@ public class CollectionManagementAdapter extends BaseListAdapter {
     @Override
     protected View initView(LayoutInflater layoutInflater, int res, List datas, int position, ViewGroup parent) {
         GetJobsResponse.DataBean.ItemsBean bean = (GetJobsResponse.DataBean.ItemsBean) datas.get(position);
-        TextView tv = (TextView) layoutInflater.inflate(res, parent, false);
-        tv.setText(bean.getRouteName());
-        return tv;
+
+        LvItemSkglBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
+        binding.setBean(bean);
+
+        return binding.getRoot();
     }
 }

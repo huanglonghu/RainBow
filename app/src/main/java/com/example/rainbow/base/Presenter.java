@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.Toast;
 
@@ -24,6 +25,11 @@ import com.example.rainbow.ui.fragment.task.TaskSelect;
 import com.example.rainbow.ui.fragment.task.UploadFault;
 import com.example.rainbow.ui.fragment.task.WinLostRecord;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -93,6 +99,27 @@ public class Presenter {
             Toast.makeText(context, toastStr, Toast.LENGTH_SHORT).show();
         }
     }
+
+    public File save(Context context,Bitmap bitmap) throws IOException {
+        File filesDir = context.getFilesDir();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] buffer = bos.toByteArray();
+        long l = System.currentTimeMillis();
+        File file = new File(filesDir, l + "sign.png");
+        if (buffer != null) {
+            if (file.exists()) {
+                file.delete();
+            }
+            OutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(buffer);
+            outputStream.close();
+        }
+        return file;
+
+    }
+
+
 
     //验证各种导航地图是否安装
     public static boolean isAvilible(Context context, String packageName) {

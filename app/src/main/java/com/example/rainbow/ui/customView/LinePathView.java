@@ -12,6 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.rainbow.util.LogUtil;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,9 +22,6 @@ import java.io.OutputStream;
 
 import androidx.annotation.ColorInt;
 
-/**
- * Created by Xia_焱 on 2017/8/9.
- */
 
 public class LinePathView extends View {
 
@@ -34,7 +33,11 @@ public class LinePathView extends View {
     //手写画笔
     private final Paint mGesturePaint = new Paint();
     //路径
+
     private final Path mPath = new Path();
+
+    private final Path storePath = new Path();
+
     //画布
     private Canvas cacheCanvas;
     //生成的图片
@@ -44,7 +47,7 @@ public class LinePathView extends View {
     //画笔颜色
     private int mPenColor = Color.BLACK;
     //背景色（指最终签名结果文件的背景颜色，默认为透明色）
-    private int mBackColor=Color.TRANSPARENT;
+    private int mBackColor = Color.TRANSPARENT;
 
     public LinePathView(Context context) {
         super(context);
@@ -81,7 +84,9 @@ public class LinePathView extends View {
         cachebBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         cacheCanvas = new Canvas(cachebBitmap);
         cacheCanvas.drawColor(mBackColor);
+
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -92,9 +97,32 @@ public class LinePathView extends View {
         canvas.drawPath(mPath, mGesturePaint);
     }
 
+
+    public interface TouchListener {
+
+        void onTouch(MotionEvent event);
+    }
+
+    public TouchListener touchListener;
+
+
+    public TouchListener getTouchListener() {
+        return touchListener;
+    }
+
+    public void setTouchListener(TouchListener touchListener) {
+        this.touchListener = touchListener;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+
+        if (touchListener != null) {
+            touchListener.onTouch(event);
+        }
+
+
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDown(event);
                 break;
@@ -113,7 +141,6 @@ public class LinePathView extends View {
     }
 
 
-
     // 手指点下屏幕时调用
     private void touchDown(MotionEvent event) {
         // 重置绘制路线
@@ -123,8 +150,10 @@ public class LinePathView extends View {
         mX = x;
         mY = y;
         // mPath绘制的绘制起点
-        mPath.moveTo(x,y);
+        storePath.moveTo(x, y);
+        mPath.moveTo(x, y);
     }
+
     // 手指在屏幕上滑动时调用
     private void touchMove(MotionEvent event) {
         final float x = event.getX();
@@ -140,6 +169,7 @@ public class LinePathView extends View {
             float cY = (y + previousY) / 2;
             // 二次贝塞尔，实现平滑曲线；previousX, previousY为操作点，cX, cY为终点
             mPath.quadTo(previousX, previousY, cX, cY);
+            storePath.quadTo(previousX, previousY, cX, cY);
             // 第二次执行时，第一次结束调用的坐标值将作为第二次调用的初始坐标值
             mX = x;
             mY = y;
@@ -156,27 +186,29 @@ public class LinePathView extends View {
             mGesturePaint.setColor(mPenColor);
             cacheCanvas.drawColor(mBackColor, PorterDuff.Mode.CLEAR);
             mGesturePaint.setColor(mPenColor);
+            storePath.reset();
             invalidate();
         }
     }
 
     /**
      * 保存画板
+     *
      * @param path 保存到路径
      */
-    public void save(String path)  throws IOException {
+    public void save(String path) throws IOException {
         save();
     }
 
     public File save() throws IOException {
         File filesDir = getContext().getFilesDir();
-        Bitmap bitmap=cachebBitmap;
+        Bitmap bitmap = cachebBitmap;
         //BitmapUtil.createScaledBitmapByHeight(srcBitmap, 300);//  压缩图片
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] buffer = bos.toByteArray();
         long l = System.currentTimeMillis();
-        File file = new File(filesDir,l+"sign.png");
+        File file = new File(filesDir, l + "sign.png");
         if (buffer != null) {
             if (file.exists()) {
                 file.delete();
@@ -191,12 +223,13 @@ public class LinePathView extends View {
 
     /**
      * 保存画板
+     *
      * @param clearBlank 是否清除边缘空白区域
-     * @param blank  要保留的边缘空白距离
+     * @param blank      要保留的边缘空白距离
      */
-    public Bitmap saveToBitmap(boolean clearBlank, int blank){
+    public Bitmap saveToBitmap(boolean clearBlank, int blank) {
 
-        Bitmap bitmap=cachebBitmap;
+        Bitmap bitmap = cachebBitmap;
         //BitmapUtil.createScaledBitmapByHeight(srcBitmap, 300);//  压缩图片
         if (clearBlank) {
             bitmap = clearBlank(bitmap, blank);
@@ -218,15 +251,13 @@ public class LinePathView extends View {
 
     /**
      * 获取画板的bitmap
+     *
      * @return
      */
-    public Bitmap getBitMap()
-    {
-        setDrawingCacheEnabled(true);
-        buildDrawingCache();
-        Bitmap bitmap=getDrawingCache();
-        setDrawingCacheEnabled(false);
-        return bitmap;
+    public boolean isEmpty() {
+        LogUtil.log("===========ZZZZZZZZZZZZZ============" + storePath.isEmpty());
+
+        return storePath.isEmpty();
     }
 
     /**
@@ -312,11 +343,11 @@ public class LinePathView extends View {
         right = right + blank > WIDTH - 1 ? WIDTH - 1 : right + blank;
         bottom = bottom + blank > HEIGHT - 1 ? HEIGHT - 1 : bottom + blank;
         //防止创建null的bitmap  引发的崩溃
-        if (left==0&&top==0&&right==0&&bottom==0){
-            left=1;
-            top=1;
-            right=351;
-            bottom=251;
+        if (left == 0 && top == 0 && right == 0 && bottom == 0) {
+            left = 1;
+            top = 1;
+            right = 351;
+            bottom = 251;
         }
         return Bitmap.createBitmap(bp, left, top, right - left, bottom - top);
     }
@@ -334,9 +365,8 @@ public class LinePathView extends View {
     }
 
 
-    public void setBackColor(@ColorInt int backColor)
-    {
-        mBackColor=backColor;
+    public void setBackColor(@ColorInt int backColor) {
+        mBackColor = backColor;
     }
 
 

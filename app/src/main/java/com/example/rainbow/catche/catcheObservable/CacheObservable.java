@@ -1,14 +1,10 @@
 package com.example.rainbow.catche.catcheObservable;
 
-
-
-
 import com.example.rainbow.bean.ImageBean;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 
 
@@ -22,7 +18,7 @@ public abstract class CacheObservable {
     public Observable<ImageBean> getImage(final String url) {
         return Observable.create(new ObservableOnSubscribe<ImageBean>() {
             @Override
-            public void subscribe(@NonNull ObservableEmitter<ImageBean> e) throws Exception {
+            public void subscribe(ObservableEmitter<ImageBean> e) throws Exception {
                 if (!e.isDisposed()) {
                     ImageBean image = getDataFromCache(url);
                     e.onNext(image);

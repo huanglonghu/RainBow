@@ -1,6 +1,6 @@
 package com.example.rainbow.bean;
 
-public class RouteSettleBody {
+public class WxRouteSettleBody {
 
 
     /**
@@ -9,8 +9,6 @@ public class RouteSettleBody {
      * fuelMoney : 0
      * eatMoney : 0
      * otherMoney : 0
-     * coinNumber : 0
-     * moneyNumber : 0
      * remarks : string
      * sign : string
      */
@@ -20,8 +18,6 @@ public class RouteSettleBody {
     private double fuelMoney;
     private double eatMoney;
     private double otherMoney;
-    private double coinNumber;
-    private int moneyNumber;
     private String remarks;
     private String sign;
 
@@ -63,22 +59,6 @@ public class RouteSettleBody {
 
     public void setOtherMoney(double otherMoney) {
         this.otherMoney = otherMoney;
-    }
-
-    public double getCoinNumber() {
-        return coinNumber;
-    }
-
-    public void setCoinNumber(double coinNumber) {
-        this.coinNumber = coinNumber;
-    }
-
-    public int getMoneyNumber() {
-        return moneyNumber;
-    }
-
-    public void setMoneyNumber(int moneyNumber) {
-        this.moneyNumber = moneyNumber;
     }
 
     public String getRemarks() {

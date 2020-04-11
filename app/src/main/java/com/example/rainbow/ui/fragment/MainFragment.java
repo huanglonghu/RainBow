@@ -112,8 +112,6 @@ public class MainFragment extends BaseFragment {
 
 
         Locale locale = LanguagesManager.getAppLanguage(getContext());
-
-        LogUtil.log("============locale==============" + locale.getCountry());
         if (LanguagesManager.equalsCountry(locale, Locale.CHINA)) {
             binding.spLanguage.setSelection(0);
         } else if (LanguagesManager.equalsCountry(locale, Locale.ENGLISH)) {
@@ -132,7 +130,6 @@ public class MainFragment extends BaseFragment {
                     } else {
                         restart = LanguagesManager.setAppLanguage(getContext(), Locale.forLanguageTag("es"));
                     }
-                    LogUtil.log(position + "==================restart=============" + restart);
                     if (restart) {
                         isInit = false;
                         startActivity(new Intent(getActivity(), MainActivity.class));

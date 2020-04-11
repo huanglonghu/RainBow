@@ -33,7 +33,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="87pt"
             android:text="@{bean.creationTime}"
-            android:textSize="18pt"
+            android:textSize="26pt"
             android:textColor="@color/t12" />
 
 

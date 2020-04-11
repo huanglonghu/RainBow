@@ -10,6 +10,8 @@ import com.example.rainbow.database.DaoSession;
 import com.example.rainbow.language.LanguagesManager;
 import com.example.rainbow.util.LogUtil;
 import com.example.rainbow.util.RudenessScreenHelper;
+import com.tencent.bugly.crashreport.CrashReport;
+
 import java.util.Locale;
 
 public class RainBowApplication extends Application {
@@ -18,6 +20,7 @@ public class RainBowApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashReport.initCrashReport(this, "8f2a31eac1", true);
         application = this;
         float designWidth = 1920;
         new RudenessScreenHelper(this, designWidth).activate();

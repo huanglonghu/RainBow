@@ -16,7 +16,7 @@ import com.example.rainbow.R;
 public class NetLoading extends Dialog {
 
     public NetLoading(Context context) {
-        super(context);
+        super(context, R.style.dialog);
         View view = View.inflate(context, R.layout.layout_netloading, null);
         ImageView ivLoad = (ImageView) view.findViewById(R.id.iv_load);
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.load);

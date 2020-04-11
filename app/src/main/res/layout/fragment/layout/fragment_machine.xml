@@ -30,7 +30,7 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpUpload"
                 android:layout_width="640pt"
-                android:layout_height="490pt"/>
+                android:layout_height="490pt" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,49 +95,115 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dqtb"
-                            android:textColor="@color/t11"
-                            android:textSize="32pt" />
-
-                        <EditText
-                            android:id="@+id/etTb"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:enabled="@{!data.isSettled}"
-                            android:inputType="number"
-                            android:textColor="@color/t9"
-                            android:textSize="26pt" />
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dqtb"
+                                android:textColor="@color/t11"
+                                android:textSize="32pt" />
+
+                            <EditText
+                                android:id="@+id/etTb"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:enabled="@{!data.isSettled}"
+                                android:inputType="number"
+                                android:textColor="@color/t9"
+                                android:textSize="26pt" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sctb"
+                                android:textColor="@color/t12"
+                                android:textSize="32pt" />
+
+                            <TextView
+                                android:id="@+id/sctb"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:hint="0"
+                                android:textColor="@color/t12"
+                                android:textSize="26pt" />
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dqxf"
-                            android:textColor="@color/t11"
-                            android:textSize="32pt" />
-
-                        <EditText
-                            android:id="@+id/etXf"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:enabled="@{!data.isSettled}"
-                            android:inputType="number"
-                            android:textColor="@color/t9"
-                            android:textSize="26pt" />
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dqxf"
+                                android:textColor="@color/t11"
+                                android:textSize="32pt" />
+
+                            <EditText
+                                android:id="@+id/etXf"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:enabled="@{!data.isSettled}"
+                                android:inputType="number"
+                                android:textColor="@color/t9"
+                                android:textSize="26pt" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/scxf"
+                                android:textColor="@color/t12"
+                                android:textSize="32pt" />
+
+                            <TextView
+                                android:id="@+id/scxf"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:hint="0"
+                                android:textColor="@color/t12"
+                                android:textSize="26pt" />
+                        </LinearLayout>
+
 
                     </LinearLayout>
 
@@ -154,24 +220,56 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dqcb"
-                            android:textColor="@color/t11"
-                            android:textSize="32pt" />
-
-                        <EditText
-                            android:id="@+id/etCb"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:enabled="@{!data.isSettled}"
-                            android:inputType="number"
-                            android:textColor="@color/t9"
-                            android:textSize="26pt" />
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dqcb"
+                                android:textColor="@color/t11"
+                                android:textSize="32pt" />
+
+                            <EditText
+                                android:id="@+id/etCb"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:enabled="@{!data.isSettled}"
+                                android:inputType="number"
+                                android:textColor="@color/t9"
+                                android:textSize="26pt" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sccb"
+                                android:textColor="@color/t12"
+                                android:textSize="32pt" />
+
+                            <TextView
+                                android:id="@+id/sccb"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:hint="0"
+                                android:textColor="@color/t12"
+                                android:textSize="26pt" />
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
 
@@ -187,8 +285,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:weightSum="4"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:weightSum="4">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -257,8 +355,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:visibility="@{data.isSettled?View.VISIBLE:View.GONE}"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:visibility="@{data.isSettled?View.VISIBLE:View.GONE}">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -338,5 +436,7 @@
 
 
     </LinearLayout>
+
+
 
 </layout>
