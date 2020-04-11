@@ -223,5 +223,6 @@
         <item>12月</item>
 
     </string-array>
+    <string name="bj">本金 :</string>
 
 </resources>

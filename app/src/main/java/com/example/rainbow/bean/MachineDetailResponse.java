@@ -62,6 +62,7 @@ public class MachineDetailResponse {
          */
 
         private boolean isSettled;
+        private double principal;
         private Object numberImage;
         private Object codeImage;
         private int totalBet;
@@ -75,6 +76,14 @@ public class MachineDetailResponse {
         private int id;
         private List<MachineHistoryProfitLossBean> machineHistoryProfitLoss;
         private List<MachineFaultsBean> machineFaults;
+
+        public double getPrincipal() {
+            return principal;
+        }
+
+        public void setPrincipal(double principal) {
+            this.principal = principal;
+        }
 
         public boolean isIsSettled() {
             return isSettled;

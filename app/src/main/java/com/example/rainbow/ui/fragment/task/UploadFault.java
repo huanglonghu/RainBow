@@ -30,9 +30,11 @@ import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.widget.NetLoading;
 import com.example.rainbow.util.GsonUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +56,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 import static okhttp3.MultipartBody.*;
 
 public class UploadFault extends BaseFragment {
@@ -205,13 +208,14 @@ public class UploadFault extends BaseFragment {
                                 }
                             }
                         }
+
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
 
                         }
                     });
                 }
-            }).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
+            });
 
         }
 
@@ -221,28 +225,58 @@ public class UploadFault extends BaseFragment {
                 netLoading = new NetLoading(getContext());
                 netLoading.show();
             }
-        }).subscribeOn(Schedulers.io()).flatMap(new Function<String, ObservableSource<String>>() {
+        }).flatMap(new Function<String, ObservableSource<String>>() {
             @Override
             public ObservableSource<String> apply(String s) throws Exception {
                 pathList.add(s);
                 if (pathList.size() == parts.size()) {
                     HashMap<String, Object> map = merageMap(faultDescribe);
-                    String content = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).uploadFault(map).execute().body().toString();
-                    return Observable.just(content);
+                    Observable<String> observable = createObservable(map);
+                    return observable;
                 } else {
                     return Observable.just("");
                 }
             }
-        }).observeOn(AndroidSchedulers.mainThread()).subscribe(
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(
                 a -> {
                     netLoading.dismiss();
-                    if(!TextUtils.isEmpty(a)){
+                    if (!TextUtils.isEmpty(a)) {
                         String toastStr = getString(R.string.toastStr18);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                         Presenter.getInstance().back();
                     }
                 }
         );
+
+
+    }
+
+
+    public Observable<String> createObservable(HashMap<String, Object> map) {
+        Call<ResponseBody> call = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).uploadFault(map);
+        return Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
+
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            try {
+                                String body = response.body().string();
+                                observableEmitter.onNext(body);
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
 
     }

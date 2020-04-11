@@ -15,8 +15,8 @@ public class ShopSettleBody {
     private int jobId;
     private int shopId;
     private int shopWashScore;
-    private int shopDeductionMoney;
-    private int shopPayMoney;
+    private double shopDeductionMoney;
+    private double shopPayMoney;
     private String sign;
 
     public int getJobId() {
@@ -43,19 +43,19 @@ public class ShopSettleBody {
         this.shopWashScore = shopWashScore;
     }
 
-    public int getShopDeductionMoney() {
+    public double getShopDeductionMoney() {
         return shopDeductionMoney;
     }
 
-    public void setShopDeductionMoney(int shopDeductionMoney) {
+    public void setShopDeductionMoney(double shopDeductionMoney) {
         this.shopDeductionMoney = shopDeductionMoney;
     }
 
-    public int getShopPayMoney() {
+    public double getShopPayMoney() {
         return shopPayMoney;
     }
 
-    public void setShopPayMoney(int shopPayMoney) {
+    public void setShopPayMoney(double shopPayMoney) {
         this.shopPayMoney = shopPayMoney;
     }
 

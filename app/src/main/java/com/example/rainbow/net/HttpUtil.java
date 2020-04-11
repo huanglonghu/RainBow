@@ -93,7 +93,8 @@ public class HttpUtil {
                         }
                     }
                 }
-
+                Thread thread = Thread.currentThread();
+                LogUtil.log("===========threadName============="+thread.getName());
                 okhttp3.Response response = chain.proceed(request);
                 if (response.code() == 401) {
                     UserBean userBean = UserOption.getInstance().querryUser();

@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.ui.main.ClockIn;
 import com.example.rainbow.ui.fragment.EditPwd;
@@ -17,14 +16,12 @@ import com.example.rainbow.ui.fragment.PersonalData;
 import com.example.rainbow.ui.fragment.task.CollectionManagement;
 import com.example.rainbow.ui.fragment.task.FaultDetail;
 import com.example.rainbow.ui.fragment.task.LineSelect;
-import com.example.rainbow.ui.fragment.task.Machine;
 import com.example.rainbow.ui.fragment.task.Shop;
 import com.example.rainbow.ui.fragment.task.ShopSettle;
 import com.example.rainbow.ui.fragment.task.Signed;
 import com.example.rainbow.ui.fragment.task.TaskSelect;
 import com.example.rainbow.ui.fragment.task.UploadFault;
 import com.example.rainbow.ui.fragment.task.WinLostRecord;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,7 +30,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import androidx.fragment.app.FragmentManager;
 
 public class Presenter {

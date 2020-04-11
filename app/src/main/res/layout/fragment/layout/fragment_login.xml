@@ -16,122 +16,130 @@
             android:layout_weight="1"
             android:background="@drawable/login_a1" />
 
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/white"
-            android:orientation="vertical"
-            android:paddingLeft="75pt"
-            android:paddingRight="75pt">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="182pt"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/chxlglxt"
-                android:textColor="@android:color/black"
-                android:textSize="63pt" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5pt"
-                android:layout_marginTop="35pt"
-                android:background="@drawable/ll_divider4" />
-
-
+            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100pt"
-                android:layout_marginTop="60pt"
-                android:background="@drawable/shape_a7"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="30pt"
-                    android:layout_height="38pt"
-                    android:layout_marginLeft="30pt"
-                    android:src="@drawable/user" />
-
-                <EditText
-                    android:id="@+id/userName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20pt"
-                    android:background="@null"
-                    android:hint="@string/qsryhm"
-                    android:textColorHint="@color/t12"
-                    android:textSize="31pt" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100pt"
-                android:layout_marginTop="30pt"
-                android:background="@drawable/shape_a7"
-                android:gravity="center_vertical">
-
-
-                <ImageView
-                    android:layout_width="28pt"
-                    android:layout_height="36pt"
-                    android:layout_marginLeft="30pt"
-                    android:src="@drawable/pwd" />
-
-                <EditText
-                    android:id="@+id/pwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20pt"
-                    android:background="@null"
-                    android:hint="@string/qsrmm"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/t12"
-                    android:textSize="31pt" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/jzmmLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="42pt"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/cb"
-                    android:layout_width="52pt"
-                    android:layout_height="52pt"
-                    android:src="@drawable/bg_cb" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="75pt"
+                android:paddingRight="75pt">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15pt"
-                    android:text="记住密码"
-                    android:textColor="@color/t9"
-                    android:textSize="31pt" />
+                    android:layout_marginTop="182pt"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/chxlglxt"
+                    android:textColor="@android:color/black"
+                    android:textSize="63pt" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5pt"
+                    android:layout_marginTop="35pt"
+                    android:background="@drawable/ll_divider4" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:layout_marginTop="60pt"
+                    android:background="@drawable/shape_a7"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="30pt"
+                        android:layout_height="38pt"
+                        android:layout_marginLeft="30pt"
+                        android:src="@drawable/user" />
+
+                    <EditText
+                        android:id="@+id/userName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20pt"
+                        android:background="@null"
+                        android:hint="@string/qsryhm"
+                        android:textColorHint="@color/t12"
+                        android:textSize="31pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:layout_marginTop="30pt"
+                    android:background="@drawable/shape_a7"
+                    android:gravity="center_vertical">
+
+
+                    <ImageView
+                        android:layout_width="28pt"
+                        android:layout_height="36pt"
+                        android:layout_marginLeft="30pt"
+                        android:src="@drawable/pwd" />
+
+                    <EditText
+                        android:id="@+id/pwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20pt"
+                        android:background="@null"
+                        android:hint="@string/qsrmm"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/t12"
+                        android:textSize="31pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/jzmmLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42pt"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/cb"
+                        android:layout_width="52pt"
+                        android:layout_height="52pt"
+                        android:src="@drawable/bg_cb" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15pt"
+                        android:text="记住密码"
+                        android:textColor="@color/t9"
+                        android:textSize="31pt" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/login"
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:layout_marginTop="83pt"
+                    android:background="@drawable/shape_a8"
+                    android:gravity="center"
+                    android:text="@string/login"
+                    android:textColor="@android:color/white"
+                    android:textSize="37pt" />
+
+
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="100pt"
-                android:layout_marginTop="83pt"
-                android:background="@drawable/shape_a8"
-                android:gravity="center"
-                android:text="@string/login"
-                android:textColor="@android:color/white"
-                android:textSize="37pt" />
+        </ScrollView>
 
 
-        </LinearLayout>
 
 
     </LinearLayout>

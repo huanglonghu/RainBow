@@ -9,120 +9,128 @@
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="30pt">
-
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <FrameLayout
-                android:layout_width="800pt"
-                android:layout_height="500pt">
-
-                <LinearLayout
-                    android:id="@+id/takePhoto"
-                    android:layout_width="800pt"
-                    android:layout_height="500pt"
-                    android:background="@drawable/bg_takephoto"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <ImageView
-                        android:layout_width="136pt"
-                        android:layout_height="100pt"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/takephoto" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="17pt"
-                        android:text="@string/pzsc"
-                        android:textColor="@color/t8"
-                        android:textSize="30pt" />
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30pt">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30pt"
-                android:layout_marginTop="37pt"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{shopName+@string/sign}"
-                    android:textColor="#000"
-                    android:textSize="35pt" />
+                <FrameLayout
+                    android:layout_width="800pt"
+                    android:layout_height="500pt">
+
+                    <LinearLayout
+                        android:id="@+id/takePhoto"
+                        android:layout_width="800pt"
+                        android:layout_height="500pt"
+                        android:background="@drawable/bg_takephoto"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="136pt"
+                            android:layout_height="100pt"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/takephoto" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="17pt"
+                            android:text="@string/pzsc"
+                            android:textColor="@color/t8"
+                            android:textSize="30pt" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </FrameLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="67pt">
+                    android:layout_marginLeft="30pt"
+                    android:layout_marginTop="37pt"
+                    android:orientation="vertical">
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/remark"
-                        android:textColor="@color/t7"
-                        android:textSize="32pt" />
+                        android:text="@{shopName+@string/sign}"
+                        android:textColor="#000"
+                        android:textSize="35pt" />
 
-                    <EditText
-                        android:id="@+id/etRemark"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:textSize="32pt" />
+                        android:layout_marginTop="67pt">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/remark"
+                            android:textColor="@color/t7"
+                            android:textSize="32pt" />
+
+                        <EditText
+                            android:id="@+id/etRemark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:textSize="32pt" />
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1pt"
+                        android:layout_marginTop="35pt"
+                        android:background="@color/d2" />
 
 
                 </LinearLayout>
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1pt"
-                    android:layout_marginTop="35pt"
-                    android:background="@color/d2" />
 
 
             </LinearLayout>
 
 
+            <TextView
+                android:id="@+id/sign"
+                android:layout_width="match_parent"
+                android:layout_height="90pt"
+                android:layout_marginLeft="30pt"
+                android:layout_marginTop="200pt"
+                android:layout_marginRight="30pt"
+                android:background="@drawable/shape_a4"
+                android:gravity="center"
+                android:text="@string/sign"
+                android:textColor="#fff"
+                android:textSize="32pt" />
+
+
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/sign"
-            android:layout_width="match_parent"
-            android:layout_height="90pt"
-            android:layout_marginLeft="30pt"
-            android:layout_marginTop="200pt"
-            android:layout_marginRight="30pt"
-            android:background="@drawable/shape_a4"
-            android:gravity="center"
-            android:text="@string/sign"
-            android:textColor="#fff"
-            android:textSize="32pt" />
+    </ScrollView>
 
 
-    </LinearLayout>
 </layout>

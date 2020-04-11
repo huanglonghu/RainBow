@@ -6,12 +6,12 @@ import android.text.Spanned;
 import android.widget.Toast;
 
 public class InputFilterMax implements InputFilter {
-    private int min, max;
+    private int max;
     private Context context;
+    private String toastStr;
 
-    public InputFilterMax(Context context, int min, int max) {
+    public InputFilterMax(Context context, String toastStr, int max) {
         this.context = context;
-        this.min = min;
         this.max = max;
     }
 
@@ -20,17 +20,15 @@ public class InputFilterMax implements InputFilter {
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
         try {
             int input = Integer.parseInt(dest.toString() + source.toString());
-            LogUtil.log(max+"=============max============="+input);
-            if (isInRange(min, max, input)) {
+            LogUtil.log(max + "=============max=============" + input);
+            if (max >= input) {
+
                 return null;
             }
         } catch (Exception nfe) {
         }
-        Toast.makeText(context, "最大洗分不能超过" + max, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, toastStr + max, Toast.LENGTH_SHORT).show();
         return "";
     }
 
-    private boolean isInRange(int a, int b, int c) {
-        return b>c;
-    }
 }

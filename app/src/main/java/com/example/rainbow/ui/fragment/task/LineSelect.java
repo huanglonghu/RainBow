@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.GetJobDetailResponse;
@@ -16,17 +14,13 @@ import com.example.rainbow.ui.adapter.SelectLineAdapter;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.LogUtil;
-import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxAdapterView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import rx.functions.Action1;
 
 public class LineSelect extends BaseFragment {
 
@@ -59,18 +53,20 @@ public class LineSelect extends BaseFragment {
                 str -> {
                     GetJobDetailResponse gjdr = GsonUtil.fromJson(str, GetJobDetailResponse.class);
                     GetJobDetailResponse.DataBean data = gjdr.getData();
-                    List<GetJobDetailResponse.DataBean.ShopsBean> shops = data.getShops();
-                    if (shops != null && shops.size() > 0) {
-                        isSignArray = new boolean[shops.size()];
-                        for (int i = 0; i < shops.size(); i++) {
-                            GetJobDetailResponse.DataBean.ShopsBean bean = shops.get(i);
-                            boolean isSignIn = bean.isIsSignIn();
-                            isSignArray[i] = isSignIn;
+                    if (data != null) {
+                        List<GetJobDetailResponse.DataBean.ShopsBean> shops = data.getShops();
+                        if (shops != null && shops.size() > 0) {
+                            isSignArray = new boolean[shops.size()];
+                            for (int i = 0; i < shops.size(); i++) {
+                                GetJobDetailResponse.DataBean.ShopsBean bean = shops.get(i);
+                                boolean isSignIn = bean.isIsSignIn();
+                                isSignArray[i] = isSignIn;
+                            }
+                            datas.addAll(data.getShops());
+                            adapter.notifyDataSetChanged();
                         }
-                        datas.addAll(data.getShops());
-                        adapter.notifyDataSetChanged();
+                        binding.setData(data);
                     }
-                    binding.setData(data);
                 }
         );
 
@@ -79,9 +75,7 @@ public class LineSelect extends BaseFragment {
     @Override
     public void initView() {
 
-
         Bundle bundle = getArguments();
-
         id = bundle.getInt("id");
         isRepair = bundle.getBoolean("isRepair");
         datas = new ArrayList<>();
@@ -92,25 +86,28 @@ public class LineSelect extends BaseFragment {
     @Override
     public void initlisten() {
 
-
         RxAdapterView.itemClicks(binding.lvLine).throttleFirst(1, TimeUnit.SECONDS).subscribe(
                 position -> {
-                    LogUtil.log("============position============" + position);
                     GetJobDetailResponse.DataBean.ShopsBean bean = datas.get(position);
-                    if (bean.isIsNotGo()) {
+                    if (position == 0) {
                         toShop(bean);
                     } else {
-                        //判断是否按顺序
-                        if (position == 0) {
+                        boolean isCanGo=true;
+                        for (int i = 0; i < position; i++) {
+                            GetJobDetailResponse.DataBean.ShopsBean bean2 = datas.get(i);
+                            boolean b = bean2.isIsSignIn();
+                            boolean c = bean2.isIsNotGo();
+                            boolean a = b|| c;
+                            if (!a) {
+                                isCanGo = false;
+                            }
+                        }
+
+                        if (isCanGo) {
                             toShop(bean);
                         } else {
-                            GetJobDetailResponse.DataBean.ShopsBean bean1 = datas.get(position - 1);
-                            if (isSignArray[position - 1] || bean1.isIsNotGo()) {
-                                toShop(bean);
-                            } else {
-                                String content = getString(R.string.toastStr23);
-                                Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
-                            }
+                            String content = getString(R.string.toastStr23);
+                            Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
