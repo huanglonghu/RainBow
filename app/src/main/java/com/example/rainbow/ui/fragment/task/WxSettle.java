@@ -6,9 +6,11 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -17,9 +19,13 @@ import com.example.rainbow.bean.UploadPictureResponse;
 import com.example.rainbow.bean.WxRouteSettleBody;
 import com.example.rainbow.databinding.FragmentSettleWxBinding;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.ui.customView.LinePathView;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.NetLoading;
 import com.example.rainbow.util.GsonUtil;
+
 import java.io.File;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -32,11 +38,12 @@ public class WxSettle extends BaseFragment {
     private FragmentSettleWxBinding binding;
     private NetLoading netLoading;
     private int id;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settle_wx, container, false);
         initData();
         initlisten();
@@ -49,15 +56,6 @@ public class WxSettle extends BaseFragment {
     public void initData() {
 
         id = getArguments().getInt("id");
-        HttpUtil.getInstance().getRouteWinlostDetail(id).subscribe(
-                str -> {
-                    isSettle = true;
-                    LineSettleResponse lineSettleResponse = GsonUtil.fromJson(str, LineSettleResponse.class);
-                    LineSettleResponse.DataBean data = lineSettleResponse.getData();
-                    binding.setData(data);
-                }
-        );
-
     }
 
     @Override
@@ -68,6 +66,18 @@ public class WxSettle extends BaseFragment {
     @Override
     public void initlisten() {
 
+        binding.signArea.setTouchListener(new LinePathView.TouchListener() {
+            @Override
+            public void onTouch(MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //同意ScrollView截断点击事件，ScrollView可滑动
+                    binding.scrollView.requestDisallowInterceptTouchEvent(false);
+                } else {
+                    //不同意ScrollView截断点击事件，点击事件由子View处理
+                    binding.scrollView.requestDisallowInterceptTouchEvent(true);
+                }
+            }
+        });
 
         binding.clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,11 +89,9 @@ public class WxSettle extends BaseFragment {
         WxRouteSettleBody wxRouteSettleBody = new WxRouteSettleBody();
         wxRouteSettleBody.setJobId(id);
         binding.commit.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
 
-                if (isSettle) {
                     String zsf = binding.zsf.getText().toString();
                     if (TextUtils.isEmpty(zsf)) {
                         String toastStr = getString(R.string.toastStr26);
@@ -144,18 +152,19 @@ public class WxSettle extends BaseFragment {
                                                 str2 -> {
                                                     String toastStr = getString(R.string.toastSrt37);
                                                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                                                    Presenter.getInstance().back();
+                                                    task.back();
                                                 }
                                         );
                                     }
                             );
 
-                        } catch (Exception e) {}
+                        } catch (Exception e) {
+                        }
                     } else {
                         String toastStr = getString(R.string.toastStr14);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
                     }
-                }
+
 
             }
         });

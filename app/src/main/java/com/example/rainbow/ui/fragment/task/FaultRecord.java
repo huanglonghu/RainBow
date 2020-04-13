@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.MachineDetailResponse;
+import com.example.rainbow.bean.MachineFaultResponse;
 import com.example.rainbow.databinding.FragmentFaultRecordBinding;
 import com.example.rainbow.ui.adapter.FaultRecordAdapter;
 import com.example.rainbow.ui.main.Task;
@@ -24,7 +25,7 @@ public class FaultRecord extends BaseFragment {
 
 
     private FragmentFaultRecordBinding binding;
-    private ArrayList<MachineDetailResponse.DataBean.MachineFaultsBean> datas;
+    private ArrayList<MachineFaultResponse.DataBean.ItemsBean> datas;
     private FaultRecordAdapter faultRecordAdapter;
 
 
@@ -46,7 +47,7 @@ public class FaultRecord extends BaseFragment {
     private boolean isRepair;
     private boolean isShopSign;
 
-    public void setData(List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults, int jobId, Task task, boolean isRepair, boolean isShopSign) {
+    public void setData(List<MachineFaultResponse.DataBean.ItemsBean> machineFaults, int jobId, Task task, boolean isRepair, boolean isShopSign) {
         this.jobId = jobId;
         this.task = task;
         this.isRepair = isRepair;
@@ -75,7 +76,7 @@ public class FaultRecord extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                MachineDetailResponse.DataBean.MachineFaultsBean bean = datas.get(position);
+                MachineFaultResponse.DataBean.ItemsBean bean = datas.get(position);
                 if (isRepair) {
                     if (bean.getFaultState() == 0 || bean.getFaultState() == 2) {
                         HandleFault handleFault = new HandleFault();

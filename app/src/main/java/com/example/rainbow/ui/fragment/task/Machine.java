@@ -18,16 +18,19 @@ import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.MachineDetailResponse;
+import com.example.rainbow.bean.MachineFaultResponse;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.UploadPictureResponse;
 import com.example.rainbow.databinding.FragmentMachineBinding;
 import com.example.rainbow.databinding.LayoutUploadPictureBinding;
 import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.strategy.ClickSureListener;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.adapter.MyPageAdapter;
 import com.example.rainbow.ui.adapter.UploadPageAdapter;
 import com.example.rainbow.ui.main.Task;
+import com.example.rainbow.ui.widget.TipDialog;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.LogUtil;
 
@@ -43,7 +46,8 @@ import okhttp3.MultipartBody;
 public class Machine extends BaseFragment {
 
     private FragmentMachineBinding binding;
-    private int id;
+    private int shopId;
+    private int jobId;
     private int machineId;
     private MachineDetailResponse.DataBean data;
     private Task task;
@@ -61,20 +65,18 @@ public class Machine extends BaseFragment {
             binding.setPresenter(Presenter.getInstance());
             initView();
             initlisten();
-            initData();
         }
-
+        initData();
         return binding.getRoot();
     }
 
     @Override
     public void initData() {
 
-        HttpUtil.getInstance().getMachineDetail(id, machineId).subscribe(
+        HttpUtil.getInstance().getMachineDetail(jobId, machineId).subscribe(
                 str -> {
                     MachineDetailResponse machineDetailResponse = GsonUtil.fromJson(str, MachineDetailResponse.class);
                     data = machineDetailResponse.getData();
-                    List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     binding.setData(data);
                     if (machineHistoryProfitLoss != null && machineHistoryProfitLoss.size() > 0) {
@@ -98,7 +100,21 @@ public class Machine extends BaseFragment {
 
                         }
                         historyRecord.setData(machineHistoryProfitLoss);
-                        faultRecord.setData(machineFaults, id, task, false, isShopSign);
+                        List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
+                        if (machineFaults != null && machineFaults.size() > 0) {
+                            List<MachineFaultResponse.DataBean.ItemsBean> itemsBeans = new ArrayList<>();
+                            for (int i = 0; i < machineFaults.size(); i++) {
+                                MachineDetailResponse.DataBean.MachineFaultsBean bean = machineFaults.get(i);
+                                MachineFaultResponse.DataBean.ItemsBean itemsBean = new MachineFaultResponse.DataBean.ItemsBean();
+                                itemsBean.setFaultDescribe(bean.getFaultDescribe());
+                                itemsBean.setFaultState(bean.getFaultState());
+                                itemsBean.setId(bean.getId());
+                                itemsBean.setCreationTime(bean.getCreationTime());
+                                itemsBeans.add(itemsBean);
+                            }
+                            faultRecord.setData(itemsBeans, jobId, task, false, isShopSign);
+                        }
+
                     }
                 }
         );
@@ -108,7 +124,8 @@ public class Machine extends BaseFragment {
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        id = bundle.getInt("id");
+        jobId = bundle.getInt("jobId");
+        int shopId = bundle.getInt("shopId");
         machineId = bundle.getInt("machineId");
         isShopSign = bundle.getBoolean("isShopSign");
         String[] titles = getResources().getStringArray(R.array.machinItemTitle);
@@ -134,11 +151,28 @@ public class Machine extends BaseFragment {
         }
         UploadPageAdapter uploadPageAdapter = new UploadPageAdapter(views);
         binding.vpUpload.setAdapter(uploadPageAdapter);
-
     }
 
     @Override
     public void initlisten() {
+
+        binding.jsyc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tipStr = getString(R.string.tip);
+                TipDialog tipDialog = new TipDialog(getContext(), tipStr, new ClickSureListener() {
+                    @Override
+                    public void clickSure() {
+                        HttpUtil.getInstance().machineRepeatCommit(machineId, jobId).subscribe(
+                                str -> {
+
+                                }
+                        );
+                    }
+                });
+                tipDialog.show();
+            }
+        });
 
         binding.uploadFault.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,13 +192,12 @@ public class Machine extends BaseFragment {
             }
         });
         machineSettleBody = new MachineSettleBody();
-        machineSettleBody.setJobId(id);
+        machineSettleBody.setJobId(jobId);
         machineSettleBody.setMachineId(machineId);
         binding.commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isShopSign) {
-
                     String tbStr = binding.etTb.getText().toString();
                     String xfStr = binding.etXf.getText().toString();
                     String cbStr = binding.etCb.getText().toString();
@@ -225,9 +258,9 @@ public class Machine extends BaseFragment {
 
             }
         });
-        addTextChangeListener(binding.etTb,binding.sctb,binding.bctb);
-        addTextChangeListener(binding.etXf,binding.scxf,binding.bcxf);
-        addTextChangeListener(binding.etCb,binding.sccb,binding.bccb);
+        addTextChangeListener(binding.etTb, binding.sctb, binding.bctb);
+        addTextChangeListener(binding.etXf, binding.scxf, binding.bcxf);
+        addTextChangeListener(binding.etCb, binding.sccb, binding.bccb);
     }
 
     private void addTextChangeListener(EditText et1, TextView tv1, TextView tv2) {
@@ -255,9 +288,8 @@ public class Machine extends BaseFragment {
                     v2 = Integer.parseInt(str);
                 }
                 if (v >= v2) {
-                    tv2.setText(String.valueOf(v - v2) + "");
+                    tv2.setText((v - v2) + "");
                 }
-                LogUtil.log("========SSSSSS=========" + s);
             }
         });
     }
@@ -287,6 +319,15 @@ public class Machine extends BaseFragment {
 
             }
         }).requestCode(ActivityResultHandler.REQUEST_SELECT_PHOTO_CROP).intent(intent).activity((AppCompatActivity) getActivity()).build().startActivityForResult();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        LogUtil.log("================machineDestory===============");
+
     }
 
 

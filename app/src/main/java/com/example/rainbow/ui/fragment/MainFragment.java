@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
 import com.example.rainbow.MainActivity;
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
@@ -23,8 +24,10 @@ import com.example.rainbow.ui.main.PersonDetail;
 import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.main.Wxzn;
 import com.example.rainbow.util.LogUtil;
+
 import java.util.ArrayList;
 import java.util.Locale;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -89,7 +92,7 @@ public class MainFragment extends BaseFragment {
 
     private boolean isInit;
 
-    private void rollingOver(View v,float f1,float f2) {
+    private void rollingOver(View v, float f1, float f2) {
         ObjectAnimator rotate = ObjectAnimator.ofFloat(v, "rotation", f1, f2).setDuration(200);
         rotate.start();
     }
@@ -101,11 +104,11 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 int visibility = binding.leftll.getVisibility();
                 if (visibility == View.VISIBLE) {
-                    rollingOver(v,0,180);
+                    rollingOver(v, 0, 180);
                     binding.leftll.setVisibility(View.GONE);
                 } else {
                     binding.leftll.setVisibility(View.VISIBLE);
-                    rollingOver(v,180,0);
+                    rollingOver(v, 180, 0);
                 }
             }
         });
@@ -123,11 +126,13 @@ public class MainFragment extends BaseFragment {
         binding.spLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                boolean restart;
+                boolean restart=false;
                 if (isInit) {
                     if (position == 0) {
                         restart = LanguagesManager.setAppLanguage(getContext(), Locale.CHINA);
-                    } else {
+                    } else if (position == 1) {
+                        restart = LanguagesManager.setAppLanguage(getContext(), Locale.forLanguageTag("en"));
+                    } else if (position == 2) {
                         restart = LanguagesManager.setAppLanguage(getContext(), Locale.forLanguageTag("es"));
                     }
                     if (restart) {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -21,16 +22,20 @@ import com.example.rainbow.catche.Loader.RxImageLoader;
 import com.example.rainbow.databinding.FragmentShopBinding;
 import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.strategy.ClickSureListener;
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.ui.adapter.ShopFaultListAdapter;
 import com.example.rainbow.ui.adapter.ShopPageAdapter;
 import com.example.rainbow.ui.adapter.ShopProfitLossAdapter;
 import com.example.rainbow.ui.main.Task;
+import com.example.rainbow.ui.widget.TipDialog;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.ImagUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -87,6 +92,7 @@ public class Shop extends BaseFragment {
         String image = data.getImage();
         String url = ImagUtil.handleUrl(image);
         if (!TextUtils.isEmpty(url)) {
+
             RxImageLoader.with(getContext()).load(url).into(binding.iv, 1);
         }
         List<ShopProfitLossResponse.DataBean.MachineProfitLossBean> machineProfitLoss = data.getMachineProfitLoss();
@@ -127,7 +133,8 @@ public class Shop extends BaseFragment {
                         Bundle bundle = new Bundle();
                         bundle.putString("machineName", machineProfitLossBean.getMachineName());
                         bundle.putInt("machineId", machineProfitLossBean.getId());
-                        bundle.putInt("id", id);
+                        bundle.putInt("shopId", shopId);
+                        bundle.putInt("jobId", id);
                         bundle.putBoolean("isRepair", false);
                         bundle.putBoolean("isShopSign", data.isIsSignIn());
                         Machine machine = new Machine();
@@ -138,7 +145,7 @@ public class Shop extends BaseFragment {
                         Bundle bundle = new Bundle();
                         bundle.putString("machineName", bean.getMachineName());
                         bundle.putInt("machineId", bean.getId());
-                        bundle.putInt("id", id);
+                        bundle.putInt("id", shopId);
                         bundle.putBoolean("isShopSign", data.isIsSignIn());
                         Machine2 machine = new Machine2();
                         machine.setArguments(bundle);
@@ -163,10 +170,35 @@ public class Shop extends BaseFragment {
     @Override
     public void initlisten() {
 
+
+        binding.jsyc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tipStr = getString(R.string.tip);
+                TipDialog tipDialog = new TipDialog(getContext(), tipStr, new ClickSureListener() {
+                    @Override
+                    public void clickSure() {
+                        HttpUtil.getInstance().shopRepeatCommit(shopId, id).subscribe(
+                                str -> {
+
+                                }
+                        );
+                    }
+                });
+                tipDialog.show();
+            }
+        });
+
         binding.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Presenter.getInstance().startNaviGoogle(23.1066805, 113.3245904);
+                String coordinate = data.getCoordinate();
+                if (!TextUtils.isEmpty(coordinate)) {
+                    String[] split = coordinate.split(",");
+                    double la = Double.parseDouble(split[0]);
+                    double lon = Double.parseDouble(split[1]);
+                    Presenter.getInstance().startNaviGoogle(la, lon);
+                }
             }
         });
 

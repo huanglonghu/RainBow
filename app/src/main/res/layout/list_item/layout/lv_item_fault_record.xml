@@ -5,7 +5,7 @@
 
         <variable
             name="bean"
-            type="com.example.rainbow.bean.MachineDetailResponse.DataBean.MachineFaultsBean" />
+            type="com.example.rainbow.bean.MachineFaultResponse.DataBean.ItemsBean" />
 
     </data>
 

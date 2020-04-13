@@ -9,6 +9,7 @@ import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.EnterBody;
 import com.example.rainbow.bean.ErrorBody;
 import com.example.rainbow.bean.HandlerFaultBody;
+import com.example.rainbow.bean.MachineFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
@@ -94,7 +95,7 @@ public class HttpUtil {
                     }
                 }
                 Thread thread = Thread.currentThread();
-                LogUtil.log("===========threadName============="+thread.getName());
+                LogUtil.log("===========threadName=============" + thread.getName());
                 okhttp3.Response response = chain.proceed(request);
                 if (response.code() == 401) {
                     UserBean userBean = UserOption.getInstance().querryUser();
@@ -295,6 +296,19 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
+    public Observable<String> getMachineFault(MachineFaultBody body) {
+
+        Call<ResponseBody> call = httpInterface.getMachineFault(body);
+        return enqueueCall(call);
+
+    }
+
+    public Observable<String> getPartById(int id) {
+        Call<ResponseBody> call = httpInterface.getPartById(id);
+        return enqueueCall(call);
+    }
+
+
     public Observable<String> getMachineFaultDeail(int id) {
         Call<ResponseBody> call = httpInterface.getMachineFaultDeail(id);
         return enqueueCall(call);
@@ -359,6 +373,22 @@ public class HttpUtil {
 
     public Observable<String> wxRouteSettle(WxRouteSettleBody wxRouteSettleBody) {
         Call<ResponseBody> call = httpInterface.wxRouteSettle(wxRouteSettleBody);
+        return enqueueCall(call);
+    }
+
+    public Observable<String> shopRepeatCommit(int shopId, int jobId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("businessId", shopId);
+        map.put("id", jobId);
+        Call<ResponseBody> call = httpInterface.shopRepeatCommit(map);
+        return enqueueCall(call);
+    }
+
+    public Observable<String> machineRepeatCommit(int machineId, int jobId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("businessId", machineId);
+        map.put("id", jobId);
+        Call<ResponseBody> call = httpInterface.machineRepeatCommit(map);
         return enqueueCall(call);
     }
 

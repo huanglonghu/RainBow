@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,6 +9,10 @@
             type="com.example.rainbow.bean.GetJobDetailResponse.DataBean" />
 
         <import type="android.view.View" />
+
+        <variable
+            name="isRepair"
+            type="boolean" />
 
     </data>
 
@@ -83,6 +88,23 @@
                     android:textSize="30pt" />
 
             </LinearLayout>
+
+
+            <com.example.rainbow.ui.customView.ImageTextView
+                android:id="@+id/wxpj"
+                android:layout_width="232pt"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230pt"
+                android:gravity="center"
+                android:paddingRight="30pt"
+                android:textColor="@color/t2"
+                android:visibility="@{isRepair?View.VISIBLE:View.GONE}"
+                android:textSize="31pt"
+                android:text="@string/wxpj"
+                app:direcation="2"
+                app:drawable="@drawable/down"
+                app:drawableHeight="20pt"
+                app:drawableWidth="24pt"/>
 
 
         </LinearLayout>

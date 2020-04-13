@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,10 @@ import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpInterface;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.NetLoading;
 import com.example.rainbow.util.GsonUtil;
+import com.example.rainbow.util.LogUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,10 +69,12 @@ public class UploadFault extends BaseFragment {
     private ArrayList<String> pathList;
     private int windowWidth;
     private NetLoading netLoading;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_upload_fault, container, false);
         initView();
         initData();
@@ -158,7 +163,7 @@ public class UploadFault extends BaseFragment {
                     int w2 = (windowWidth * 290) / 1920;
                     int h2 = (windowWidth * 200) / 1920;
                     int s = (windowWidth * 30) / 1920;
-                    ImgItemBinding imgItemBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.img_item, binding.photoContainer, false);
+                    ImgItemBinding imgItemBinding = DataBindingUtil.inflate(getActivity().getLayoutInflater(), R.layout.img_item, binding.photoContainer, false);
                     LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(w, h);
                     RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(w2, h2);
                     RelativeLayout.LayoutParams lp3 = new RelativeLayout.LayoutParams(s, s);
@@ -171,6 +176,7 @@ public class UploadFault extends BaseFragment {
                     imgItemBinding.photo.setImageDrawable(new BitmapDrawable(bitmap));
                     binding.photoContainer.addView(item);
                     Part filePart = Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+
                     parts.add(filePart);
                     imgItemBinding.delete.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -186,6 +192,9 @@ public class UploadFault extends BaseFragment {
         }).intent(intent).activity((AppCompatActivity) getActivity()).build().startActivityForResult();
 
     }
+
+
+    private String TAG = "UPLOAD";
 
     private void upload(String faultDescribe) {
         Observable<String>[] observables = new Observable[parts.size()];
@@ -218,14 +227,9 @@ public class UploadFault extends BaseFragment {
             });
 
         }
-
-        Observable.mergeArray(observables).doOnSubscribe(new Consumer<Disposable>() {
-            @Override
-            public void accept(Disposable disposable) throws Exception {
-                netLoading = new NetLoading(getContext());
-                netLoading.show();
-            }
-        }).flatMap(new Function<String, ObservableSource<String>>() {
+        netLoading = new NetLoading(getContext());
+        netLoading.show();
+        Observable.mergeArray(observables).flatMap(new Function<String, ObservableSource<String>>() {
             @Override
             public ObservableSource<String> apply(String s) throws Exception {
                 pathList.add(s);
@@ -243,7 +247,7 @@ public class UploadFault extends BaseFragment {
                     if (!TextUtils.isEmpty(a)) {
                         String toastStr = getString(R.string.toastStr18);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                        Presenter.getInstance().back();
+                        task.back();
                     }
                 }
         );

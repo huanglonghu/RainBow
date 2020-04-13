@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RainBow</string>
+
+    <string name="nickName">nickname</string>
+
+    <string name="phoneNumber">telephone number</string>
+
+    <string name="storeName">store name</string>
+
+    <string name="editPwd">change password</string>
+
+    <string name="gzrw">work task</string>
+
+    <string name="grxx">personal information</string>
+
+    <string name="notice">notice</string>
+
+    <string name="skgl">collection management</string>
+
+    <string name="jsgl">game room management</string>
+
+    <string name="wxgl">repair management</string>
+
+    <string name="toWork">go to work</string>
+    <string name="offWork">go off work</string>
+    <string name="workDate">work hours</string>
+    <string name="offWorkDate">off duty time</string>
+    <string name="state">state</string>
+
+
+    <string name="oldPwd">old password</string>
+    <string name="newPwd">new password</string>
+    <string name="surePwd">confirm password</string>
+    <string name="jsje">settle accounts</string>
+
+    <string name="sure">make sure</string>
+    <string name="djfc">Store Sharing</string>
+    <string name="address">address：</string>
+    <string name="phone">phone number：</string>
+    <string name="cd">be late</string>
+    <string name="zc">normal</string>
+    <string name="faultDetail">fault detail</string>
+    <string name="uploadFault">upload fault</string>
+    <string name="shopSettle">shop settlement</string>
+    <string name="sign">sign in</string>
+    <string name="signed">already signed in</string>
+    <string name="settle">settle</string>
+    <string name="settled">already settled</string>
+    <string name="syjl">record of winning or losing</string>
+
+    <string name="wtms">problem description</string>
+    <string name="clsm">processing instruction：</string>
+
+    <string name="faultState1">pending disposal</string>
+    <string name="faultState2">already resolved</string>
+    <string name="faultState3">unresolved</string>
+
+
+    <string name="bcxf">Clear Meter</string>
+    <string name="bccb">Coin Out</string>
+    <string name="bctb">Coin In</string>
+    <string name="totalSettle">total settle</string>
+
+    <string name="dqtb">Current Coin In : </string>
+    <string name="dqxf">Current Clear Meter: </string>
+    <string name="dqcb">Current Coin Out : </string>
+
+
+    <string name="cktp">see the picture</string>
+    <string name="tpsc">upload picture</string>
+
+    <string name="rq">date</string>
+    <string name="title">title</string>
+
+    <string name="totalTb">Total Coin in</string>
+    <string name="totalCb">Total Coin Out</string>
+    <string name="xf">Clear Poin In / Out</string>
+    <string name="picture">picture</string>
+
+    <string name="chxlglxt">rainbow line management system</string>
+
+    <string name="qsryhm">input one user name</string>
+    <string name="qsrmm">input a password</string>
+    <string name="login">login</string>
+    <string name="commit">submit</string>
+    <string name="sxbdk">Punch Card Check</string>
+
+    <string name="aqtc">exit safely</string>
+
+    <string name="welcome">welcome to enter the rainbow line management system</string>
+
+    <string name="fzr">responsible person：</string>
+
+    <string name="drivier">driver：</string>
+    <string name="cph">car number：</string>
+    <string name="zyk">Total Win / Lose</string>
+    <string name="gzbx">Job Reimbursement</string>
+    <string name="zsf">hotel expense：</string>
+    <string name="zwf">sundry expenses：</string>
+    <string name="zpq">Total Payout :</string>
+    <string name="zkq">Total Deduct :</string>
+    <string name="ssje">Amount received</string>
+    <string name="bankNote">bank note</string>
+    <string name="tb">copper：</string>
+    <string name="remark">remark：</string>
+    <string name="clear">clear</string>
+    <string name="qdtj">make sure to submission</string>
+    <string name="line">line</string>
+    <string name="jqpz">machine taking picture</string>
+    <string name="hint1">Type in amount clear meter</string>
+    <string name="hint2">select machine</string>
+    <string name="hint3">Type in clear meter</string>
+    <string name="qztj">signature submission</string>
+    <string name="pzsc">photo upload</string>
+    <string name="lrrq">date of input</string>
+    <string name="machine">machine</string>
+    <string name="ksje">Total lose</string>
+    <string name="lrr">Prepared by</string>
+
+
+    <string-array name="language">
+
+        <item>Chinese</item>
+        <item>English</item>
+        <item>Spanish</item>
+
+    </string-array>
+
+
+    <string-array name="shopItemTitle">
+
+        <item>shop machine</item>
+        <item>pending issues</item>
+
+    </string-array>
+
+
+    <string-array name="machinItemTitle">
+
+        <item>historical record</item>
+        <item>problem record</item>
+
+    </string-array>
+
+    <string name="netError">net error please try again</string>
+    <string name="year">year</string>
+    <string-array name="moth">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
+
+
+
+    <string name="toastStr1">You have not installed Google maps or the map version is too low</string>
+    <string name="toastStr5">submit successfully</string>
+    <string name="toastStr6">please enter the original password</string>
+    <string name="toastStr7">please enter the new password</string>
+    <string name="toastStr8">The new passwords entered twice are inconsistent</string>
+    <string name="toastStr9">password modified successfully</string>
+    <string name="toastStr10">please upload the picture</string>
+    <string name="toastStr11">please enter comments</string>
+    <string name="toastStr12">sign in successfully</string>
+    <string name="toastStr14">please enter signature</string>
+    <string name="toastStr15">please take photos and upload the fault</string>
+    <string name="toastStr16">Check In successful</string>
+    <string name="toastStr17">please enter a question description</string>
+    <string name="toastStr18">failure submitted successfully</string>
+    <string name="toastStr19">please enter the new password again</string>
+    <string name="toastStr20">Check Out successful</string>
+    <string name="toastStr21">QR code has been saved to mobile album</string>
+    <string name="toastStr22">Max upload 4 pictures</string>
+    <string name="toastStr23">请按顺序结算</string>
+    <string name="toastStr24">请输入洗分</string>
+    <string name="toastStr25">请先去店铺签到</string>
+    <string name="toastStr26">请输入住宿费</string>
+    <string name="toastStr27">请输入杂物费</string>
+    <string name="toastStr28">请输入燃油费</string>
+    <string name="toastStr29">请输入餐饮费</string>
+    <string name="toastStr30">请输入纸钞数目</string>
+    <string name="toastStr31">请输入铜板数目</string>
+    <string name="toastStr32">请输入当次投币</string>
+    <string name="toastStr33">请输入当次洗分</string>
+    <string name="toastStr34">请输入当次出币</string>
+    <string name="toastStr35">请上传编号图</string>
+    <string name="toastStr36">请上传码表图</string>
+    <string name="toastSrt37">任务结算成功</string>
+    <string name="toastStr38">请输入抵扣金额</string>
+    <string name="toastStr39">请输入实付金额</string>
+    <string name="toastStr40">最大洗分不能超过</string>
+    <string name="toastStr41">最大抵扣金额不能超过</string>
+    <string name="wxzn">维修指南</string>
+    <string name="wtjl">问题记录</string>
+    <string name="scgzcl">上传故障处理结果</string>
+    <string name="bcyk">本次盈亏</string>
+    <string name="ryf">燃油费 :</string>
+    <string name="cyf">餐饮费 :</string>
+    <string name="dffy">垫付费用 :</string>
+    <string name="dkfy">抵扣费用 :</string>
+    <string name="xfyl">洗分盈利 :</string>
+    <string name="dpfy">店铺费用 :</string>
+    <string name="dkje">抵扣金额</string>
+    <string name="sfje">实付金额</string>
+    <string name="hint4">请输入机器名称</string>
+    <string name="hint5">请输入机器型号</string>
+    <string name="sctb">上次投币 :</string>
+    <string name="scxf">上次洗分 :</string>
+    <string name="sccb">上次出币 :</string>
+    <string name="toastStr2">故障处理提交成功</string>
+    <string name="toastStr3">请输入处理说明</string>
+    <string name="toastStr4">请拍照上传处理结果</string>
+    <string name="dclwt">待处理问题</string>
+    <string name="bj">本金 :</string>
+
+</resources>

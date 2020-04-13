@@ -2,6 +2,7 @@ package com.example.rainbow.net;
 
 import com.example.rainbow.bean.EnterBody;
 import com.example.rainbow.bean.HandlerFaultBody;
+import com.example.rainbow.bean.MachineFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
 import com.example.rainbow.bean.RouteSettleBody;
@@ -89,6 +90,12 @@ public interface HttpInterface {
     @POST("/api/v1/job/appgetjobmachinedetails")
     Call<ResponseBody> getMachineDetail(@Body HashMap<String, Integer> map);
 
+    @POST("/api/v1/machinefault/querypage")
+    Call<ResponseBody> getMachineFault(@Body MachineFaultBody body);
+
+    @GET("/api/v1/jobsparepart/query")
+    Call<ResponseBody> getPartById(@Query("id") int id);
+
     @GET("/api/v1/machinefault/get")
     Call<ResponseBody> getMachineFaultDeail(@Query("id") int id);
 
@@ -129,6 +136,14 @@ public interface HttpInterface {
 
     @POST("/api/v1/jobrouteprofitloss/repaircreate")
     Call<ResponseBody> wxRouteSettle(@Body WxRouteSettleBody wxRouteSettleBody);
+
+
+    @POST("/api/v1/jobshopprofitloss/repeatcreate")
+    Call<ResponseBody> shopRepeatCommit(@Body HashMap<String, Integer> map);
+
+
+    @POST("/api/v1/machineprofitloss/repeatcreate")
+    Call<ResponseBody> machineRepeatCommit(@Body HashMap<String, Integer> map);
 
 
 }

@@ -33,6 +33,7 @@ import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpInterface;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.NetLoading;
 import com.example.rainbow.ui.widget.PhotoGraphWindow;
 import com.example.rainbow.util.GsonUtil;
@@ -72,10 +73,12 @@ public class HandleFault extends BaseFragment {
     private int jobId;
     private String faultImage;
     private boolean isShopSign;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_handle_fault, container, false);
         initView();
         initData();
@@ -283,7 +286,7 @@ public class HandleFault extends BaseFragment {
                     if (!TextUtils.isEmpty(a)) {
                         String toastStr = getString(R.string.toastStr2);
                         Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                        Presenter.getInstance().back();
+                        task.back();
                     }
                 }
         );

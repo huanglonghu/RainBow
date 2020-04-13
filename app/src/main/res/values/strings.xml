@@ -121,7 +121,7 @@
     <string name="jqpz">机器拍照</string>
     <string name="hint1">请输入本次洗分金额</string>
     <string name="hint2">请选择机器</string>
-    <string name="hint3">请输入本店总洗分</string>
+    <string name="hint3">请输入洗分</string>
     <string name="hint4">请输入机器名称</string>
     <string name="hint5">请输入机器型号</string>
     <string name="qztj">签字提交</string>
@@ -159,7 +159,7 @@
     </string-array>
 
     <string name="netError">网络异常,请重试</string>
-
+    <string name="clsm">处理说明</string>
 
     <string name="toastStr1">您尚未安装谷歌地图或地图版本过低</string>
     <string name="toastStr2">故障处理提交成功</string>
@@ -202,9 +202,6 @@
     <string name="toastStr40">最大洗分不能超过</string>
     <string name="toastStr41">最大抵扣金额不能超过</string>
     <string name="wxzn">维修指南</string>
-
-    <string name="clsm">处理说明</string>
-
     <string name="wtjl">问题记录</string>
     <string name="scgzcl">上传故障处理结果</string>
 
@@ -236,5 +233,11 @@
     </string-array>
 
     <string name="bj">本金 :</string>
+    <string name="wxpj">维修配件</string>
+    <string name="lxr">联系人：</string>
+    <string name="jsyc">结算异常?</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="tip">因特殊原因无法结算，是否跳过结算？</string>
 
 </resources>

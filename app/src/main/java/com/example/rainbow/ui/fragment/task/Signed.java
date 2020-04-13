@@ -27,8 +27,11 @@ import com.example.rainbow.databinding.FragmentSignedBinding;
 import com.example.rainbow.handler.ActivityResultHandler;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.strategy.HandlerStrategy;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
+
 import java.io.File;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,10 +45,12 @@ public class Signed extends BaseFragment {
 
     private FragmentSignedBinding binding;
     private SignBody signBody;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signed, container, false);
         initlisten();
         return binding.getRoot();
@@ -82,17 +87,12 @@ public class Signed extends BaseFragment {
                     return;
                 }
                 String remark = binding.etRemark.getText().toString();
-                if (TextUtils.isEmpty(remark)) {
-                    String toastStr = getString(R.string.toastStr11);
-                    Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 signBody.setRemarks(remark);
                 HttpUtil.getInstance().shopSign(signBody).subscribe(
                         str -> {
                             String toastStr = getString(R.string.toastStr12);
                             Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                            Presenter.getInstance().back();
+                            task.back();
                         }
                 );
             }

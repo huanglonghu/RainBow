@@ -10,7 +10,7 @@
 
         <variable
             name="data"
-            type="com.example.rainbow.bean.MachineDetailResponse.DataBean" />
+            type="com.example.rainbow.bean.MachineFaultResponse.DataBean" />
 
         <import type="android.view.View" />
 

@@ -13,6 +13,7 @@ import com.example.rainbow.catche.Loader.RxImageLoader;
 import com.example.rainbow.databinding.LvItemLineBinding;
 import com.example.rainbow.util.ImagUtil;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import androidx.databinding.DataBindingUtil;
@@ -43,12 +44,19 @@ public class SelectLineAdapter extends BaseListAdapter {
             RxImageLoader.with(context).load(url).into(binding.iv, 1);
         }
 
-        binding.line.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Presenter.getInstance().startNaviGoogle(23.1066805, 113.3245904);
-            }
-        });
+
+        String coordinate = bean.getCoordinate();
+        if (!TextUtils.isEmpty(coordinate)) {
+            String[] split = coordinate.split(",");
+            double la = Double.parseDouble(split[0]);
+            double lon = Double.parseDouble(split[1]);
+            binding.line.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Presenter.getInstance().startNaviGoogle(la, lon);
+                }
+            });
+        }
         return binding.getRoot();
     }
 }

@@ -22,7 +22,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/shape_a1"
                 android:hint="@string/hint4"
-                android:inputType="number"
                 android:paddingLeft="20pt"
                 android:textColorHint="@color/d2"
                 android:textSize="30pt" />
@@ -36,7 +35,6 @@
                 android:layout_weight="1"
                 android:background="@drawable/shape_a1"
                 android:hint="@string/hint5"
-                android:inputType="number"
                 android:paddingLeft="20pt"
                 android:textColorHint="@color/d2"
                 android:textSize="30pt" />

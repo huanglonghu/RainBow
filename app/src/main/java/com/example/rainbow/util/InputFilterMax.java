@@ -12,6 +12,7 @@ public class InputFilterMax implements InputFilter {
 
     public InputFilterMax(Context context, String toastStr, int max) {
         this.context = context;
+        this.toastStr=toastStr;
         this.max = max;
     }
 
@@ -20,9 +21,7 @@ public class InputFilterMax implements InputFilter {
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
         try {
             int input = Integer.parseInt(dest.toString() + source.toString());
-            LogUtil.log(max + "=============max=============" + input);
             if (max >= input) {
-
                 return null;
             }
         } catch (Exception nfe) {

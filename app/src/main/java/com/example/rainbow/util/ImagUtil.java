@@ -15,10 +15,12 @@ import android.widget.Toast;
 import com.example.rainbow.R;
 import com.example.rainbow.base.RainBowApplication;
 import com.example.rainbow.constant.HttpParam;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
@@ -62,11 +64,14 @@ public class ImagUtil {
     public static Bitmap compressImage(Bitmap image) {
         int bitmapSize = image.getRowBytes() * image.getHeight();
         Matrix matrix = new Matrix();
-        matrix.setScale(0.5f, 0.5f);
-        while (bitmapSize > (400 * 1024)) {
+        LogUtil.log("11=========scaleSize===========" + bitmapSize);
+        matrix.setScale(0.1f, 0.1f);
+        while (bitmapSize > (5 * 1024 * 1024)) {
             image = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
             bitmapSize = image.getRowBytes() * image.getHeight();
         }
+
+        LogUtil.log("22=========scaleSize===========" + bitmapSize);
         return image;
     }
 
@@ -127,6 +132,30 @@ public class ImagUtil {
         }
         // 发送广播，通知刷新图库的显示
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
+    }
+
+
+    public static  File compressImage(File oldFile, Bitmap bm) {
+        //压缩文件路径 照片路径/
+        String targetPath = oldFile.getPath();
+        int quality = 50;//压缩比例0-100
+        bm = compressImage(bm);
+        File outputFile = new File(targetPath);
+        try {
+            if (!outputFile.exists()) {
+                outputFile.getParentFile().mkdirs();
+                //outputFile.createNewFile();
+            } else {
+                outputFile.delete();
+            }
+            FileOutputStream out = new FileOutputStream(outputFile);
+            bm.compress(Bitmap.CompressFormat.JPEG, quality, out);
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return oldFile;
+        }
+        return outputFile;
     }
 
 

@@ -5,19 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.GetJobDetailResponse;
+import com.example.rainbow.bean.PartResponse;
 import com.example.rainbow.databinding.FragmentSelectLineBinding;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.ui.adapter.PartMenuAdapter;
 import com.example.rainbow.ui.adapter.SelectLineAdapter;
 import com.example.rainbow.ui.main.Task;
+import com.example.rainbow.ui.widget.PartMenuWindow;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.LogUtil;
 import com.jakewharton.rxbinding2.widget.RxAdapterView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -31,6 +37,7 @@ public class LineSelect extends BaseFragment {
     private Task task;
     private boolean isRepair;
     private boolean[] isSignArray;
+    private List<PartResponse.DataBean.ItemsBean> items;
 
     @Nullable
     @Override
@@ -70,6 +77,22 @@ public class LineSelect extends BaseFragment {
                 }
         );
 
+
+        if (isRepair) {
+            HttpUtil.getInstance().getPartById(id).subscribe(
+                    str -> {
+
+                        PartResponse partResponse = GsonUtil.fromJson(str, PartResponse.class);
+                        PartResponse.DataBean data = partResponse.getData();
+                        if (data != null) {
+                            items = data.getItems();
+                        }
+
+                    }
+            );
+        }
+
+
     }
 
     @Override
@@ -78,6 +101,7 @@ public class LineSelect extends BaseFragment {
         Bundle bundle = getArguments();
         id = bundle.getInt("id");
         isRepair = bundle.getBoolean("isRepair");
+        binding.setIsRepair(isRepair);
         datas = new ArrayList<>();
         adapter = new SelectLineAdapter(getContext(), datas, R.layout.lv_item_line);
         binding.lvLine.setAdapter(adapter);
@@ -92,17 +116,16 @@ public class LineSelect extends BaseFragment {
                     if (position == 0) {
                         toShop(bean);
                     } else {
-                        boolean isCanGo=true;
+                        boolean isCanGo = true;
                         for (int i = 0; i < position; i++) {
                             GetJobDetailResponse.DataBean.ShopsBean bean2 = datas.get(i);
                             boolean b = bean2.isIsSignIn();
                             boolean c = bean2.isIsNotGo();
-                            boolean a = b|| c;
+                            boolean a = b || c;
                             if (!a) {
                                 isCanGo = false;
                             }
                         }
-
                         if (isCanGo) {
                             toShop(bean);
                         } else {
@@ -131,6 +154,17 @@ public class LineSelect extends BaseFragment {
                     bundle.putInt("id", id);
                     lineSettle.setArguments(bundle);
                     task.step2Task("lineSettle", lineSettle, " > " + title);
+                }
+
+            }
+        });
+
+        binding.wxpj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (items != null && items.size() > 0) {
+                    PartMenuWindow partMenuWindow = new PartMenuWindow(getContext(), items);
+                    partMenuWindow.showAsDropDown(v);
                 }
 
             }

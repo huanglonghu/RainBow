@@ -198,9 +198,7 @@ public class Presenter {
         }
     }
 
-    public void back() {
-        taskFm.popBackStack();
-    }
+
 
     private Context context;
 

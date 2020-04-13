@@ -108,7 +108,13 @@ public class Shop2 extends BaseFragment {
         binding.line.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Presenter.getInstance().startNaviGoogle(23.1066805, 113.3245904);
+                String coordinate = data.getCoordinate();
+                if (!TextUtils.isEmpty(coordinate)) {
+                    String[] split = coordinate.split(",");
+                    double la = Double.parseDouble(split[0]);
+                    double lon = Double.parseDouble(split[1]);
+                    Presenter.getInstance().startNaviGoogle(la, lon);
+                }
             }
         });
 
@@ -133,7 +139,7 @@ public class Shop2 extends BaseFragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("machineName", bean.getMachineName());
                 bundle.putInt("machineId", bean.getId());
-                bundle.putInt("id", id);
+                bundle.putInt("id", shopId);
                 bundle.putBoolean("isRepair", true);
                 bundle.putBoolean("isShopSign", data.isIsSignIn());
                 Machine2 machine = new Machine2();

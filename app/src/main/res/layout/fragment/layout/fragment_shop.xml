@@ -73,11 +73,13 @@
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
 
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="30pt"
                         android:layout_marginTop="10pt"
-                        android:text="@{@string/phone+data.telephone}"
+                        android:text='@{@string/phone+"("+data.contact+")"+data.telephone}'
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
 
@@ -88,6 +90,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -184,8 +187,7 @@
                     android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
                     android:clickable="@{data.isSettled?false:true}"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:visibility="@{isRepair?View.GONE:View.VISIBLE}">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="62pt"
@@ -206,6 +208,18 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/jsyc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="50pt"
+                android:text="@string/jsyc"
+                android:textColor="@color/c2"
+                android:textSize="28pt"
+                android:visibility="@{data.isSettled?View.GONE:View.VISIBLE}" />
 
 
         </RelativeLayout>

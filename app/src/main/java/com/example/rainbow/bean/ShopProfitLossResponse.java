@@ -8,7 +8,7 @@ public class ShopProfitLossResponse {
     /**
      * code : 0
      * msg : success
-     * data : {"splitRatio":0.3,"remarks":null,"machineProfitLoss":[{"isSettled":false,"profitLoss":0,"machineName":"赛车","sort":1,"isFault":false,"id":17},{"isSettled":false,"profitLoss":0,"machineName":"水果乐园","sort":2,"isFault":true,"id":18},{"isSettled":false,"profitLoss":0,"machineName":"消消乐","sort":3,"isFault":true,"id":19}],"shopName":"棠下店","contact":"李老板","telephone":"18502085956","image":"images\\bda44826719d4ac69dc9bf8564d61545.jpg","address":"天河区棠下小区三愧里大街5巷1栋","coordinate":"23.136651,113.382284","sort":0,"isSignIn":false,"isSettled":false,"isNotGo":false,"id":8}
+     * data : {"splitRatio":0.4,"remarks":null,"machineProfitLoss":[{"isSettled":true,"profitLoss":700,"machineName":"D001三国演义","sort":1,"isFault":false,"id":1},{"isSettled":true,"profitLoss":1300,"machineName":"D002拳王争霸","sort":2,"isFault":false,"id":2},{"isSettled":true,"profitLoss":-500,"machineName":"D003老虎机","sort":3,"isFault":false,"id":3}],"shopName":"东圃店","contact":"老王","telephone":"18502085959","image":"images\\ef379f9383044c3f9c8f63399079790e.jpg","address":"广州天河东圃镇BRT","coordinate":"23.129776,113.408727","sort":0,"isSignIn":true,"isSettled":true,"isNotGo":false,"id":1}
      */
 
     private int code;
@@ -41,20 +41,20 @@ public class ShopProfitLossResponse {
 
     public static class DataBean {
         /**
-         * splitRatio : 0.3
+         * splitRatio : 0.4
          * remarks : null
-         * machineProfitLoss : [{"isSettled":false,"profitLoss":0,"machineName":"赛车","sort":1,"isFault":false,"id":17},{"isSettled":false,"profitLoss":0,"machineName":"水果乐园","sort":2,"isFault":true,"id":18},{"isSettled":false,"profitLoss":0,"machineName":"消消乐","sort":3,"isFault":true,"id":19}]
-         * shopName : 棠下店
-         * contact : 李老板
-         * telephone : 18502085956
-         * image : images\bda44826719d4ac69dc9bf8564d61545.jpg
-         * address : 天河区棠下小区三愧里大街5巷1栋
-         * coordinate : 23.136651,113.382284
+         * machineProfitLoss : [{"isSettled":true,"profitLoss":700,"machineName":"D001三国演义","sort":1,"isFault":false,"id":1},{"isSettled":true,"profitLoss":1300,"machineName":"D002拳王争霸","sort":2,"isFault":false,"id":2},{"isSettled":true,"profitLoss":-500,"machineName":"D003老虎机","sort":3,"isFault":false,"id":3}]
+         * shopName : 东圃店
+         * contact : 老王
+         * telephone : 18502085959
+         * image : images\ef379f9383044c3f9c8f63399079790e.jpg
+         * address : 广州天河东圃镇BRT
+         * coordinate : 23.129776,113.408727
          * sort : 0
-         * isSignIn : false
-         * isSettled : false
+         * isSignIn : true
+         * isSettled : true
          * isNotGo : false
-         * id : 8
+         * id : 1
          */
 
         private double splitRatio;
@@ -186,12 +186,12 @@ public class ShopProfitLossResponse {
 
         public static class MachineProfitLossBean {
             /**
-             * isSettled : false
-             * profitLoss : 0.0
-             * machineName : 赛车
+             * isSettled : true
+             * profitLoss : 700.0
+             * machineName : D001三国演义
              * sort : 1
              * isFault : false
-             * id : 17
+             * id : 1
              */
 
             private boolean isSettled;

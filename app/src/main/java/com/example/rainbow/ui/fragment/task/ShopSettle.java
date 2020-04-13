@@ -18,6 +18,7 @@ import com.example.rainbow.bean.ShopWinlossResponse;
 import com.example.rainbow.bean.UploadPictureResponse;
 import com.example.rainbow.databinding.FragmentShopSettleBinding;
 import com.example.rainbow.net.HttpUtil;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.InputFilterMax;
 import com.example.rainbow.util.InputFilterMax2;
@@ -39,11 +40,12 @@ public class ShopSettle extends BaseFragment {
     private int id;
     private int shopId;
     private boolean isShopSign;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop_settle, container, false);
         binding.setPresenter(Presenter.getInstance());
         initData();
@@ -132,7 +134,7 @@ public class ShopSettle extends BaseFragment {
                                             shopSettleBody.setSign(path);
                                             HttpUtil.getInstance().shopSettle(shopSettleBody).subscribe(
                                                     str2 -> {
-                                                        Presenter.getInstance().back();
+                                                        task.back();
                                                     }
                                             );
                                         }

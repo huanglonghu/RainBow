@@ -67,7 +67,7 @@ public class TaskSelect extends BaseFragment {
             @Override
             public void onClick(View view) {
                 WinLostRecord winLostRecord = new WinLostRecord();
-                String title = getString(R.string.syjl);
+                String title = getString(R.string.jsgl);
                 task.step2Task("syjl", winLostRecord, " > " + title);
             }
         });

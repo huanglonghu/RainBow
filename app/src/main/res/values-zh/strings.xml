@@ -112,7 +112,7 @@
     <string name="jqpz">机器拍照</string>
     <string name="hint1">请输入本次洗分金额</string>
     <string name="hint2">请选择机器</string>
-    <string name="hint3">请输入本店总洗分</string>
+    <string name="hint3">请输入洗分</string>
     <string name="hint4">请输入机器名称</string>
     <string name="hint5">请输入机器型号</string>
 
@@ -205,6 +205,10 @@
     <string name="toastStr35">请上传编号图</string>
     <string name="toastStr36">请上传码表图</string>
     <string name="toastSrt37">任务结算成功</string>
+    <string name="toastStr38">请输入抵扣金额</string>
+    <string name="toastStr39">请输入实付金额</string>
+    <string name="toastStr40">最大洗分不能超过</string>
+    <string name="toastStr41">最大抵扣金额不能超过</string>
     <string name="year">年</string>
 
     <string-array name="moth">

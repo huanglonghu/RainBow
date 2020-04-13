@@ -9,6 +9,9 @@ import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
 import com.example.rainbow.bean.MachineDetailResponse;
+import com.example.rainbow.bean.MachineFaultBody;
+import com.example.rainbow.bean.MachineFaultDetailResponse;
+import com.example.rainbow.bean.MachineFaultResponse;
 import com.example.rainbow.databinding.FragmentMachine2Binding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.MyPageAdapter;
@@ -27,7 +30,7 @@ public class Machine2 extends BaseFragment {
     private FragmentMachine2Binding binding;
     private int id;
     private int machineId;
-    private MachineDetailResponse.DataBean data;
+    private MachineFaultResponse.DataBean data;
     private Task task;
     private FaultRecord faultRecord;
     private boolean isRepair;
@@ -50,14 +53,18 @@ public class Machine2 extends BaseFragment {
 
     @Override
     public void initData() {
-        HttpUtil.getInstance().getMachineDetail(id, machineId).subscribe(
+        MachineFaultBody machineFaultBody = new MachineFaultBody();
+        machineFaultBody.setMachineId(machineId);
+        machineFaultBody.setShopId(id);
+        machineFaultBody.setPage(1);
+        machineFaultBody.setLimit(20);
+        HttpUtil.getInstance().getMachineFault(machineFaultBody).subscribe(
                 str -> {
-                    MachineDetailResponse machineDetailResponse = GsonUtil.fromJson(str, MachineDetailResponse.class);
-                    data = machineDetailResponse.getData();
+                    MachineFaultResponse machineFaultDetailResponse = GsonUtil.fromJson(str, MachineFaultResponse.class);
+                    data = machineFaultDetailResponse.getData();
                     binding.setData(data);
-                    List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
-                    List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
-                    faultRecord.setData(machineFaults, id, task, isRepair,isShopSign);
+                    List<MachineFaultResponse.DataBean.ItemsBean> items = data.getItems();
+                    faultRecord.setData(items, id, task, isRepair,isShopSign);
                 }
         );
 

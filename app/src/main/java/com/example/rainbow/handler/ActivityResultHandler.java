@@ -7,8 +7,10 @@ import android.net.Uri;
 
 import com.example.rainbow.strategy.HandlerStrategy;
 import com.example.rainbow.util.FileUtil;
+import com.example.rainbow.util.ImagUtil;
 
 import java.io.File;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import okhttp3.MediaType;
@@ -121,19 +123,22 @@ public class ActivityResultHandler {
                 handlerStrategy.onActivityResult(filePart, bitMap);
             }
             break;
-            case REQUEST_SELECT_PHOTO_CROP:
-            {
+            case REQUEST_SELECT_PHOTO_CROP: {
                 if (uri == null) {
                     return;
                 }
                 String cropImagePath = FileUtil.getRealFilePathFromUri(activity, uri);
                 Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                 File file = new File(cropImagePath);
+                int max = 5 * 1024 * 1024;
+                if (bitMap.getByteCount() >= max) {
+                    file = ImagUtil.compressImage(file, bitMap);
+                }
                 MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
                 handlerStrategy.onActivityResult(filePart, bitMap);
             }
 
-                break;
+            break;
             case REQUEST_CROP_PHOTO:
                 if (uri == null) {
                     return;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="itemBean"
+            type="com.example.rainbow.bean.PartResponse.DataBean.ItemsBean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100pt"
+        android:paddingLeft="10pt"
+        android:paddingRight="10pt">
+
+        <TextView
+            android:id="@+id/partName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{itemBean.sparePartName}"
+            android:textColor="@android:color/black"
+            android:textSize="28pt" />
+
+        <TextView
+            android:id="@+id/partNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@{String.valueOf(itemBean.number)}"
+            android:textColor="@android:color/black"
+            android:textSize="28pt" />
+
+    </RelativeLayout>
+</layout>

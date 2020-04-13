@@ -18,6 +18,7 @@ import com.example.rainbow.bean.UploadPictureResponse;
 import com.example.rainbow.databinding.FragmentSettleAccountsBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.customView.LinePathView;
+import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.util.GsonUtil;
 import java.io.File;
 import androidx.annotation.NonNull;
@@ -31,11 +32,12 @@ public class LineSettle extends BaseFragment {
 
     private FragmentSettleAccountsBinding binding;
     private RouteSettleBody routeSettleBody;
+    private Task task;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        task = (Task) getParentFragment();
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settle_accounts, container, false);
         routeSettleBody = new RouteSettleBody();
         initData();
@@ -169,7 +171,7 @@ public class LineSettle extends BaseFragment {
                                                 str2 -> {
                                                     String toastStr = getString(R.string.toastSrt37);
                                                     Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                                                    Presenter.getInstance().back();
+                                                    task.back();
                                                 }
                                         );
                                     }

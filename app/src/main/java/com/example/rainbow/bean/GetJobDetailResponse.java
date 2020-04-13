@@ -8,7 +8,7 @@ public class GetJobDetailResponse {
     /**
      * code : 0
      * msg : success
-     * data : {"routeId":1,"userName":"cc","driver":"司机1号","carNumber":"456","missionType":1,"isSettled":false,"spareParts":[],"shops":[{"shopName":"D店铺","contact":"小d","telephone":"123","image":"string","address":"广州天河","sort":1,"isSignIn":true,"isSettled":true,"isNotGo":false,"id":4},{"shopName":"A店铺","contact":"小a","telephone":"123","image":"string","address":"广州天河","sort":2,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":1},{"shopName":"E店铺","contact":"小e","telephone":"123","image":"string","address":"广州天河","sort":3,"isSignIn":true,"isSettled":false,"isNotGo":false,"id":5}],"routeName":"华师到番禺1","id":1}
+     * data : {"routeId":1,"userName":"steven","driver":"老司机","carNumber":"粤A66666","missionType":1,"isSettled":false,"spareParts":[],"shops":[{"shopName":"东圃店","contact":"老王","telephone":"18502085959","image":"images\\ef379f9383044c3f9c8f63399079790e.jpg","address":"广州天河东圃镇BRT","coordinate":"23.129776,113.408727","sort":1,"isSignIn":true,"isSettled":true,"isNotGo":false,"id":1},{"shopName":"棠下店","contact":"老张","telephone":"18666666666","image":"images\\3237a7ba3c98433c933d837826de76b0.jpg","address":"广州市天河区棠下BRT","coordinate":"23.131874,113.386972","sort":2,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":3},{"shopName":"车陂店","contact":"老李","telephone":"18555555555","image":"images\\e0d798dc6e0d4b49a48b8bf3eceeb6dd.jpg","address":"广州市天河区车陂街道","coordinate":"23.130736,113.401971","sort":3,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":2}],"routeName":"东圃---棠下","startTime":"2020-04-11T00:00:00","id":1}
      */
 
     private int code;
@@ -42,14 +42,15 @@ public class GetJobDetailResponse {
     public static class DataBean {
         /**
          * routeId : 1
-         * userName : cc
-         * driver : 司机1号
-         * carNumber : 456
+         * userName : steven
+         * driver : 老司机
+         * carNumber : 粤A66666
          * missionType : 1
          * isSettled : false
          * spareParts : []
-         * shops : [{"shopName":"D店铺","contact":"小d","telephone":"123","image":"string","address":"广州天河","sort":1,"isSignIn":true,"isSettled":true,"isNotGo":false,"id":4},{"shopName":"A店铺","contact":"小a","telephone":"123","image":"string","address":"广州天河","sort":2,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":1},{"shopName":"E店铺","contact":"小e","telephone":"123","image":"string","address":"广州天河","sort":3,"isSignIn":true,"isSettled":false,"isNotGo":false,"id":5}]
-         * routeName : 华师到番禺1
+         * shops : [{"shopName":"东圃店","contact":"老王","telephone":"18502085959","image":"images\\ef379f9383044c3f9c8f63399079790e.jpg","address":"广州天河东圃镇BRT","coordinate":"23.129776,113.408727","sort":1,"isSignIn":true,"isSettled":true,"isNotGo":false,"id":1},{"shopName":"棠下店","contact":"老张","telephone":"18666666666","image":"images\\3237a7ba3c98433c933d837826de76b0.jpg","address":"广州市天河区棠下BRT","coordinate":"23.131874,113.386972","sort":2,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":3},{"shopName":"车陂店","contact":"老李","telephone":"18555555555","image":"images\\e0d798dc6e0d4b49a48b8bf3eceeb6dd.jpg","address":"广州市天河区车陂街道","coordinate":"23.130736,113.401971","sort":3,"isSignIn":true,"isSettled":false,"isNotGo":true,"id":2}]
+         * routeName : 东圃---棠下
+         * startTime : 2020-04-11T00:00:00
          * id : 1
          */
 
@@ -60,6 +61,7 @@ public class GetJobDetailResponse {
         private int missionType;
         private boolean isSettled;
         private String routeName;
+        private String startTime;
         private int id;
         private List<?> spareParts;
         private List<ShopsBean> shops;
@@ -120,6 +122,14 @@ public class GetJobDetailResponse {
             this.routeName = routeName;
         }
 
+        public String getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(String startTime) {
+            this.startTime = startTime;
+        }
+
         public int getId() {
             return id;
         }
@@ -146,16 +156,17 @@ public class GetJobDetailResponse {
 
         public static class ShopsBean {
             /**
-             * shopName : D店铺
-             * contact : 小d
-             * telephone : 123
-             * image : string
-             * address : 广州天河
+             * shopName : 东圃店
+             * contact : 老王
+             * telephone : 18502085959
+             * image : images\ef379f9383044c3f9c8f63399079790e.jpg
+             * address : 广州天河东圃镇BRT
+             * coordinate : 23.129776,113.408727
              * sort : 1
              * isSignIn : true
              * isSettled : true
              * isNotGo : false
-             * id : 4
+             * id : 1
              */
 
             private String shopName;
@@ -163,6 +174,7 @@ public class GetJobDetailResponse {
             private String telephone;
             private String image;
             private String address;
+            private String coordinate;
             private int sort;
             private boolean isSignIn;
             private boolean isSettled;
@@ -207,6 +219,14 @@ public class GetJobDetailResponse {
 
             public void setAddress(String address) {
                 this.address = address;
+            }
+
+            public String getCoordinate() {
+                return coordinate;
+            }
+
+            public void setCoordinate(String coordinate) {
+                this.coordinate = coordinate;
             }
 
             public int getSort() {
