@@ -186,6 +186,7 @@ public class Shop extends BaseFragment {
                     }
                 });
                 tipDialog.show();
+                tipDialog.getWindow().getDecorView().setBackground(null);
             }
         });
 

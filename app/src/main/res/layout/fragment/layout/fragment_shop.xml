@@ -77,7 +77,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30pt"
                         android:layout_marginTop="10pt"
                         android:text='@{@string/phone+"("+data.contact+")"+data.telephone}'
                         android:textColor="@color/t4"
@@ -99,7 +98,9 @@
                 <LinearLayout
                     android:id="@+id/line"
                     android:layout_width="138pt"
-                    android:layout_height="112pt"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15pt"
+                    android:paddingBottom="15pt"
                     android:background="@drawable/shape_a1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -107,7 +108,7 @@
 
                     <ImageView
                         android:layout_width="62pt"
-                        android:layout_height="44pt"
+                        android:layout_height="39pt"
                         android:src="@drawable/line" />
 
 
@@ -116,6 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
                         android:text="@string/line"
+                        android:gravity="center"
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
                     />
@@ -126,7 +128,9 @@
                 <LinearLayout
                     android:id="@+id/takePhoto"
                     android:layout_width="138pt"
-                    android:layout_height="112pt"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15pt"
+                    android:paddingBottom="15pt"
                     android:layout_marginLeft="20pt"
                     android:background="@drawable/shape_a1"
                     android:gravity="center"
@@ -144,6 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
                         android:text="@string/jqpz"
+                        android:gravity="center"
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
                     />
@@ -154,7 +159,9 @@
                 <LinearLayout
                     android:id="@+id/toSign"
                     android:layout_width="138pt"
-                    android:layout_height="112pt"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15pt"
+                    android:paddingBottom="15pt"
                     android:layout_marginLeft="20pt"
                     android:background="@{data.isSignIn?@drawable/shape_b2:@drawable/shape_a1}"
                     android:gravity="center"
@@ -163,7 +170,7 @@
 
                     <ImageView
                         android:layout_width="62pt"
-                        android:layout_height="44pt"
+                        android:layout_height="39pt"
                         android:src="@{data.isSignIn?@drawable/signed:@drawable/sign}" />
 
 
@@ -171,6 +178,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
+                        android:gravity="center"
                         android:text="@{data.isSignIn?@string/signed:@string/sign}"
                         android:textColor="@{data.isSignIn?@color/c2:@color/t4}"
                         android:textSize="28pt" />
@@ -182,7 +190,9 @@
                 <LinearLayout
                     android:id="@+id/shopSettle"
                     android:layout_width="138pt"
-                    android:layout_height="112pt"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15pt"
+                    android:paddingBottom="15pt"
                     android:layout_marginLeft="20pt"
                     android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
                     android:clickable="@{data.isSettled?false:true}"
@@ -198,6 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
+                        android:gravity="center"
                         android:text="@{data.isSettled?@string/settled:@string/settle}"
                         android:textColor="@{data.isSettled?@color/c2:@color/t4}"
                         android:textSize="28pt" />

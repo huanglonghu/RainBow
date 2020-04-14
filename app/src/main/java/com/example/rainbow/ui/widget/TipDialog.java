@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.rainbow.R;
@@ -22,7 +23,7 @@ public class TipDialog extends Dialog {
     private LayoutTipBinding binding;
 
     public TipDialog(Context context, String title, ClickSureListener clickSureListener) {
-        super(context, R.style.dialog);
+        super(context,R.style.app_dialog);
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.layout_tip, null, false);
         binding.setTitle(title);
@@ -40,7 +41,6 @@ public class TipDialog extends Dialog {
 
             }
         });
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(false);
         setContentView(binding.getRoot());
     }
@@ -48,7 +48,8 @@ public class TipDialog extends Dialog {
     @Override
     public void show() {
         super.show();
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        Window window = getWindow();
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
         int windowWidth = RainBowApplication.getApplication().getWindowWidth();
         layoutParams.width = (windowWidth * 400) / 1092;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;

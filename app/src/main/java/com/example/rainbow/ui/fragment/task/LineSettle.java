@@ -129,13 +129,7 @@ public class LineSettle extends BaseFragment {
                     double v4 = Double.parseDouble(cyf);
                     routeSettleBody.setEatMoney(v4);
                     String remark = binding.remark.getText().toString();
-                    if (TextUtils.isEmpty(remark)) {
-                        String toastStr = getString(R.string.toastStr11);
-                        Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                     routeSettleBody.setRemarks(remark);
-
                     String note = binding.note.getText().toString();
                     if (TextUtils.isEmpty(note)) {
                         String toastStr = getString(R.string.toastStr30);

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -33,14 +32,13 @@ import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.TipDialog;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.LogUtil;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.viewpager.widget.ViewPager;
 import okhttp3.MultipartBody;
 
 public class Machine extends BaseFragment {
@@ -72,7 +70,6 @@ public class Machine extends BaseFragment {
 
     @Override
     public void initData() {
-
         HttpUtil.getInstance().getMachineDetail(jobId, machineId).subscribe(
                 str -> {
                     MachineDetailResponse machineDetailResponse = GsonUtil.fromJson(str, MachineDetailResponse.class);
@@ -142,6 +139,11 @@ public class Machine extends BaseFragment {
             LayoutUploadPictureBinding uploadPictureBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.layout_upload_picture, null, false);
             views.add(uploadPictureBinding.getRoot());
             int finalI = i;
+            if (i == 0) {
+                uploadPictureBinding.tv.setText(R.string.scmbt);
+            } else {
+                uploadPictureBinding.tv.setText(R.string.scbht);
+            }
             uploadPictureBinding.upload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -261,6 +263,23 @@ public class Machine extends BaseFragment {
         addTextChangeListener(binding.etTb, binding.sctb, binding.bctb);
         addTextChangeListener(binding.etXf, binding.scxf, binding.bcxf);
         addTextChangeListener(binding.etCb, binding.sccb, binding.bccb);
+
+        binding.vpUpload.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                binding.setPosition(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void addTextChangeListener(EditText et1, TextView tv1, TextView tv2) {

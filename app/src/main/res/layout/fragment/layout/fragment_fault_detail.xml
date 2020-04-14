@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A01号某某游戏机-问题说明"
+                android:text='@{data.machineName+"-"+@string/wtsm}'
                 android:textColor="@color/t9"
                 android:textSize="32pt" />
 

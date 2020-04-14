@@ -3,7 +3,6 @@
 
     <data>
 
-
         <variable
             name="presenter"
             type="com.example.rainbow.base.Presenter" />
@@ -280,10 +279,12 @@
 
 
                     <TextView
-                        android:layout_width="140pt"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@color/d1"
                         android:gravity="center"
+                        android:paddingLeft="26pt"
+                        android:paddingRight="26pt"
                         android:text='@{@string/bcxf+" :"}'
                         android:textColor="@color/t6"
                         android:textSize="27pt" />

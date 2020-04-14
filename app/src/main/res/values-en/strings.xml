@@ -223,5 +223,15 @@
     <string name="toastStr4">请拍照上传处理结果</string>
     <string name="dclwt">待处理问题</string>
     <string name="bj">本金 :</string>
+    <string name="wxpj">维修配件</string>
+    <string name="lxr">联系人：</string>
+    <string name="jsyc">结算异常?</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="tip">因特殊原因无法结算，是否跳过结算？</string>
+    <string name="addRemark">添加备注</string>
+    <string name="scmbt">上传码表图</string>
+    <string name="scbht">上传编号图</string>
+    <string name="wtsm">问题说明</string>
 
 </resources>

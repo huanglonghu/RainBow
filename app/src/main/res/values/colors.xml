@@ -5,6 +5,8 @@
     <color name="colorAccent">#D81B60</color>
 
 
+    <color name="transparent">#00000000</color>
+
     <color name="b1">#f5f5f5</color>
     <color name="b2">#db0111</color>
 
@@ -37,6 +39,10 @@
     <color name="s1">#cccccc</color>
     <color name="s2">#cbcbcb</color>
     <color name="s3">#f2f2f4</color>
+
+
+    <color name="banner2">#f44336</color>
+    <color name="banner1">#b7b5b8</color>
 
 
 </resources>

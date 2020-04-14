@@ -70,27 +70,13 @@
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{@string/lxr+data.contact}"
-                            android:textColor="@color/t4"
-                            android:textSize="28pt" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30pt"
-                            android:text="@{@string/phone+data.telephone}"
-                            android:textColor="@color/t4"
-                            android:textSize="28pt" />
-
-                    </LinearLayout>
+                        android:layout_marginTop="10pt"
+                        android:text='@{@string/phone+"("+data.contact+")"+data.telephone}'
+                        android:textColor="@color/t4"
+                        android:textSize="28pt" />
 
 
                 </LinearLayout>
@@ -124,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
                         android:text="@string/line"
+                        android:gravity="center"
                         android:textColor="@color/t4"
                         android:textSize="28pt" />
                     />
@@ -150,6 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10pt"
+                        android:gravity="center"
                         android:text="@{data.isSignIn?@string/signed:@string/sign}"
                         android:textColor="@{data.isSignIn?@color/c2:@color/t4}"
                         android:textSize="28pt" />

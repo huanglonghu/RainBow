@@ -127,13 +127,7 @@ public class WxSettle extends BaseFragment {
                     double v4 = Double.parseDouble(cyf);
                     wxRouteSettleBody.setEatMoney(v4);
                     String remark = binding.remark.getText().toString();
-                    if (TextUtils.isEmpty(remark)) {
-                        String toastStr = getString(R.string.toastStr11);
-                        Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                     wxRouteSettleBody.setRemarks(remark);
-
                     if (!binding.signArea.isEmpty()) {
                         try {
                             View root = binding.getRoot();
