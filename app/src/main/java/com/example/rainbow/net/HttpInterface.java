@@ -157,4 +157,8 @@ public interface HttpInterface {
     Call<ResponseBody> updateRemark(@Body RemarkBody body);
 
 
+    @POST("/api/v1/jobshopprofitloss/getjobshopprofitloss")
+    Call<ResponseBody> getShopSettleDetail(@Body HashMap<String, Integer> map);
+
+
 }

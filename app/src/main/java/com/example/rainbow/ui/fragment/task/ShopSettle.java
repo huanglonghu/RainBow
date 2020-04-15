@@ -53,7 +53,7 @@ public class ShopSettle extends BaseFragment {
         return binding.getRoot();
     }
 
-    private boolean isSettle;
+    private boolean isMachineSettle;
 
     @Override
     public void initData() {
@@ -63,7 +63,7 @@ public class ShopSettle extends BaseFragment {
         isShopSign = bundle.getBoolean("isShopSign");
         HttpUtil.getInstance().getShopWinloss(id, shopId).subscribe(
                 str -> {
-                    isSettle = true;
+                    isMachineSettle = true;
                     ShopWinlossResponse shopWinlossResponse = GsonUtil.fromJson(str, ShopWinlossResponse.class);
                     ShopWinlossResponse.DataBean data = shopWinlossResponse.getData();
                     binding.setData(data);
@@ -92,7 +92,7 @@ public class ShopSettle extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (isShopSign) {
-                    if (isSettle) {
+                    if (isMachineSettle) {
                         String xf = binding.xf.getText().toString();
                         if (TextUtils.isEmpty(xf)) {
                             String toastStr = getString(R.string.toastStr24);

@@ -65,7 +65,7 @@ public class ImagUtil {
         int bitmapSize = image.getRowBytes() * image.getHeight();
         Matrix matrix = new Matrix();
         LogUtil.log("11=========scaleSize===========" + bitmapSize);
-        matrix.setScale(0.1f, 0.1f);
+        matrix.setScale(0.5f, 0.5f);
         while (bitmapSize > (5 * 1024 * 1024)) {
             image = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
             bitmapSize = image.getRowBytes() * image.getHeight();

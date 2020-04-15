@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.example.rainbow.base.Presenter" />
+
+        <variable
+            name="data"
+            type="com.example.rainbow.bean.ShopSettledResponse.DataBean" />
+
+        <variable
+            name="isSettled"
+            type="boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="30pt">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/b2"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/jsje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="@string/zyk"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.totalProfitLoss)}"
+                        android:textColor="@color/b2"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20pt"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/djfc" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="@string/djfc"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.splitRatio)}"
+                        android:textColor="@color/t9"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20pt"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c4"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/ssje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="@string/jsje"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.businessProfitLoss)}"
+                        android:textColor="@color/c2"
+                        android:textSize="44pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20pt"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c4"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/ssje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="@string/dkje"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/etDkje"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.shopDeductionMoney)}"
+                        android:textColor="@color/c2"
+                        android:textSize="44pt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20pt"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c4"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/ssje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:text="@string/sfje"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/etSfje"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="50pt"
+                        android:text="@{String.valueOf(data.shopPayMoney)}"
+                        android:textColor="@color/c2"
+                        android:textSize="44pt" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24pt"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80pt"
+                    android:background="@drawable/shape_a2"
+                    android:divider="@drawable/ll_divider2"
+                    android:padding="1pt"
+                    android:showDividers="middle">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center"
+                        android:paddingLeft="26pt"
+                        android:paddingRight="26pt"
+                        android:text='@{@string/bcxf+" :"}'
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+                    <TextView
+                        android:id="@+id/xf"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="start|center_vertical"
+                        android:text="@{String.valueOf(data.shopWashScore)}"
+                        android:paddingLeft="20pt"
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

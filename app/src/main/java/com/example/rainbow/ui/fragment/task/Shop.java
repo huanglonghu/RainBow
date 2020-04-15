@@ -251,14 +251,24 @@ public class Shop extends BaseFragment {
         binding.shopSettle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShopSettle shopSettle = new ShopSettle();
-                Bundle bundle = new Bundle();
-                bundle.putInt("id", id);
-                bundle.putInt("shopId", shopId);
-                bundle.putBoolean("isShopSign", data.isIsSignIn());
-                shopSettle.setArguments(bundle);
-                String title = getString(R.string.shopSettle);
-                task.step2Task("shopSettle", shopSettle, " > " + title);
+                if (data.isIsSettled()) {
+                    ShopSettled shopSettled = new ShopSettled();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    bundle.putInt("shopId", shopId);
+                    shopSettled.setArguments(bundle);
+                    String title = getString(R.string.shopSettle);
+                    task.step2Task("shopSettled", shopSettled, " > " + title);
+                } else {
+                    ShopSettle shopSettle = new ShopSettle();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    bundle.putInt("shopId", shopId);
+                    bundle.putBoolean("isShopSign", data.isIsSignIn());
+                    shopSettle.setArguments(bundle);
+                    String title = getString(R.string.shopSettle);
+                    task.step2Task("shopSettle", shopSettle, " > " + title);
+                }
             }
         });
 

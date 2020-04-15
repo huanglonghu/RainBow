@@ -404,6 +404,15 @@ public class HttpUtil {
     }
 
 
+    public Observable<String> getShopSettleDetail(int jobId,int shopId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("businessId",shopId);
+        map.put("id",jobId);
+        Call<ResponseBody> call = httpInterface.getShopSettleDetail(map);
+        return enqueueCall(call);
+    }
+
+
     public Observable<String> shopSettle(ShopBody shopBody) {
         Call<ResponseBody> call = httpInterface.shopSettle(shopBody);
         return enqueueCall(call);

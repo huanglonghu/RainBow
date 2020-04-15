@@ -238,7 +238,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20pt"
                         android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
-                        android:clickable="@{data.isSettled?false:true}"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingTop="15pt"
