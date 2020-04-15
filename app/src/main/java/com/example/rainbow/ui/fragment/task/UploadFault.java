@@ -200,31 +200,7 @@ public class UploadFault extends BaseFragment {
         Observable<String>[] observables = new Observable[parts.size()];
         for (int i = 0; i < parts.size(); i++) {
             MultipartBody.Part part = parts.get(i);
-            Call<ResponseBody> call = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).uploadPicture(part);
-            observables[i] = Observable.create(new ObservableOnSubscribe<String>() {
-                @Override
-                public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
-                    call.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            if (response.isSuccessful()) {
-                                try {
-                                    String body = response.body().string();
-                                    UploadPictureResponse uploadPictureResponse = GsonUtil.fromJson(body, UploadPictureResponse.class);
-                                    String data = uploadPictureResponse.getData();
-                                    observableEmitter.onNext(data);
-                                } catch (Exception e) {
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                        }
-                    });
-                }
-            });
+            createUploadPicture(observables, i, part);
 
         }
         netLoading = new NetLoading(getContext());
@@ -253,6 +229,34 @@ public class UploadFault extends BaseFragment {
         );
 
 
+    }
+
+    private void createUploadPicture(Observable<String>[] observables, int i, Part part) {
+        Call<ResponseBody> call = HttpUtil.getInstance().getRetrofit().create(HttpInterface.class).uploadPicture(part);
+        observables[i] = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> observableEmitter) throws Exception {
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            try {
+                                String body = response.body().string();
+                                UploadPictureResponse uploadPictureResponse = GsonUtil.fromJson(body, UploadPictureResponse.class);
+                                String data = uploadPictureResponse.getData();
+                                observableEmitter.onNext(data);
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
 

@@ -47,11 +47,14 @@ public class WinLostRecord extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_winlost_record, container, false);
-        userBean = UserOption.getInstance().querryUser();
-        initView();
-        initData();
-        initlisten();
+        if(binding == null){
+            binding = DataBindingUtil.inflate(inflater, R.layout.fragment_winlost_record, container, false);
+            userBean = UserOption.getInstance().querryUser();
+            initView();
+            initData();
+            initlisten();
+        }
+
         return binding.getRoot();
     }
 

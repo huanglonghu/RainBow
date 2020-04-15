@@ -30,13 +30,21 @@ public class SelectLineAdapter extends BaseListAdapter {
         LvItemLineBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
         binding.setBean(bean);
         if (position == 0) {
-            binding.ivSign.setBackgroundResource(R.drawable.line_sign2);
+            binding.ivSign.setImageResource(R.drawable.line_sign2);
         } else {
-            binding.ivSign.setBackgroundResource(R.drawable.line_sign1);
+            binding.ivSign.setImageResource(R.drawable.line_sign1);
         }
-        if (bean.isIsSignIn()) {
-            binding.ivSign.setSelected(true);
+
+        if(bean.isIsSettled()){
+            binding.ivSign.setImageLevel(3);
+        }else {
+            if (bean.isIsSignIn()) {
+                binding.ivSign.setImageLevel(2);
+            }else {
+                binding.ivSign.setImageLevel(1);
+            }
         }
+
 
         String image = bean.getImage();
         String url = ImagUtil.handleUrl(image);

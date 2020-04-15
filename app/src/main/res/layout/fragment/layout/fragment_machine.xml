@@ -324,7 +324,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/bj"
+                            android:text='@{@string/bj+" :"}'
                             android:textColor="@color/t11"
                             android:textSize="32pt" />
 

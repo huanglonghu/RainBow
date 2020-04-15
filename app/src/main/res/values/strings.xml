@@ -114,7 +114,7 @@
     <string name="ssje">实收金额</string>
     <string name="bankNote">纸钞 :</string>
     <string name="tb">铜板 :</string>
-    <string name="remark">备注 :</string>
+    <string name="remark">备注</string>
     <string name="clear">清除</string>
     <string name="qdtj">确定提交</string>
     <string name="line">路线</string>
@@ -232,7 +232,7 @@
 
     </string-array>
 
-    <string name="bj">本金 :</string>
+    <string name="bj">本金</string>
     <string name="wxpj">维修配件</string>
     <string name="lxr">联系人：</string>
     <string name="jsyc">结算异常?</string>
@@ -244,5 +244,28 @@
     <string name="scmbt">上传码表图</string>
     <string name="scbht">上传编号图</string>
     <string name="wtsm">问题说明</string>
+
+    <string name="yj">押金</string>
+
+    <string name="dqyj">当前押金</string>
+    <string name="bghdyj">变更后的押金 :</string>
+    <string name="bzsm">备注说明</string>
+    <string name="hint6">输入更新后的备注</string>
+    <string name="toastStr42">押金修改成功</string>
+    <string name="toastStr43">请输入新的备注</string>
+    <string name="toastStr44">备注更新成功</string>
+    <string-array name="clockState">
+
+
+        <item>正常</item>
+        <item>迟到</item>
+        <item>早退</item>
+        <item>迟到早退</item>
+        <item>旷工</item>
+
+
+    </string-array>
+
+
 
 </resources>

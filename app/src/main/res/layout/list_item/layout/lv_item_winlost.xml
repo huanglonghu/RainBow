@@ -33,6 +33,13 @@
             android:textColor="@color/t1"
             android:textSize="27pt" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{String.valueOf(bean.lossMoney)}"
+            android:textColor="@color/t1"
+            android:textSize="21pt" />
 
         <TextView
             android:layout_width="0dp"

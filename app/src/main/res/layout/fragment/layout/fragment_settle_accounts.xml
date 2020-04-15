@@ -479,7 +479,7 @@
                                 android:layout_height="match_parent"
                                 android:background="@color/d1"
                                 android:gravity="center"
-                                android:text="@string/remark"
+                                android:text='@{@string/remark+" :"}'
                                 android:textColor="@color/t6"
                                 android:textSize="27pt" />
 

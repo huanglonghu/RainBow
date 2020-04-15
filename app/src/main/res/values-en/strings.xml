@@ -104,7 +104,7 @@
     <string name="ssje">Amount received</string>
     <string name="bankNote">bank note</string>
     <string name="tb">copper：</string>
-    <string name="remark">remark：</string>
+    <string name="remark">remark</string>
     <string name="clear">clear</string>
     <string name="qdtj">make sure to submission</string>
     <string name="line">line</string>
@@ -222,7 +222,7 @@
     <string name="toastStr3">请输入处理说明</string>
     <string name="toastStr4">请拍照上传处理结果</string>
     <string name="dclwt">待处理问题</string>
-    <string name="bj">本金 :</string>
+    <string name="bj">本金</string>
     <string name="wxpj">维修配件</string>
     <string name="lxr">联系人：</string>
     <string name="jsyc">结算异常?</string>
@@ -233,5 +233,8 @@
     <string name="scmbt">上传码表图</string>
     <string name="scbht">上传编号图</string>
     <string name="wtsm">问题说明</string>
+    <string name="yj">押金</string>
+    <string name="dqyj">当前押金</string>
+    <string name="bghdyj">变更后的押金 :</string>
 
 </resources>

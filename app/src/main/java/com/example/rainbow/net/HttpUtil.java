@@ -12,10 +12,12 @@ import com.example.rainbow.bean.HandlerFaultBody;
 import com.example.rainbow.bean.MachineFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
+import com.example.rainbow.bean.RemarkBody;
 import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
 import com.example.rainbow.bean.ShopSettleBody;
 import com.example.rainbow.bean.SignBody;
+import com.example.rainbow.bean.UpdateDepositBody;
 import com.example.rainbow.bean.WxRouteSettleBody;
 import com.example.rainbow.constant.HttpParam;
 import com.example.rainbow.database.entity.UserBean;
@@ -50,6 +52,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Part;
 
 public class HttpUtil {
@@ -90,12 +93,10 @@ public class HttpUtil {
                         String token = userBean.getToken();
                         if (!TextUtils.isEmpty(token)) {
                             request = builder.addHeader("Authorization", "Bearer " + token).build();
-                            LogUtil.log("==============token============" + token);
                         }
                     }
                 }
                 Thread thread = Thread.currentThread();
-                LogUtil.log("===========threadName=============" + thread.getName());
                 okhttp3.Response response = chain.proceed(request);
                 if (response.code() == 401) {
                     UserBean userBean = UserOption.getInstance().querryUser();
@@ -198,12 +199,10 @@ public class HttpUtil {
         return enqueueCall(call);
     }
 
-    public Observable<String> getClockInRecord(String startDate, String endDate, int page) {
+    public Observable<String> getClockInRecord(String startDate, String endDate) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("startDate", startDate);
         map.put("endDate", endDate);
-        map.put("page", page);
-        map.put("limit", 10);
         Call<ResponseBody> call = httpInterface.getClockInRecord(map);
         return enqueueCall(call);
     }
@@ -390,6 +389,18 @@ public class HttpUtil {
         map.put("id", jobId);
         Call<ResponseBody> call = httpInterface.machineRepeatCommit(map);
         return enqueueCall(call);
+    }
+
+    public Observable<String> updateDeposit(UpdateDepositBody body) {
+        Call<ResponseBody> call = httpInterface.updateDeposit(body);
+        return enqueueCall(call);
+    }
+
+    public Observable<String> updateRemark(RemarkBody body) {
+
+        Call<ResponseBody> call = httpInterface.updateRemark(body);
+        return enqueueCall(call);
+
     }
 
 

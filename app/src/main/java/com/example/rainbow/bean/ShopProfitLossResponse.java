@@ -58,7 +58,8 @@ public class ShopProfitLossResponse {
          */
 
         private double splitRatio;
-        private Object remarks;
+        private double deposit;
+        private String remarks;
         private String shopName;
         private String contact;
         private String telephone;
@@ -72,6 +73,14 @@ public class ShopProfitLossResponse {
         private int id;
         private List<MachineProfitLossBean> machineProfitLoss;
 
+        public double getDeposit() {
+            return deposit;
+        }
+
+        public void setDeposit(double deposit) {
+            this.deposit = deposit;
+        }
+
         public double getSplitRatio() {
             return splitRatio;
         }
@@ -80,11 +89,11 @@ public class ShopProfitLossResponse {
             this.splitRatio = splitRatio;
         }
 
-        public Object getRemarks() {
+        public String getRemarks() {
             return remarks;
         }
 
-        public void setRemarks(Object remarks) {
+        public void setRemarks(String remarks) {
             this.remarks = remarks;
         }
 

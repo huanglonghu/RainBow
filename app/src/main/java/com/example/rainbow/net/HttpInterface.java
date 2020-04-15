@@ -5,11 +5,14 @@ import com.example.rainbow.bean.HandlerFaultBody;
 import com.example.rainbow.bean.MachineFaultBody;
 import com.example.rainbow.bean.MachineGuideBody;
 import com.example.rainbow.bean.MachineSettleBody;
+import com.example.rainbow.bean.RemarkBody;
 import com.example.rainbow.bean.RouteSettleBody;
 import com.example.rainbow.bean.ShopBody;
 import com.example.rainbow.bean.ShopSettleBody;
 import com.example.rainbow.bean.SignBody;
+import com.example.rainbow.bean.UpdateDepositBody;
 import com.example.rainbow.bean.WxRouteSettleBody;
+import com.example.rainbow.ui.fragment.task.Remark;
 
 import java.util.HashMap;
 
@@ -57,7 +60,7 @@ public interface HttpInterface {
     @POST("/api/v1/machineloss/querypage")
     Call<ResponseBody> querryXFRecord(@Body HashMap<String, Integer> map);
 
-    @POST("/api/v1/clockinrecord/appquerypage")
+    @POST("/api/v1/clockinrecord/appqueryclockinrecord")
     Call<ResponseBody> getClockInRecord(@Body HashMap<String, Object> map);
 
     @POST("/api/v1/notice/appquerypage")
@@ -144,6 +147,14 @@ public interface HttpInterface {
 
     @POST("/api/v1/machineprofitloss/repeatcreate")
     Call<ResponseBody> machineRepeatCommit(@Body HashMap<String, Integer> map);
+
+
+    @POST("/api/v1/shopdeposit/create")
+    Call<ResponseBody> updateDeposit(@Body UpdateDepositBody body);
+
+
+    @POST("/api/v1/shopremarks/create")
+    Call<ResponseBody> updateRemark(@Body RemarkBody body);
 
 
 }

@@ -167,7 +167,8 @@ public class Machine extends BaseFragment {
                     public void clickSure() {
                         HttpUtil.getInstance().machineRepeatCommit(machineId, jobId).subscribe(
                                 str -> {
-
+                                    data.setIsSettled(true);
+                                    binding.setData(data);
                                 }
                         );
                     }

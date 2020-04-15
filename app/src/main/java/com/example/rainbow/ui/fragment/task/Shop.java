@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -31,11 +30,9 @@ import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.TipDialog;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.ImagUtil;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -86,19 +83,24 @@ public class Shop extends BaseFragment {
         );
     }
 
+    private boolean isMachineSettle;
+
     private void handleData(String str) {
         ShopProfitLossResponse shopDetailResponse = GsonUtil.fromJson(str, ShopProfitLossResponse.class);
         data = shopDetailResponse.getData();
         String image = data.getImage();
         String url = ImagUtil.handleUrl(image);
         if (!TextUtils.isEmpty(url)) {
-
             RxImageLoader.with(getContext()).load(url).into(binding.iv, 1);
         }
         List<ShopProfitLossResponse.DataBean.MachineProfitLossBean> machineProfitLoss = data.getMachineProfitLoss();
         if (machineProfitLoss != null && machineProfitLoss.size() > 0) {
             for (int i = 0; i < machineProfitLoss.size(); i++) {
                 ShopProfitLossResponse.DataBean.MachineProfitLossBean machineProfitLossBean = machineProfitLoss.get(i);
+                if (machineProfitLossBean.isIsSettled()) {
+                    isMachineSettle = true;
+                    binding.setIsMachineSettle(isMachineSettle);
+                }
                 if (machineProfitLossBean.isIsFault()) {
                     ShopFaultResponse.DataBean.MachineFaultBean bean = new ShopFaultResponse.DataBean.MachineFaultBean();
                     bean.setId(machineProfitLossBean.getId());
@@ -170,6 +172,34 @@ public class Shop extends BaseFragment {
     @Override
     public void initlisten() {
 
+        binding.remark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Remark remark = new Remark();
+                String title = getString(R.string.remark);
+                String remarks = data.getRemarks();
+                Bundle bundle = new Bundle();
+                bundle.putString("remark", remarks);
+                bundle.putInt("shopId", shopId);
+                remark.setArguments(bundle);
+                task.step2Task("remark", remark, " > " + title);
+            }
+        });
+
+        binding.yj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double yj = data.getDeposit();
+                Bundle bundle = new Bundle();
+                bundle.putDouble("yj", yj);
+                bundle.putInt("shopId", shopId);
+                Deposit deposit = new Deposit();
+                deposit.setArguments(bundle);
+                String title = getString(R.string.yj);
+                task.step2Task("desposit", deposit, " > " + title);
+            }
+        });
+
 
         binding.jsyc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +210,8 @@ public class Shop extends BaseFragment {
                     public void clickSure() {
                         HttpUtil.getInstance().shopRepeatCommit(shopId, id).subscribe(
                                 str -> {
-
+                                    data.setIsSettled(true);
+                                    binding.setData(data);
                                 }
                         );
                     }

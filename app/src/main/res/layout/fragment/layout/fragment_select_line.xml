@@ -24,12 +24,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="83pt"
+            android:weightSum="4"
             android:gravity="center_vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="60pt">
+                android:layout_marginLeft="60pt"
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,10 +50,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="230pt"
-                android:layout_marginRight="230pt">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,7 +71,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -89,22 +91,22 @@
 
             </LinearLayout>
 
-
             <com.example.rainbow.ui.customView.ImageTextView
                 android:id="@+id/wxpj"
-                android:layout_width="232pt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="230pt"
                 android:gravity="center"
                 android:paddingRight="30pt"
-                android:textColor="@color/t2"
-                android:visibility="@{isRepair?View.VISIBLE:View.GONE}"
-                android:textSize="31pt"
                 android:text="@string/wxpj"
+                android:textColor="@color/t2"
+                android:textSize="31pt"
+                android:visibility="@{isRepair?View.VISIBLE:View.GONE}"
                 app:direcation="2"
                 app:drawable="@drawable/down"
                 app:drawableHeight="20pt"
-                app:drawableWidth="24pt"/>
+                app:drawableWidth="24pt" />
 
 
         </LinearLayout>

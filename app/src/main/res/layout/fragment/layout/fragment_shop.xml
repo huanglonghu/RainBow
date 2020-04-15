@@ -4,7 +4,6 @@
 
     <data>
 
-
         <variable
             name="presenter"
             type="com.example.rainbow.base.Presenter" />
@@ -18,6 +17,10 @@
             type="boolean" />
 
         <import type="android.view.View" />
+
+        <variable
+            name="isMachineSettle"
+            type="boolean" />
 
 
     </data>
@@ -35,6 +38,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -89,148 +93,191 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true">
+                android:layout_below="@id/ll1"
+                android:layout_marginTop="20pt">
 
-                <LinearLayout
-                    android:id="@+id/line"
-                    android:layout_width="138pt"
+                <TextView
+                    android:id="@+id/remark"
+                    android:layout_width="218pt"
                     android:layout_height="wrap_content"
-                    android:paddingTop="15pt"
-                    android:paddingBottom="15pt"
                     android:background="@drawable/shape_a1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:paddingTop="16pt"
+                    android:paddingBottom="16pt"
+                    android:text="@string/remark"
+                    android:textColor="@color/t13"
+                    android:textSize="29pt" />
 
-
-                    <ImageView
-                        android:layout_width="62pt"
-                        android:layout_height="39pt"
-                        android:src="@drawable/line" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:text="@string/line"
-                        android:gravity="center"
-                        android:textColor="@color/t4"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/takePhoto"
-                    android:layout_width="138pt"
+                <TextView
+                    android:id="@+id/yj"
+                    android:layout_width="218pt"
                     android:layout_height="wrap_content"
-                    android:paddingTop="15pt"
-                    android:paddingBottom="15pt"
                     android:layout_marginLeft="20pt"
                     android:background="@drawable/shape_a1"
                     android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <ImageView
-                        android:layout_width="52pt"
-                        android:layout_height="39pt"
-                        android:src="@drawable/takephoto" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:text="@string/jqpz"
-                        android:gravity="center"
-                        android:textColor="@color/t4"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/toSign"
-                    android:layout_width="138pt"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="15pt"
-                    android:paddingBottom="15pt"
-                    android:layout_marginLeft="20pt"
-                    android:background="@{data.isSignIn?@drawable/shape_b2:@drawable/shape_a1}"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <ImageView
-                        android:layout_width="62pt"
-                        android:layout_height="39pt"
-                        android:src="@{data.isSignIn?@drawable/signed:@drawable/sign}" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:gravity="center"
-                        android:text="@{data.isSignIn?@string/signed:@string/sign}"
-                        android:textColor="@{data.isSignIn?@color/c2:@color/t4}"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/shopSettle"
-                    android:layout_width="138pt"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="15pt"
-                    android:paddingBottom="15pt"
-                    android:layout_marginLeft="20pt"
-                    android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
-                    android:clickable="@{data.isSettled?false:true}"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="62pt"
-                        android:layout_height="44pt"
-                        android:src="@{data.isSettled?@drawable/settled:@drawable/settle}" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10pt"
-                        android:gravity="center"
-                        android:text="@{data.isSettled?@string/settled:@string/settle}"
-                        android:textColor="@{data.isSettled?@color/c2:@color/t4}"
-                        android:textSize="28pt" />
-                    />
-
-
-                </LinearLayout>
+                    android:paddingTop="16pt"
+                    android:paddingBottom="16pt"
+                    android:text="@string/yj"
+                    android:textColor="@color/t13"
+                    android:textSize="29pt" />
 
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/jsyc"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ll"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="50pt"
-                android:text="@string/jsyc"
-                android:textColor="@color/c2"
-                android:textSize="28pt"
-                android:visibility="@{data.isSettled?View.GONE:View.VISIBLE}" />
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/line"
+                        android:layout_width="138pt"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape_a1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="15pt"
+                        android:paddingBottom="15pt">
+
+
+                        <ImageView
+                            android:layout_width="62pt"
+                            android:layout_height="39pt"
+                            android:src="@drawable/line" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10pt"
+                            android:gravity="center"
+                            android:text="@string/line"
+                            android:textColor="@color/t4"
+                            android:textSize="28pt" />
+                        />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/takePhoto"
+                        android:layout_width="138pt"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20pt"
+                        android:background="@drawable/shape_a1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="15pt"
+                        android:paddingBottom="15pt">
+
+
+                        <ImageView
+                            android:layout_width="52pt"
+                            android:layout_height="39pt"
+                            android:src="@drawable/takephoto" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10pt"
+                            android:gravity="center"
+                            android:text="@string/jqpz"
+                            android:textColor="@color/t4"
+                            android:textSize="28pt" />
+                        />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/toSign"
+                        android:layout_width="138pt"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20pt"
+                        android:background="@{data.isSignIn?@drawable/shape_b2:@drawable/shape_a1}"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="15pt"
+                        android:paddingBottom="15pt">
+
+
+                        <ImageView
+                            android:layout_width="62pt"
+                            android:layout_height="39pt"
+                            android:src="@{data.isSignIn?@drawable/signed:@drawable/sign}" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10pt"
+                            android:gravity="center"
+                            android:text="@{data.isSignIn?@string/signed:@string/sign}"
+                            android:textColor="@{data.isSignIn?@color/c2:@color/t4}"
+                            android:textSize="28pt" />
+                        />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/shopSettle"
+                        android:layout_width="138pt"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20pt"
+                        android:background="@{data.isSettled?@drawable/shape_b2:@drawable/shape_a1}"
+                        android:clickable="@{data.isSettled?false:true}"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="15pt"
+                        android:paddingBottom="15pt">
+
+                        <ImageView
+                            android:layout_width="62pt"
+                            android:layout_height="44pt"
+                            android:src="@{data.isSettled?@drawable/settled:@drawable/settle}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10pt"
+                            android:gravity="center"
+                            android:text="@{data.isSettled?@string/settled:@string/settle}"
+                            android:textColor="@{data.isSettled?@color/c2:@color/t4}"
+                            android:textSize="28pt" />
+                        />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/jsyc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="30pt"
+                    android:text="@string/jsyc"
+                    android:textColor="@color/c2"
+                    android:textSize="28pt"
+                    android:visibility="@{isMachineSettle?View.GONE:View.VISIBLE}" />
+
+
+            </LinearLayout>
 
 
         </RelativeLayout>

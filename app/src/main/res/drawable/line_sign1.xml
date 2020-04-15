@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/part_1" android:state_selected="false"/>
+    <item android:drawable="@drawable/part_1"  android:maxLevel="1"/>
 
-    <item android:drawable="@drawable/part_2" android:state_selected="true"/>
+    <item android:drawable="@drawable/part_2"   android:maxLevel="2"/>
 
-</selector>
+    <item android:drawable="@drawable/part_3" android:maxLevel="3"/>
+
+</level-list>
+

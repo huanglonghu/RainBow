@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+        <variable
+            name="yj"
+            type="Double" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30pt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180pt">
+
+                    <LinearLayout
+                        android:layout_width="260pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/c3"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="53pt"
+                            android:layout_height="53pt"
+                            android:src="@drawable/jsje" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20pt"
+                            android:gravity="center"
+                            android:text="@string/dqyj"
+                            android:textColor="#fff"
+                            android:textSize="31pt" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/yj"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30pt"
+                        android:textColor="@color/t9"
+                        android:textSize="42pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80pt"
+                    android:layout_marginTop="30pt"
+                    android:background="@drawable/shape_a2"
+                    android:divider="@drawable/ll_divider2"
+                    android:padding="1pt"
+                    android:showDividers="middle">
+
+
+                    <TextView
+                        android:id="@+id/feduce"
+                        android:layout_width="80pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center"
+                        android:text="－"
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+                    <TextView
+                        android:id="@+id/etYj"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:paddingLeft="16pt"
+                        android:gravity="center_vertical"
+                        android:text='@={yj+""}'
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+
+                    <TextView
+                        android:id="@+id/add"
+                        android:layout_width="80pt"
+                        android:layout_height="match_parent"
+                        android:background="@color/d1"
+                        android:gravity="center"
+                        android:text="＋"
+                        android:textColor="@color/t6"
+                        android:textSize="27pt" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="74pt">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bghdyj"
+                        android:textColor="@color/t14"
+                        android:textSize="35pt" />
+
+                    <TextView
+                        android:id="@+id/newDeposit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16pt"
+                        android:text='@={yj+""}'
+                        android:textColor="@color/t14"
+                        android:textSize="50pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20pt"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.example.rainbow.ui.customView.LinePathView
+                    android:id="@+id/signArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_a3"
+                    android:padding="1pt" />
+
+                <TextView
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10pt"
+                    android:background="@drawable/shape_b1"
+                    android:gravity="center"
+                    android:paddingLeft="30pt"
+                    android:paddingTop="10pt"
+                    android:paddingRight="30pt"
+                    android:paddingBottom="10pt"
+                    android:text="@string/clear"
+                    android:textColor="@android:color/white"
+
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/commit"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_marginLeft="30pt"
+            android:layout_marginTop="20pt"
+            android:layout_marginRight="30pt"
+            android:layout_marginBottom="20pt"
+            android:background="@drawable/shape_a4"
+            android:gravity="center"
+            android:text="@string/sure"
+            android:textColor="#fff"
+            android:textSize="32pt" />
+
+    </LinearLayout>
+
+
+</layout>

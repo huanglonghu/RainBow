@@ -155,6 +155,7 @@ public class LineSettle extends BaseFragment {
                             root.draw(canvas);
                             File file = Presenter.getInstance().save(getContext(), bitmap2);
                             MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("multipart/form-data"), file));
+
                             HttpUtil.getInstance().uploadPicture(filePart).subscribe(
                                     str -> {
                                         file.delete();

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30pt">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{@string/bzsm+" : "}'
+                android:textColor="@color/t9"
+                android:textSize="33pt" />
+
+            <View
+                android:layout_width="130pt"
+                android:layout_height="5pt"
+                android:layout_marginTop="12pt"
+                android:background="@drawable/divider_a1" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/remark"
+            android:layout_width="match_parent"
+            android:layout_height="300pt"
+            android:layout_marginTop="20pt"
+            android:background="@drawable/shape_a9"
+            android:gravity="start"
+            android:paddingLeft="25pt"
+            android:paddingTop="20pt"
+            android:paddingRight="25pt"
+            android:textColor="@color/t11"
+            android:textSize="28pt" />
+
+
+        <EditText
+            android:id="@+id/etRemark"
+            android:layout_width="match_parent"
+            android:layout_height="300pt"
+            android:layout_marginTop="20pt"
+            android:background="@drawable/shape_a6"
+            android:gravity="start"
+            android:paddingLeft="25pt"
+            android:paddingTop="20pt"
+            android:hint="@string/toastStr43"
+            android:paddingRight="25pt"
+            android:textColor="@color/t11"
+            android:textSize="28pt" />
+
+        <TextView
+            android:id="@+id/addRemark"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_marginLeft="30pt"
+            android:layout_marginTop="38pt"
+            android:layout_marginRight="30pt"
+            android:layout_marginBottom="20pt"
+            android:background="@drawable/shape_a4"
+            android:gravity="center"
+            android:text="@string/sure"
+            android:textColor="#fff"
+            android:textSize="32pt" />
+
+
+    </LinearLayout>
+</layout>

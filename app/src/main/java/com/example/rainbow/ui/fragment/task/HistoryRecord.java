@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
@@ -29,6 +30,7 @@ public class HistoryRecord extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_history_record, container, false);
         initView();
+        initlisten();
         return binding.getRoot();
     }
 
@@ -55,6 +57,7 @@ public class HistoryRecord extends BaseFragment {
 
     @Override
     public void initlisten() {
+
 
     }
 }

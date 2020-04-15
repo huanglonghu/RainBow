@@ -15,6 +15,7 @@ import com.example.rainbow.databinding.FragmentClockInBinding;
 import com.example.rainbow.net.HttpUtil;
 import com.example.rainbow.ui.adapter.ClockInListAdapter;
 import com.example.rainbow.util.GsonUtil;
+import com.example.rainbow.util.LogUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -54,30 +55,28 @@ public class ClockIn extends BaseFragment {
     private void initCalendar() {
         calendar = Calendar.getInstance();
         currentYear = calendar.get(Calendar.YEAR);
-        currentMonth = calendar.get(Calendar.MONTH);
+        currentMonth = calendar.get(Calendar.MONTH)+1;
     }
 
     @Override
     public void initData() {
         String[] dates = getDates(currentYear, currentMonth);
+
         refreshRecord(dates[0], dates[1]);
     }
 
-    private int page = 1;
 
     private void refreshRecord(String startDate, String endDate) {
-        HttpUtil.getInstance().getClockInRecord(startDate, endDate, page).subscribe(
+        datas.clear();
+        clockInListAdapter.clearView();
+        HttpUtil.getInstance().getClockInRecord(startDate, endDate).subscribe(
                 str -> {
-                    if (page == 1 && datas.size() > 0) {
-                        datas.clear();
-                    }
                     ClockInRecordResponse clockInRecordResponse = GsonUtil.fromJson(str, ClockInRecordResponse.class);
                     ClockInRecordResponse.DataBean data = clockInRecordResponse.getData();
                     List<ClockInRecordResponse.DataBean.ItemsBean> items = data.getItems();
                     binding.refreshLayout.finishLoadMore();
                     if (items != null && items.size() > 0) {
                         datas.addAll(items);
-                        page++;
                     } else {
                         binding.refreshLayout.setEnableLoadMore(false);
                     }
@@ -109,7 +108,9 @@ public class ClockIn extends BaseFragment {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), R.layout.spinner_item1, months);
         adapter1.setDropDownViewResource(R.layout.spinner_item1);
         binding.spMonth.setAdapter(adapter1);
-        binding.spMonth.setSelection(currentMonth);
+
+
+        binding.spMonth.setSelection(currentMonth-1);
 
         binding.spMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -184,18 +185,18 @@ public class ClockIn extends BaseFragment {
         });
 
 
-        binding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-
-                int position1 = binding.spYear.getSelectedItemPosition();
-                int position2 = binding.spMonth.getSelectedItemPosition();
-                int year = currentYear - position1;
-                int month = position2 + 1;
-                String[] dates = getDates(year, month);
-                refreshRecord(dates[0], dates[1]);
-            }
-        });
+//        binding.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+//            @Override
+//            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+//
+//                int position1 = binding.spYear.getSelectedItemPosition();
+//                int position2 = binding.spMonth.getSelectedItemPosition();
+//                int year = currentYear - position1;
+//                int month = position2 + 1;
+//                String[] dates = getDates(year, month);
+//                refreshRecord(dates[0], dates[1]);
+//            }
+//        });
 
 
         binding.offWork.setOnClickListener(new View.OnClickListener() {
@@ -205,6 +206,10 @@ public class ClockIn extends BaseFragment {
                         str -> {
                             String toastStr = getString(R.string.toastStr20);
                             Toast.makeText(getContext(), toastStr, Toast.LENGTH_SHORT).show();
+                            int year = currentYear - binding.spYear.getSelectedItemPosition();
+                            int month = binding.spMonth.getSelectedItemPosition() + 1;
+                            String[] dates = getDates(year, month);
+                            refreshRecord(dates[0], dates[1]);
                         }
                 );
             }
