@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.rainbow.R;
 import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.base.Presenter;
@@ -32,8 +33,10 @@ import com.example.rainbow.ui.main.Task;
 import com.example.rainbow.ui.widget.TipDialog;
 import com.example.rainbow.util.GsonUtil;
 import com.example.rainbow.util.LogUtil;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,6 +79,7 @@ public class Machine extends BaseFragment {
                     data = machineDetailResponse.getData();
                     List<MachineDetailResponse.DataBean.MachineHistoryProfitLossBean> machineHistoryProfitLoss = data.getMachineHistoryProfitLoss();
                     binding.setData(data);
+                    historyRecord.setData(machineHistoryProfitLoss);
                     if (machineHistoryProfitLoss != null && machineHistoryProfitLoss.size() > 0) {
                         if (data.isIsSettled()) {
                             if (machineHistoryProfitLoss.size() > 1) {
@@ -94,9 +98,7 @@ public class Machine extends BaseFragment {
                                 binding.scxf.setText(bean2.getTotalWashScore() + "");
                                 binding.sccb.setText(bean2.getTotalOut() + "");
                             }
-
                         }
-                        historyRecord.setData(machineHistoryProfitLoss);
                         List<MachineDetailResponse.DataBean.MachineFaultsBean> machineFaults = data.getMachineFaults();
                         if (machineFaults != null && machineFaults.size() > 0) {
                             List<MachineFaultResponse.DataBean.ItemsBean> itemsBeans = new ArrayList<>();
@@ -128,9 +130,13 @@ public class Machine extends BaseFragment {
         String[] titles = getResources().getStringArray(R.array.machinItemTitle);
         historyRecord = new HistoryRecord();
         faultRecord = new FaultRecord();
+
+
         ArrayList<BaseFragment> fragments = new ArrayList<>();
         fragments.add(historyRecord);
         fragments.add(faultRecord);
+        historyRecord.vp(binding.vp);
+        faultRecord.vp(binding.vp);
         MyPageAdapter myPageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments, titles);
         binding.vp.setAdapter(myPageAdapter);
         binding.tab.setViewPager(binding.vp);
@@ -174,6 +180,23 @@ public class Machine extends BaseFragment {
                     }
                 });
                 tipDialog.show();
+            }
+        });
+
+        binding.vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                binding.vp.resetHeight(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
 

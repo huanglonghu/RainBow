@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.example.rainbow.bean.MachineDetailResponse;
 import com.example.rainbow.bean.MachineFaultResponse;
 import com.example.rainbow.databinding.LvItemFaultRecordBinding;
+import com.example.rainbow.util.LogUtil;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class FaultRecordAdapter extends BaseListAdapter {
         MachineFaultResponse.DataBean.ItemsBean bean = (MachineFaultResponse.DataBean.ItemsBean) datas.get(position);
         LvItemFaultRecordBinding binding = DataBindingUtil.inflate(layoutInflater, res, parent, false);
         binding.setBean(bean);
+        LogUtil.log("=================view================="+position);
         return binding.getRoot();
     }
 }

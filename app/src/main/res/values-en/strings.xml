@@ -242,15 +242,11 @@
     <string name="toastStr43">请输入新的备注</string>
     <string name="toastStr44">备注更新成功</string>
     <string-array name="clockState">
-
-
         <item>正常</item>
         <item>迟到</item>
         <item>早退</item>
         <item>迟到早退</item>
         <item>旷工</item>
-
-
     </string-array>
 
 </resources>

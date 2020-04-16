@@ -64,10 +64,10 @@
             android:layout_height="1pt"
             android:background="@drawable/ll_divider1" />
 
-        <ListView
+        <com.example.rainbow.ui.customView.MyListView
             android:id="@+id/lv_history_record"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:divider="@drawable/ll_divider1"
             android:scrollbars="none" />
 

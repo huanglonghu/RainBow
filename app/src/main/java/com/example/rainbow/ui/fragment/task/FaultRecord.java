@@ -12,11 +12,10 @@ import com.example.rainbow.bean.MachineDetailResponse;
 import com.example.rainbow.bean.MachineFaultResponse;
 import com.example.rainbow.databinding.FragmentFaultRecordBinding;
 import com.example.rainbow.ui.adapter.FaultRecordAdapter;
+import com.example.rainbow.ui.customView.AutofitHeightViewPager;
 import com.example.rainbow.ui.main.Task;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -33,14 +32,22 @@ public class FaultRecord extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fault_record, container, false);
+        binding.lvFaultRecord.setFocusable(false);
         initView();
         initlisten();
+        viewPager.setObjectForPosition(binding.getRoot(),1);
         return binding.getRoot();
     }
 
     @Override
     public void initData() {
 
+    }
+
+    private AutofitHeightViewPager viewPager;
+
+    public void vp(AutofitHeightViewPager viewPager) {
+        this.viewPager = viewPager;
     }
 
     private int jobId;
@@ -64,6 +71,7 @@ public class FaultRecord extends BaseFragment {
         datas = new ArrayList<>();
         faultRecordAdapter = new FaultRecordAdapter(getContext(), datas, R.layout.lv_item_fault_record);
         binding.lvFaultRecord.setAdapter(faultRecordAdapter);
+
     }
 
 

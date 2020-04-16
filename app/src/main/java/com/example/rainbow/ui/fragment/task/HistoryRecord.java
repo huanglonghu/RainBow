@@ -11,10 +11,9 @@ import com.example.rainbow.base.BaseFragment;
 import com.example.rainbow.bean.MachineDetailResponse;
 import com.example.rainbow.databinding.FragmentHistoryRecordBinding;
 import com.example.rainbow.ui.adapter.HistoryRecordAdapter;
-
+import com.example.rainbow.ui.customView.AutofitHeightViewPager;
 import java.util.ArrayList;
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -29,14 +28,23 @@ public class HistoryRecord extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_history_record, container, false);
+        binding.lvHistoryRecord.setFocusable(false);
         initView();
         initlisten();
+        viewPager.setObjectForPosition(binding.getRoot(),0);
         return binding.getRoot();
     }
 
     @Override
     public void initData() {
 
+    }
+
+
+    private AutofitHeightViewPager viewPager;
+
+    public void vp(AutofitHeightViewPager viewPager) {
+        this.viewPager = viewPager;
     }
 
 
@@ -53,6 +61,7 @@ public class HistoryRecord extends BaseFragment {
         datas = new ArrayList<>();
         historyRecordAdapter = new HistoryRecordAdapter(getContext(), datas, R.layout.lv_item_history_record);
         binding.lvHistoryRecord.setAdapter(historyRecordAdapter);
+
     }
 
     @Override
